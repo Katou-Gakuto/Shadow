@@ -35,9 +35,3 @@ void FSMCamera::Update(CameraManager* cameraManager)
 {
 	mmStateMap[mCurrentState]->Update(&cameraManager->GetCameraData());
 }
-
-// •`‰æ
-void FSMCamera::Draw(CameraManager* cameraManager)
-{
-	mmStateMap[mCurrentState]->Draw(&cameraManager->GetCameraData());
-}

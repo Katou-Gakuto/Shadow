@@ -30,8 +30,6 @@ public:
 
 	/*更新*/
 	void Update();
-	/*描画*/
-	void Draw();
 
 	/*新しいカメラを作成*/
 	int NewCamera(CameraData cameraData);

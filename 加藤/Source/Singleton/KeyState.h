@@ -19,11 +19,11 @@ public:
 	/*デストラクタ*/
 	~KeyState();
 
-	/*初期化*/
-	void Initialize();
-
 	/*更新*/
 	void Update();
+
+	/// <summary>WndProcでやるKeyStateの処理</summary>
+	void KeyStateWndProcProcess(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 private:
 	/*キーフラグを設定(コントローラーは現在のキーのみ設定)*/
@@ -43,6 +43,13 @@ private:
 	/// シャドウゲームで使用するキーを設定
 	/// </summary>
 	void SetKey_ShadowGame();
+
+	/// <summary>
+	/// シャドウゲームで使用するキーを一つ設定
+	/// </summary>
+	/// <param name="keyNumber">設定するキー</param>
+	/// <param name="flags">フラグたち</param>
+	void SetOneFlag_Shadow(KEY_SHADOW_GAME_TYPE keyNumber, std::initializer_list<bool> flags);
 
 public:
 	/// <summary>

@@ -13,7 +13,13 @@
 #include "ImguiManager.h"
 #include "UtilCalc.h"
 
-LRESULT WINAPI ImguiWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+#ifdef _DEBUG
+#include "DebugLogs/DebugLog.h"
+
+#endif
+
+
+//LRESULT WINAPI ImguiWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 ImguiManager::ImguiManager()
 : mpMode(1)
@@ -33,7 +39,7 @@ void ImguiManager::DxInit()
 #ifdef _DEBUG
     if (mpMode == 1)
     {
-        DxLib::SetHookWinProc(ImguiWndProc);
+        //DxLib::SetHookWinProc(ImguiWndProc);
         //DxLib::SetAlwaysRunFlag(TRUE);
     }
 #endif
@@ -218,6 +224,12 @@ void ImguiManager::Update()
         ImGui::NewFrame();
         ImGui::ShowDemoWindow();
         mnAddNumber = 0;
+
+        //DEBUG::SaveText("CLICK");
+        if (ImGui::Button("Test Button"))
+        {
+            DEBUG::SaveText("CLICK\n\n");
+        }
 
         for (int i = 0; i < mstImguiFloatDatas.size(); i++)
         {
@@ -585,38 +597,46 @@ void ImguiManager::DrawIntImgui(IMGUI_INT_DATA imguiIntData)
 // Forward declare message handler from imgui_impl_win32.cpp
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
+/// <summary>WndProcÇ≈Ç‚ÇÈImguiÇÃèàóù</summary>
+void ImguiManager::ImguiWndProcProcess(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+    ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam);
+}
 // Win32 message handler
 // You can read the io.WantCaptureMouse, io.WantCaptureKeyboard flags to tell if dear imgui wants to use your inputs.
 // - When io.WantCaptureMouse is true, do not dispatch mouse input data to your main application, or clear/overwrite your copy of the mouse data.
 // - When io.WantCaptureKeyboard is true, do not dispatch keyboard input data to your main application, or clear/overwrite your copy of the keyboard data.
 // Generally you may always pass all inputs to dear imgui, and hide them from your application based on those two flags.
-LRESULT WINAPI ImguiWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
-{
-    //if (ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam))
-    //    return true;
-
-    //switch (msg)
-    //{
-    //case WM_SIZE:
-    //    if (wParam == SIZE_MINIMIZED)
-    //        return 0;
-    //    g_ResizeWidth = (UINT)LOWORD(lParam); // Queue resize
-    //    g_ResizeHeight = (UINT)HIWORD(lParam);
-    //    return 0;
-    //case WM_SYSCOMMAND:
-    //    if ((wParam & 0xfff0) == SC_KEYMENU) // Disable ALT application menu
-    //        return 0;
-    //    break;
-    //case WM_DESTROY:
-    //    ::PostQuitMessage(0);
-    //    return 0;
-    //}
-    //return ::DefWindowProcW(hWnd, msg, wParam, lParam);
-
-    ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam);
-
-    return 0;
-}
+//LRESULT WINAPI ImguiWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+//{
+//#ifdef _DEBUG
+//    DEBUG::SaveText("Imgui WndProc\n", DEBUG::DEBUG_MAP_TYPE::DEBUG_GAME_MANAGER_WND_PROC);
+//#endif
+//    //if (ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam))
+//    //    return true;
+//
+//    //switch (msg)
+//    //{
+//    //case WM_SIZE:
+//    //    if (wParam == SIZE_MINIMIZED)
+//    //        return 0;
+//    //    g_ResizeWidth = (UINT)LOWORD(lParam); // Queue resize
+//    //    g_ResizeHeight = (UINT)HIWORD(lParam);
+//    //    return 0;
+//    //case WM_SYSCOMMAND:
+//    //    if ((wParam & 0xfff0) == SC_KEYMENU) // Disable ALT application menu
+//    //        return 0;
+//    //    break;
+//    //case WM_DESTROY:
+//    //    ::PostQuitMessage(0);
+//    //    return 0;
+//    //}
+//    //return ::DefWindowProcW(hWnd, msg, wParam, lParam);
+//
+//    ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam);
+//
+//    return 0;
+//}
 
 
 /*

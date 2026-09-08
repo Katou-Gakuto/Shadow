@@ -19,7 +19,4 @@ public:
 
 	/*XV*/
 	void Update(CameraManager* cameraManager);
-
-	/*•`‰æ*/
-	void Draw(CameraManager* cameraManager);
 };

@@ -28,6 +28,8 @@ void DEBUG::DebugInitialization(bool debugOutputFlag)
 
     PlusLogFileData.clear();
 
+    std::filesystem::create_directory("LogDebug");
+
     DEBUG::LogFileString = "LogDebug/debug_0.txt";
     DEBUG::LogFileProcess.clear();
 }

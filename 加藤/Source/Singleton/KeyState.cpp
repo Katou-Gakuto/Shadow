@@ -76,6 +76,16 @@ void KeyState::Update()
 					((prevMouseKey & (~(0b1'1111'1111u & munMouseFlags))) << ((int)MOUSE_TYPE::MAX + (int)MOUSE_TYPE::MAX)); // up
 }
 
+// WndProcでやるKeyStateの処理 
+void KeyState::KeyStateWndProcProcess(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+	MSG setMsg = {};
+	setMsg.message = msg;
+	setMsg.wParam = wParam;
+	setMsg.lParam = lParam;
+	SetMsg(setMsg);
+}
+
 // キーフラグを設定(コントローラーは現在のキーのみ設定)
 void KeyState::SetKey()
 {
@@ -328,24 +338,62 @@ void KeyState::SetKey_ShadowGame()
 		// 移動
 		{
 			// 上
-			mulShadowGameFlags[(int)FLAG_TYPE::NOW].flags |= ((GetWordKey_Board(KEY_BOARD_WORD::W) ? 1u : 0u) << (int)KEY_SHADOW_GAME_TYPE::UP);
-			mulShadowGameFlags[(int)FLAG_TYPE::NOW].flags |= ((GetWordKey_Board(KEY_BOARD_WORD::ARROW_UP) ? 1u : 0u) << (int)KEY_SHADOW_GAME_TYPE::UP);
+			SetOneFlag_Shadow(KEY_SHADOW_GAME_TYPE::UP,
+				{
+					GetWordKey_Board(KEY_BOARD_WORD::W),
+					GetWordKey_Board(KEY_BOARD_WORD::ARROW_UP),
+					GetKey_Controller(CONTROLLER_KEY_TYPE::UP, CONTROLLER_KEY_NUMBER::CONTROLLER_1)
+				}
+			);
 
 			// 下
-			mulShadowGameFlags[(int)FLAG_TYPE::NOW].flags |= ((GetWordKey_Board(KEY_BOARD_WORD::S) ? 1u : 0u) << (int)KEY_SHADOW_GAME_TYPE::DOWN);
-			mulShadowGameFlags[(int)FLAG_TYPE::NOW].flags |= ((GetWordKey_Board(KEY_BOARD_WORD::ARROW_DOWN) ? 1u : 0u) << (int)KEY_SHADOW_GAME_TYPE::DOWN);
+			SetOneFlag_Shadow(KEY_SHADOW_GAME_TYPE::DOWN,
+				{
+					GetWordKey_Board(KEY_BOARD_WORD::S),
+					GetWordKey_Board(KEY_BOARD_WORD::ARROW_DOWN),
+					GetKey_Controller(CONTROLLER_KEY_TYPE::DOWN, CONTROLLER_KEY_NUMBER::CONTROLLER_1)
+				}
+			);
 
 			// 左
-			mulShadowGameFlags[(int)FLAG_TYPE::NOW].flags |= ((GetWordKey_Board(KEY_BOARD_WORD::A) ? 1u : 0u) << (int)KEY_SHADOW_GAME_TYPE::LEFT);
-			mulShadowGameFlags[(int)FLAG_TYPE::NOW].flags |= ((GetWordKey_Board(KEY_BOARD_WORD::ARROW_LEFT) ? 1u : 0u) << (int)KEY_SHADOW_GAME_TYPE::LEFT);
+			SetOneFlag_Shadow(KEY_SHADOW_GAME_TYPE::LEFT,
+				{
+					GetWordKey_Board(KEY_BOARD_WORD::A),
+					GetWordKey_Board(KEY_BOARD_WORD::ARROW_LEFT),
+					GetKey_Controller(CONTROLLER_KEY_TYPE::RIGHT, CONTROLLER_KEY_NUMBER::CONTROLLER_1)
+				}
+			);
 
 			// 右
-			mulShadowGameFlags[(int)FLAG_TYPE::NOW].flags |= ((GetWordKey_Board(KEY_BOARD_WORD::D) ? 1u : 0u) << (int)KEY_SHADOW_GAME_TYPE::RIGHT);
-			mulShadowGameFlags[(int)FLAG_TYPE::NOW].flags |= ((GetWordKey_Board(KEY_BOARD_WORD::ARROW_RIGHT) ? 1u : 0u) << (int)KEY_SHADOW_GAME_TYPE::RIGHT);
+			SetOneFlag_Shadow(KEY_SHADOW_GAME_TYPE::RIGHT,
+				{
+					GetWordKey_Board(KEY_BOARD_WORD::D),
+					GetWordKey_Board(KEY_BOARD_WORD::ARROW_RIGHT),
+					GetKey_Controller(CONTROLLER_KEY_TYPE::LEFT, CONTROLLER_KEY_NUMBER::CONTROLLER_1)
+				}
+			);
 
 			// 移動(どれか)
-			mulShadowGameFlags[(int)FLAG_TYPE::NOW].flags |= (((mulShadowGameFlags[(int)FLAG_TYPE::NOW].GetNumber(0xf, KEY_SHADOW_GAME_TYPE::UP) != 0) ? 1u : 0u) << (int)KEY_SHADOW_GAME_TYPE::MOVE);
+			SetOneFlag_Shadow(KEY_SHADOW_GAME_TYPE::MOVE,
+				{
+					(mulShadowGameFlags[(int)FLAG_TYPE::NOW].GetNumber(0xf, KEY_SHADOW_GAME_TYPE::UP) != 0)
+				}
+			);
 		}
+
+		// テスト用
+		{
+			SetOneFlag_Shadow(KEY_SHADOW_GAME_TYPE::TEST_1,
+				{
+					GetWordKey_Board(KEY_BOARD_WORD::T)
+				}
+			);
+		}
+		SetOneFlag_Shadow(KEY_SHADOW_GAME_TYPE::TEST_1,
+			{
+				GetWordKey_Board(KEY_BOARD_WORD::T)
+			}
+		);
 
 		/*
 		* ここに追加
@@ -356,6 +404,19 @@ void KeyState::SetKey_ShadowGame()
 	{
 		mulShadowGameFlags[(int)FLAG_TYPE::DOWN] = ((~prevShadowGameFlags) & mulShadowGameFlags[(int)FLAG_TYPE::NOW]);
 		mulShadowGameFlags[(int)FLAG_TYPE::UP] = (prevShadowGameFlags & (~mulShadowGameFlags[(int)FLAG_TYPE::NOW]));
+	}
+}
+
+// シャドウゲームで使用するキーを一つ設定
+void KeyState::SetOneFlag_Shadow(KEY_SHADOW_GAME_TYPE keyNumber, std::initializer_list<bool> flags)
+{
+	for (bool flag : flags)
+	{
+		if (flag)
+		{
+			mulShadowGameFlags[(int)FLAG_TYPE::NOW].flags |= (1u << (int)keyNumber);
+			return;
+		}
 	}
 }
 

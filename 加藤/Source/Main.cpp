@@ -6,6 +6,7 @@
 
 #include "DrawManager.h"
 #include "EndManager.h"
+#include "GameManager.h"
 #include "ImguiManager.h"
 #include "KeyState.h"
 #include "LoadingManager.h"
@@ -21,6 +22,7 @@
 // マスター静的メンバ変数初期化
 DrawManager* Master::mpDrawManager = new DrawManager();
 EndManager* Master::mpEndManager = new EndManager();
+GameManager* Master::mpGameManager = new GameManager();
 ImguiManager* Master::mpImguiManager = new ImguiManager();
 KeyState* Master::mpKeyState = new KeyState();
 LoadingManager* Master::mpLoadingManager = new LoadingManager();
@@ -43,7 +45,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 #ifdef _DEBUG
 	
 	// デバッグ初期化
-	DEBUG::DebugInitialization(/*/true/*/false/**/);
+	DEBUG::DebugInitialization(/**/true/*/false/**/);
 	
 	// デバッグテキストの出力先を新しいファイルにする
 	{
@@ -76,6 +78,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		DEBUG::DebugLogAddData(DEBUG::DEBUG_PROCESS_TYPE::FUNCTION_CALL, DEBUG::DEBUG_MAP_TYPE::DEBUG_FAILURE_LOG);
 		DEBUG::DebugLogAddData(DEBUG::DEBUG_PROCESS_TYPE::TIME, DEBUG::DEBUG_MAP_TYPE::DEBUG_FAILURE_LOG);//*/
 
+		/**/
+		DEBUG::DebugCreateLogFileName(DEBUG::DEBUG_MAP_TYPE::DEBUG_TIME, { "_Time" });
+		DEBUG::DebugLogAddData(DEBUG::DEBUG_PROCESS_TYPE::TIME, DEBUG::DEBUG_MAP_TYPE::DEBUG_TIME);//*/
+
 /*/
 		DEBUG::DebugCreateLogFileName(DEBUG::DEBUG_MAP_TYPE::DEBUG_GAME_MANAGER_WND_PROC, "_GameManager");//*/
 	}
@@ -86,7 +92,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 #endif
 
 	// DxLib_Init前初期化
-	//Master::mpGameManager->DxLib_PreInit();
+	Master::mpGameManager->DxLib_PreInit();
 
 	// DXライブラリ初期化処理
 	if(DxLib_Init() == -1)
@@ -99,7 +105,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 #endif
 
 	// 初期化
-	//Master::mpGameManager->Initilize();
+	Master::mpGameManager->Initilize();
 
 	// ループ
 	while (!Master::mpEndManager->EndFlag()) {
@@ -120,13 +126,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			Master::mpImguiManager->Update();
 #endif
 			// 更新
-			//Master::mpGameManager->Update();
+			Master::mpGameManager->Update();
 
 			// 必要であれば削除する
-			//Master::mpGameManager->DeleteAllIfNeeded();
+			Master::mpGameManager->DeleteAllIfNeeded();
 
 			// 描画
-			//Master::mpGameManager->Draw();
+			Master::mpGameManager->Draw();
 		}
 	}
 

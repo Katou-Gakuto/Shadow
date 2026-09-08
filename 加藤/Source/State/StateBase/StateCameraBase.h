@@ -28,9 +28,6 @@ public:
 	/*XV*/
 	virtual void Update(CameraData* cameraManager) = 0;
 
-	/*•`‰æ*/
-	virtual void Draw(CameraData* cameraManager) = 0;
-
 protected:
 	/*ƒJƒƒ‰‚Ì‹¤’Êİ’è‚ğ‚·‚é*/
 	void CommonSetCamera(CameraData *cameraData);

@@ -14,6 +14,10 @@ enum class KEY_SHADOW_GAME_TYPE
 	LEFT,	// 左
 	RIGHT,	// 右
 	MOVE,	// 移動
+
+	TEST_1,// テスト用1
+
+
 };
 
 

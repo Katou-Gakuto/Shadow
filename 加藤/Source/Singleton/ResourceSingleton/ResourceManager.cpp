@@ -6,7 +6,7 @@
 #include "ResourceMovie.h"
 #include "ResourceSound.h"
 
-std::string ResourceManager::msResourceFile = "Resource/";
+std::string ResourceManager::msResourceFile = "";
 DisplaySize ResourceManager::mstDisplaySize = DisplaySize();
 
 ResourceManager::ResourceManager()

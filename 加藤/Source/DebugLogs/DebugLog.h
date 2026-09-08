@@ -22,6 +22,7 @@ namespace DEBUG
 		DEBUG_GAME_MANAGER_WND_PROC,
 		DEBUG_FADE,
 		DEBUG_FAILURE_LOG,
+		DEBUG_TIME,
 	};
 
 	// デバッグ用処理種類
@@ -39,6 +40,8 @@ namespace DEBUG
 		std::vector<DEBUG_PROCESS_TYPE> debugType;
 		
 		std::vector<std::string> plusFileName;
+
+		bool outputFileFlag = true;// TODO: デバッグ描画フラグ
 	};
 
 	// デバッグ用SaveText関数内データ

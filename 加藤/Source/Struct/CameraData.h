@@ -39,4 +39,6 @@ public:
 	int alpha;	// アルファ値
 
 	int cameraID;	// カメラID
+
+	bool processFlag = true;// 処理有効フラグ
 };

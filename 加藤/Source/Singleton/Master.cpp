@@ -2,7 +2,7 @@
 
 #include "DrawManager.h"
 #include "EndManager.h"
-
+#include "GameManager.h"
 #include "ImguiManager.h"
 #include "KeyState.h"
 #include "LoadingManager.h"
@@ -19,10 +19,12 @@ void Master::AllDelete()
 	mpImguiManager->Finalize();
 	mpResourceManager->Finalize();
 	mpThreadManager->Finalize();
+	mpGameManager->Finalize();
 	
 	// íœ
 	delete mpDrawManager;
 	delete mpEndManager;
+	delete mpGameManager;
 	delete mpImguiManager;
 	delete mpKeyState;
 	delete mpLoadingManager;

@@ -14,8 +14,8 @@ void StateOutBounce::Update(DOT_WEEN_DATA dotWeenData)
 {
     float ratio = dotWeenData.DotWeenElapsedTime / dotWeenData.DotWeenTotalTime;
 
-    *dotWeenData.ChangeData = ((ratio) * (dotWeenData.EndData - dotWeenData.StartData)) + dotWeenData.StartData;
-    return;
+ /*   *dotWeenData.ChangeData = ((ratio) * (dotWeenData.EndData - dotWeenData.StartData)) + dotWeenData.StartData;
+    return;*/
     if (ratio < (1.0f / 2.75f))
     {
         *dotWeenData.ChangeData = (7.5625f * ratio * ratio * (dotWeenData.EndData - dotWeenData.StartData)) + dotWeenData.StartData;

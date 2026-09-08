@@ -53,6 +53,9 @@ public:
     /// <summary>Imgui’Ç‰Á•`‰æ</summary>
     void AddDrawImgui(IMGUI_INT_DATA imguiIntData);
 
+    /// <summary>WndProc‚Å‚â‚éImgui‚Ìˆ—</summary>
+    void ImguiWndProcProcess(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
 private:
     /*float‚ÌImguui•`‰æ*/
     void DrawFloatImgui(IMGUI_FLOAT_DATA imguiFloatData);

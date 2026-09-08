@@ -18,6 +18,9 @@ private:
 	// –¢‰Šú‰»ƒtƒ‰ƒO
 	bool mbUninitializedFlag;
 
+	float testX;
+	float testY;
+
 public:
 	GameManager();
 	~GameManager();

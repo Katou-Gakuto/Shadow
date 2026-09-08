@@ -1,5 +1,9 @@
 #pragma once
 
+/*--------------------------*/
+/*          構造体          */
+/*--------------------------*/
+
 // 2Dベクトル(int)
 struct Vector2_Int
 {
@@ -22,27 +26,7 @@ struct Vector2_Int
 		this->y = (int)y;
 	}
 
-	Vector2_Int operator +(Vector2_Int src)
-	{
-		Vector2_Int vec;
-
-		vec.x = this->x + src.x;
-		vec.y = this->y + src.y;
-
-		return vec;
-	}
-
-	Vector2_Int operator -(Vector2_Int src)
-	{
-		Vector2_Int vec;
-
-		vec.x = this->x - src.x;
-		vec.y = this->y - src.y;
-
-		return vec;
-	}
-
-	Vector2_Int operator +=(Vector2_Int src)
+	Vector2_Int& operator +=(Vector2_Int &src)
 	{
 		this->x += src.x;
 		this->y += src.y;
@@ -50,35 +34,14 @@ struct Vector2_Int
 		return *this;
 	}
 
-	Vector2_Int operator -=(Vector2_Int src)
+	Vector2_Int& operator -=(Vector2_Int &src)
 	{
 		this->x -= src.x;
 		this->y -= src.y;
 
 		return *this;
 	}
-
-	Vector2_Int operator *(float src)
-	{
-		Vector2_Int vec;
-
-		vec.x = static_cast<int>(static_cast<float>(this->x) * src);
-		vec.y = static_cast<int>(static_cast<float>(this->y) * src);
-
-		return vec;
-	}
-
-	Vector2_Int operator *(int src)
-	{
-		Vector2_Int vec;
-
-		vec.x = this->x * src;
-		vec.y = this->y * src;
-
-		return vec;
-	}
 };
-
 
 // 2Dベクトル
 struct Vector2
@@ -99,17 +62,7 @@ struct Vector2
 		this->y = Y;
 	}
 
-	Vector2 operator +(Vector2 src) const
-	{
-		Vector2 vec;
-
-		vec.x = this->x + src.x;
-		vec.y = this->y + src.y;
-
-		return vec;
-	}
-
-	Vector2 operator +=(Vector2 src)
+	Vector2& operator +=(Vector2& src)
 	{
 		this->x += src.x;
 		this->y += src.y;
@@ -117,17 +70,7 @@ struct Vector2
 		return *this;
 	}
 
-	Vector2 operator -(Vector2 src) const
-	{
-		Vector2 vec;
-
-		vec.x = this->x - src.x;
-		vec.y = this->y - src.y;
-
-		return vec;
-	}
-
-	Vector2 operator -=(Vector2 src)
+	Vector2& operator -=(Vector2& src)
 	{
 		this->x -= src.x;
 		this->y -= src.y;
@@ -153,3 +96,276 @@ struct Vector2
 		return static_cast<int>(this->y);
 	}
 };
+
+
+/*--------------------------*/
+/*          演算子          */
+/*--------------------------*/
+
+/*---------------------*/
+/*     Vector2_Int     */
+/*---------------------*/
+
+// Vector2_Int + Vector2_Int
+inline Vector2_Int operator+(const Vector2_Int& lhs, const Vector2_Int& rhs)
+{
+	return Vector2_Int(lhs.x + rhs.x, lhs.y + rhs.y);
+}
+
+// Vector2_Int + int
+inline Vector2_Int operator+(const Vector2_Int& lhs, int rhs)
+{
+	return Vector2_Int(lhs.x + rhs, lhs.y + rhs);
+}
+
+inline Vector2_Int operator+(int lhs, const Vector2_Int& rhs)
+{
+	return rhs + lhs;
+}
+
+// Vector2_Int + float
+inline Vector2_Int operator+(const Vector2_Int& lhs, float rhs)
+{
+	return Vector2_Int(
+		static_cast<int>(lhs.x + rhs),
+		static_cast<int>(lhs.y + rhs)
+	);
+}
+
+inline Vector2_Int operator+(float lhs, const Vector2_Int& rhs)
+{
+	return rhs + lhs;
+}
+
+// Vector2_Int - Vector2_Int
+inline Vector2_Int operator-(const Vector2_Int& lhs, const Vector2_Int& rhs)
+{
+	return Vector2_Int(lhs.x - rhs.x, lhs.y - rhs.y);
+}
+
+// Vector2_Int - int
+inline Vector2_Int operator-(const Vector2_Int& lhs, int rhs)
+{
+	return Vector2_Int(lhs.x - rhs, lhs.y - rhs);
+}
+
+inline Vector2_Int operator-(int lhs, const Vector2_Int& rhs)
+{
+	return Vector2_Int(lhs - rhs.x, lhs - rhs.y);
+}
+
+// Vector2_Int - float
+inline Vector2_Int operator-(const Vector2_Int& lhs, float rhs)
+{
+	return Vector2_Int(
+		static_cast<int>(lhs.x - rhs),
+		static_cast<int>(lhs.y - rhs)
+	);
+}
+
+inline Vector2_Int operator-(float lhs, const Vector2_Int& rhs)
+{
+	return Vector2_Int(
+		static_cast<int>(lhs - rhs.x),
+		static_cast<int>(lhs - rhs.y)
+	);
+}
+
+// Vector2_Int * Vector2_Int
+inline Vector2_Int operator*(const Vector2_Int& lhs, const Vector2_Int& rhs)
+{
+	return Vector2_Int(lhs.x * rhs.x, lhs.y * rhs.y);
+}
+
+// Vector2_Int * int
+inline Vector2_Int operator*(const Vector2_Int& lhs, int rhs)
+{
+	return Vector2_Int(lhs.x * rhs, lhs.y * rhs);
+}
+
+inline Vector2_Int operator*(int lhs, const Vector2_Int& rhs)
+{
+	return rhs * lhs;
+}
+
+// Vector2_Int * float
+inline Vector2_Int operator*(const Vector2_Int& lhs, float rhs)
+{
+	return Vector2_Int(
+		static_cast<int>(lhs.x * rhs),
+		static_cast<int>(lhs.y * rhs)
+	);
+}
+
+inline Vector2_Int operator*(float lhs, const Vector2_Int& rhs)
+{
+	return rhs * lhs;
+}
+
+// Vector2_Int / Vector2_Int
+inline Vector2_Int operator/(const Vector2_Int& lhs, const Vector2_Int& rhs)
+{
+	return Vector2_Int(lhs.x / rhs.x, lhs.y / rhs.y);
+}
+
+// Vector2_Int / int
+inline Vector2_Int operator/(const Vector2_Int& lhs, int rhs)
+{
+	return Vector2_Int(lhs.x / rhs, lhs.y / rhs);
+}
+
+inline Vector2_Int operator/(int lhs, const Vector2_Int& rhs)
+{
+	return Vector2_Int(lhs / rhs.x, lhs / rhs.y);
+}
+
+// Vector2_Int / float
+inline Vector2_Int operator/(const Vector2_Int& lhs, float rhs)
+{
+	return Vector2_Int(
+		static_cast<int>(lhs.x / rhs),
+		static_cast<int>(lhs.y / rhs)
+	);
+}
+inline Vector2_Int operator/(float lhs, const Vector2_Int& rhs)
+{
+	return Vector2_Int(
+		static_cast<int>(lhs / rhs.x),
+		static_cast<int>(lhs / rhs.y)
+	);
+}
+
+
+/*-----------------*/
+/*     Vector2     */
+/*-----------------*/
+
+// Vector2 + Vector2
+inline Vector2 operator+(const Vector2& lhs, const Vector2& rhs)
+{
+	return Vector2(lhs.x + rhs.x, lhs.y + rhs.y);
+}
+
+// Vector2 + int
+inline Vector2 operator+(const Vector2& lhs, int rhs)
+{
+	return Vector2(lhs.x + rhs, lhs.y + rhs);
+}
+
+inline Vector2 operator+(int lhs, const Vector2& rhs)
+{
+	return rhs + lhs;
+}
+
+// Vector2 + float
+inline Vector2 operator+(const Vector2& lhs, float rhs)
+{
+	return Vector2(
+		lhs.x + rhs,
+		lhs.y + rhs
+	);
+}
+
+inline Vector2 operator+(float lhs, const Vector2& rhs)
+{
+	return rhs + lhs;
+}
+
+// Vector2 - Vector2
+inline Vector2 operator-(const Vector2& lhs, const Vector2& rhs)
+{
+	return Vector2(lhs.x - rhs.x, lhs.y - rhs.y);
+}
+
+// Vector2 - int
+inline Vector2 operator-(const Vector2& lhs, int rhs)
+{
+	return Vector2(lhs.x - rhs, lhs.y - rhs);
+}
+
+inline Vector2 operator-(int lhs, const Vector2& rhs)
+{
+	return Vector2(lhs - rhs.x, lhs - rhs.y);
+}
+
+// Vector2 - float
+inline Vector2 operator-(const Vector2& lhs, float rhs)
+{
+	return Vector2(
+		lhs.x - rhs,
+		lhs.y - rhs
+	);
+}
+
+inline Vector2 operator-(float lhs, const Vector2& rhs)
+{
+	return Vector2(
+		lhs - rhs.x,
+		lhs - rhs.y
+	);
+}
+
+// Vector2 * Vector2
+inline Vector2 operator*(const Vector2& lhs, const Vector2& rhs)
+{
+	return Vector2(lhs.x * rhs.x, lhs.y * rhs.y);
+}
+
+// Vector2 * int
+inline Vector2 operator*(const Vector2& lhs, int rhs)
+{
+	return Vector2(lhs.x * rhs, lhs.y * rhs);
+}
+
+inline Vector2 operator*(int lhs, const Vector2& rhs)
+{
+	return rhs * lhs;
+}
+
+// Vector2 * float
+inline Vector2 operator*(const Vector2& lhs, float rhs)
+{
+	return Vector2(
+		lhs.x * rhs,
+		lhs.y * rhs
+	);
+}
+
+inline Vector2 operator*(float lhs, const Vector2& rhs)
+{
+	return rhs * lhs;
+}
+
+// Vector2 / Vector2
+inline Vector2 operator/(const Vector2& lhs, const Vector2& rhs)
+{
+	return Vector2(lhs.x / rhs.x, lhs.y / rhs.y);
+}
+
+// Vector2 / int
+inline Vector2 operator/(const Vector2& lhs, int rhs)
+{
+	return Vector2(lhs.x / rhs, lhs.y / rhs);
+}
+
+inline Vector2 operator/(int lhs, const Vector2& rhs)
+{
+	return Vector2(lhs / rhs.x, lhs / rhs.y);
+}
+
+// Vector2 / float
+inline Vector2 operator/(const Vector2& lhs, float rhs)
+{
+	return Vector2(
+		lhs.x / rhs,
+		lhs.y / rhs
+	);
+}
+
+inline Vector2 operator/(float lhs, const Vector2& rhs)
+{
+	return Vector2(
+		lhs / rhs.x,
+		lhs / rhs.y
+	);
+}

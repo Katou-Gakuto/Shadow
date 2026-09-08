@@ -36,15 +36,6 @@ void CameraManager::Update()
 	}
 }
 
-// •`‰æ
-void CameraManager::Draw()
-{
-	if (mnNowID != -1)
-	{
-		mpFsm->Draw(this);
-	}
-}
-
 // V‚µ‚¢ƒJƒƒ‰‚ğì¬
 int CameraManager::NewCamera(CameraData cameraData)
 {
