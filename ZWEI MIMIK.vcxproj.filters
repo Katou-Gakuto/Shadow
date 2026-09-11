@@ -1,22 +1,484 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="ソース ファイル">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="ヘッダー ファイル">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="リソース ファイル">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{b8640819-932c-418e-b1bf-3254a2220a5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\A_GameObject">
+      <UniqueIdentifier>{5b19edbb-0bbd-4520-ba99-3a83bcde364c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\B_BehaviorTree">
+      <UniqueIdentifier>{2943d31a-e892-425d-a367-46d6e0f381f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\C_Component">
+      <UniqueIdentifier>{16a0679b-d767-41a8-b066-177ec5772421}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\S_Collision">
+      <UniqueIdentifier>{860ba23f-7594-4a8c-a7e1-e04074cab952}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\T_Model">
+      <UniqueIdentifier>{9a058744-94e4-4f49-8ea9-1c9fabce3c96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Y_Tool">
+      <UniqueIdentifier>{d9ecc22c-6623-4d06-a89b-88c0227c31d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Z_Except">
+      <UniqueIdentifier>{6b2da2ba-8810-4bdb-9d34-d8fa3a2e48d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\E_Scene">
+      <UniqueIdentifier>{c027b35c-c1b0-44cd-93f7-789458e0130d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\F_PuzzleGimmick">
+      <UniqueIdentifier>{4ed69dbd-e608-46f0-b63b-9236fb94c2fe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Main.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Source\A_GameObject\GameObject.cpp">
+      <Filter>Source\A_GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="Source\A_GameObject\GameObject2D.cpp">
+      <Filter>Source\A_GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\A_GameObject\GameObject3D.cpp">
+      <Filter>Source\A_GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\A_GameObject\GameObjectManager.cpp">
+      <Filter>Source\A_GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\B_BehaviorTree\BehaviorAccessData.cpp">
+      <Filter>Source\B_BehaviorTree</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\B_BehaviorTree\BehaviorNode.cpp">
+      <Filter>Source\B_BehaviorTree</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\B_BehaviorTree\BehaviorTree.cpp">
+      <Filter>Source\B_BehaviorTree</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\B_BehaviorTree\EnemyBehavior.cpp">
+      <Filter>Source\B_BehaviorTree</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\B_BehaviorTree\MonoBehavior.cpp">
+      <Filter>Source\B_BehaviorTree</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\C_Component\BaseComponent.cpp">
+      <Filter>Source\C_Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\C_Component\BaseComponentList.cpp">
+      <Filter>Source\C_Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\C_Component\CharacterLife.cpp">
+      <Filter>Source\C_Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\C_Component\LightObjectController.cpp">
+      <Filter>Source\C_Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\C_Component\OtherPlayerController.cpp">
+      <Filter>Source\C_Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\C_Component\PlayerController.cpp">
+      <Filter>Source\C_Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\S_Collision\BaseCollision.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\S_Collision\BaseCollision2D.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\S_Collision\BaseCollision2DManager.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\S_Collision\BaseCollision3D.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\S_Collision\BaseCollision3DManager.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\S_Collision\BaseCollisionList.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\S_Collision\Capsule2D.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\S_Collision\Capsule3D.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\S_Collision\Circle2D.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\S_Collision\CollisionCheckResult.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\S_Collision\Cube3D.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\S_Collision\Point2D.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\S_Collision\Point3D.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\S_Collision\Quadrangle2D.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\S_Collision\Quadrangle3D.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\S_Collision\Ray2D.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\S_Collision\Ray3D.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\S_Collision\Sphere3D.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\S_Collision\Triangle2D.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\S_Collision\Triangle3D.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\T_Model\Animation2D.cpp">
+      <Filter>Source\T_Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\T_Model\Animation2DList.cpp">
+      <Filter>Source\T_Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\T_Model\BaseModel.cpp">
+      <Filter>Source\T_Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\T_Model\BaseModelList.cpp">
+      <Filter>Source\T_Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\T_Model\Model2D.cpp">
+      <Filter>Source\T_Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\T_Model\Model3D.cpp">
+      <Filter>Source\T_Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\T_Model\ModelPartsBox.cpp">
+      <Filter>Source\T_Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\T_Model\PartsAnimation.cpp">
+      <Filter>Source\T_Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\T_Model\PartsAnimationClip.cpp">
+      <Filter>Source\T_Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\T_Model\PartsAnimator.cpp">
+      <Filter>Source\T_Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\T_Model\PartsBox.cpp">
+      <Filter>Source\T_Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\T_Model\Pose2D.cpp">
+      <Filter>Source\T_Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Y_Tool\BinFileOperaterDirect.cpp">
+      <Filter>Source\Y_Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Y_Tool\FlagByte.cpp">
+      <Filter>Source\Y_Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Y_Tool\CountDownSystem.cpp">
+      <Filter>Source\Y_Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Y_Tool\CSVOperater.cpp">
+      <Filter>Source\Y_Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Y_Tool\EulerOrder.cpp">
+      <Filter>Source\Y_Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Y_Tool\MyEulerAngle.cpp">
+      <Filter>Source\Y_Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Y_Tool\MyFunctions.cpp">
+      <Filter>Source\Y_Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Y_Tool\MyMatrix.cpp">
+      <Filter>Source\Y_Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Y_Tool\MyQuaternion.cpp">
+      <Filter>Source\Y_Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Y_Tool\MyTicket.cpp">
+      <Filter>Source\Y_Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Y_Tool\MyTimer.cpp">
+      <Filter>Source\Y_Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Y_Tool\VECTOR.cpp">
+      <Filter>Source\Y_Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Y_Tool\VECTOR_D.cpp">
+      <Filter>Source\Y_Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Y_Tool\VoidList.cpp">
+      <Filter>Source\Y_Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Z_Except\LightLineNode.cpp">
+      <Filter>Source\Z_Except</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\E_Scene\BaseScene.cpp">
+      <Filter>Source\E_Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\E_Scene\BaseSceneManager.cpp">
+      <Filter>Source\E_Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Z_Except\Master.cpp">
+      <Filter>Source\Z_Except</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\A_GameObject\GameObject.h">
+      <Filter>Source\A_GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\A_GameObject\GameObject2D.h">
+      <Filter>Source\A_GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\A_GameObject\GameObject3D.h">
+      <Filter>Source\A_GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\A_GameObject\GameObjectManager.h">
+      <Filter>Source\A_GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\B_BehaviorTree\BehaviorAccessData.h">
+      <Filter>Source\B_BehaviorTree</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\B_BehaviorTree\BehaviorNode.h">
+      <Filter>Source\B_BehaviorTree</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\B_BehaviorTree\BehaviorTree.h">
+      <Filter>Source\B_BehaviorTree</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\B_BehaviorTree\EnemyBehavior.h">
+      <Filter>Source\B_BehaviorTree</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\B_BehaviorTree\MonoBehavior.h">
+      <Filter>Source\B_BehaviorTree</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\C_Component\BaseComponent.h">
+      <Filter>Source\C_Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\C_Component\BaseComponentList.h">
+      <Filter>Source\C_Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\C_Component\ButtonObjectController.h">
+      <Filter>Source\C_Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\C_Component\CharacterLife.h">
+      <Filter>Source\C_Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\C_Component\LightObjectController.h">
+      <Filter>Source\C_Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\C_Component\GimmickObjectController.h">
+      <Filter>Source\C_Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\C_Component\OtherPlayerController.h">
+      <Filter>Source\C_Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\C_Component\PlayerController.h">
+      <Filter>Source\C_Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\AABB.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\BaseCollision.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\BaseCollision2D.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\BaseCollision2DManager.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\BaseCollision3D.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\BaseCollision3DManager.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\BaseCollisionList.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\Capsule2D.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\Capsule3D.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\Circle2D.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\CollisionCheckResult.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\Cube3D.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\Point2D.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\Point3D.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\Quadrangle2D.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\Quadrangle3D.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\Ray2D.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\Ray3D.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\Sphere3D.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\Triangle2D.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\Triangle3D.h">
+      <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\T_Model\Animation2D.h">
+      <Filter>Source\T_Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\T_Model\Animation2DList.h">
+      <Filter>Source\T_Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\T_Model\BaseModel.h">
+      <Filter>Source\T_Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\T_Model\BaseModelList.h">
+      <Filter>Source\T_Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\T_Model\Model2D.h">
+      <Filter>Source\T_Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\T_Model\Model3D.h">
+      <Filter>Source\T_Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\T_Model\ModelPartsBox.h">
+      <Filter>Source\T_Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\T_Model\PartsAnimation.h">
+      <Filter>Source\T_Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\T_Model\PartsAnimationClip.h">
+      <Filter>Source\T_Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\T_Model\PartsAnimator.h">
+      <Filter>Source\T_Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\T_Model\PartsBox.h">
+      <Filter>Source\T_Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\T_Model\Pose2D.h">
+      <Filter>Source\T_Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\BinFileOperaterDirect.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\FlagByte.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\ByteNum.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\CountDownSystem.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\CreateFlag.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\CSVOperater.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\EulerOrder.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\HADList.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\MallocData.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\MyEulerAngle.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\MyFunctions.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\MyMacro.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\MyMatrix.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\MyQuaternion.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\MySmartPtr.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\MyTicket.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\MyTimer.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\MYTMP.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\ReferenceManager.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\TypeList.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\UseDeclaration.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\VECTOR.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\VECTOR_D.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Y_Tool\VoidList.h">
+      <Filter>Source\Y_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Z_Except\LightLineNode.h">
+      <Filter>Source\Z_Except</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\E_Scene\BaseScene.h">
+      <Filter>Source\E_Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\E_Scene\BaseSceneManager.h">
+      <Filter>Source\E_Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Z_Except\Master.h">
+      <Filter>Source\Z_Except</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\F_PuzzleGimmick\MoveGimmickSumilater.h">
+      <Filter>Source\F_PuzzleGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\F_PuzzleGimmick\PuzzleGimmickData.h">
+      <Filter>Source\F_PuzzleGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\F_PuzzleGimmick\ButtonGimmickChecker.h">
+      <Filter>Source\F_PuzzleGimmick</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
