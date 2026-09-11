@@ -36,6 +36,26 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	// DXライブラリ使用の終了処理
 	DxLib::DxLib_End();
 
+	/*
+	* ゲームループ
+	* [
+	* 更新判定
+	*     [
+	*     ]
+	* 
+	* 更新
+	*     [
+	*		キーの更新
+	*		オブジェクトの更新
+	*     ]
+	* 
+	* 描画
+	*     [
+	*		オブジェクトの描画
+	*     ]
+	* ]
+	*/
+
 	// ソフトの終了
 	return 0;
 }
