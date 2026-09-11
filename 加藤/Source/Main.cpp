@@ -45,7 +45,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 #ifdef _DEBUG
 	
 	// デバッグ初期化
-	DEBUG::DebugInitialization(/**/true/*/false/**/);
+	DEBUG::DebugInitialization(/*/true/*/false/**/);
 	
 	// デバッグテキストの出力先を新しいファイルにする
 	{

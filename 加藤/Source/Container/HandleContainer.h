@@ -33,7 +33,7 @@ private:
     QUOTE_SOURCE msRegisterFileName;
 
     // 次のハンドル追加ファイルのイテレーター
-    std::map<QUOTE_SOURCE, std::vector<HANDLE_TYPE>>::iterator mitRegisterFileIterator;
+    typename std::map<QUOTE_SOURCE, std::vector<HANDLE_TYPE>>::iterator mitRegisterFileIterator;
 
     // ハンドルフラグ
     HANDLE_FLAG meHandleFlag;

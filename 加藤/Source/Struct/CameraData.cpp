@@ -4,14 +4,14 @@
 
 CameraData::CameraData()
 {
-	targetPosition = UtilCalc::VZero;
-	position = UtilCalc::VZero;
-	plusPosition = UtilCalc::VZero;
+	targetPosition = UtilCalc::VZero();
+	position = UtilCalc::VZero();
+	plusPosition = UtilCalc::VZero();
 
-	moveDistance = UtilCalc::VZero;
-	prePosition = UtilCalc::VZero;
+	moveDistance = UtilCalc::VZero();
+	prePosition = UtilCalc::VZero();
 
-	twoDPosition = UtilCalc::VZero;
+	twoDPosition = UtilCalc::VZero();
 
 	cameraMode = CAMERA_MODE::NONE;
 

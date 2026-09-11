@@ -9,11 +9,11 @@ namespace UtilCalc
 	constexpr int IntMax = (std::numeric_limits<int>::max)();
 
 	/*ƒ[ƒ*/
-	inline const VECTOR VZero = VGet(0.0f, 0.0f, 0.0f);
+	inline VECTOR VZero() { return VGet(0.0f, 0.0f, 0.0f); }
 	/*ƒCƒ`*/
-	inline const VECTOR VOne = VGet(1.0f, 1.0f, 1.0f);
+	inline VECTOR VOne() { return VGet(1.0f, 1.0f, 1.0f); }
 	/*x‚Ì‚İ1*/
-	inline const VECTOR VXOne = VGet(1.0f, 0.0f, 0.0f);
+	inline VECTOR VXOne() { return VGet(1.0f, 0.0f, 0.0f); }
 	/*O•ª‚Ìˆê*/
 	constexpr float One_Third = 0.3333333f;
 	/*3,14*/

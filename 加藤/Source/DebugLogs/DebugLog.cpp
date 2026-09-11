@@ -8,6 +8,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <Windows.h>
 
 #ifdef _DEBUG
 #include "DebugLog.h"
@@ -28,7 +29,7 @@ void DEBUG::DebugInitialization(bool debugOutputFlag)
 
     PlusLogFileData.clear();
 
-    std::filesystem::create_directory("LogDebug");
+    CreateDirectoryA("LogDebug", NULL);
 
     DEBUG::LogFileString = "LogDebug/debug_0.txt";
     DEBUG::LogFileProcess.clear();
@@ -46,7 +47,7 @@ void DEBUG::DebugCreateLogFileName(DEBUG_MAP_TYPE debugMapType, std::vector<std:
         while (true)
         {
             filename = "LogDebug/debug_" + std::to_string(count) + ".txt";
-            if (!std::filesystem::exists(filename)) {
+            if (!FileExists(filename)) {
                 break;
             }
             count++;
@@ -298,6 +299,15 @@ std::string DEBUG::FunctionCallHistoryAcquisition(int deleteNumber)
 std::string DEBUG::TimeToString()
 {
     return "    TIME : " + std::to_string(timeGetTime()) + '\n';
+}
+
+// ファイルの存在を確認する
+bool DEBUG::FileExists(const std::string& filename)
+{
+    DWORD attributes = GetFileAttributesA(filename.c_str());
+
+    return attributes != INVALID_FILE_ATTRIBUTES &&
+        !(attributes & FILE_ATTRIBUTE_DIRECTORY);
 }
 
 #endif

@@ -86,6 +86,9 @@ namespace DEBUG
 
 	/// <summary>時間文字列取得</summary>
 	std::string TimeToString();
+
+	/// <summary>ファイルの存在を確認する</summary>
+	bool FileExists(const std::string& filename);
 }
 
 #endif
