@@ -2,6 +2,13 @@
 
 #include "E_Scene/BaseSceneManager.h"
 #include "Z_Except/Master.h"
+#include "EndManager.h"
+#include "KeyState.h"
+#include "TimeManager.h"
+
+#ifdef _DEBUG
+#include "DebugLogs/DebugLog.h"
+#endif
 
 /*
 【フォルダの規則】
@@ -31,6 +38,25 @@
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LPSTR lpCmdLine, int nCmdShow)
 {
+#ifdef _DEBUG
+
+	// デバッグ初期化
+	DEBUG::DebugInitialization(/*/true/*/false/**/);
+
+	// デバッグテキストの出力先を新しいファイルにする
+	{
+		DEBUG::DebugCreateLogFileName();
+		DEBUG::DebugLogAddData(DEBUG::DEBUG_PROCESS_TYPE::FUNCTION_CALL);
+		DEBUG::DebugLogAddData(DEBUG::DEBUG_PROCESS_TYPE::TIME);
+
+		DEBUG::DebugCreateLogFileName(DEBUG::DEBUG_MAP_TYPE::DEBUG_SCENE_TITLE, { "_sceneTitle" });
+		DEBUG::DebugLogAddData(DEBUG::DEBUG_PROCESS_TYPE::ALL_FILE_OUTPUT, DEBUG::DEBUG_MAP_TYPE::DEBUG_SCENE_TITLE);
+
+		/**/
+		DEBUG::DebugCreateLogFileName(DEBUG::DEBUG_MAP_TYPE::DEBUG_TIME, { "_Time" });
+		DEBUG::DebugLogAddData(DEBUG::DEBUG_PROCESS_TYPE::TIME, DEBUG::DEBUG_MAP_TYPE::DEBUG_TIME);//*/
+	}
+#endif
 	// DXライブラリ前初期化
 
 	// DXライブラリ初期化処理
@@ -39,7 +65,24 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		return -1;		// エラーが起きたら直ちに終了
 	}
 
+#ifndef _DEBUG
+	//SetUseDirect3DVersion(DX_DIRECT3D_9EX);
+
+	// log.txtを生成しない
+	SetOutApplicationLogValidFlag(FALSE);
+#endif
+
+	//// ウインドウモードで起動
+	//ChangeWindowMode(true);
+
+	//// 画面サイズ
+	//SetGraphMode(1280, 960, 32);
+
+	SetDrawScreen(DX_SCREEN_BACK);
+
 	// DXライブラリ後
+	Master::Initialize();
+
 
 	/*
 	* ゲームループ
@@ -61,17 +104,23 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	* ]
 	*/
 
-	// ↓約17ms経ってるか、とかメッセージの処理とか諸々が終わったよってところから
-	if (true)
+	while (Master::mpEndManager->EndFlag() == false)
 	{
-		// コントローラー二つ分の入力を取得する
+		// ↓約17ms経ってるか、とかメッセージの処理とか諸々が終わったよってところから
+		if (Master::mpTimeManager->GetNextUpdateFlag())
+		{
+			// コントローラーのキーの状態を更新
+			Master::mpKeyState->Update();
 
-		// 
-		Master::mpBaseSceneManager->Update();
-		
-		// 
-		Master::mpBaseSceneManager->Draw();
+			// 
+			Master::mpBaseSceneManager->Update();
+
+			// 
+			Master::mpBaseSceneManager->Draw();
+		}
 	}
+
+	Master::Finalize();
 
 	// DXライブラリ使用の終了処理
 	DxLib::DxLib_End();

@@ -35,6 +35,24 @@
     <Filter Include="Source\F_PuzzleGimmick">
       <UniqueIdentifier>{4ed69dbd-e608-46f0-b63b-9236fb94c2fe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\追加物">
+      <UniqueIdentifier>{74fc750c-4847-4a69-938c-5410856d01ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\追加物\TemplateTypeRestriction">
+      <UniqueIdentifier>{3e4da878-8d7f-49ff-8f72-d340512d19f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\追加物\DebugLogs">
+      <UniqueIdentifier>{28c3fabd-6026-4866-b5a8-085921099f0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\追加物\Enum">
+      <UniqueIdentifier>{4593540f-dfd7-4450-9346-3bab220baf9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\追加物\Singleton">
+      <UniqueIdentifier>{92559027-b736-4960-828d-516ffaf175f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\追加物\Struct">
+      <UniqueIdentifier>{b90b5cbd-cb3a-40b2-b923-ab6937bcc09f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\A_GameObject\GameObject.cpp">
@@ -234,6 +252,21 @@
     </ClCompile>
     <ClCompile Include="Source\Z_Except\Master.cpp">
       <Filter>Source\Z_Except</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\追加物\DebugLogs\DebugLog.cpp">
+      <Filter>Source\追加物\DebugLogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\追加物\Singleton\DrawManager.cpp">
+      <Filter>Source\追加物\Singleton</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\追加物\Singleton\EndManager.cpp">
+      <Filter>Source\追加物\Singleton</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\追加物\Singleton\TimeManager.cpp">
+      <Filter>Source\追加物\Singleton</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\追加物\Singleton\KeyState.cpp">
+      <Filter>Source\追加物\Singleton</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -479,6 +512,42 @@
     </ClInclude>
     <ClInclude Include="Source\F_PuzzleGimmick\ButtonGimmickChecker.h">
       <Filter>Source\F_PuzzleGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\追加物\DebugLogs\DebugLog.h">
+      <Filter>Source\追加物\DebugLogs</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\追加物\Enum\DrawEnum.h">
+      <Filter>Source\追加物\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\追加物\Enum\KeyStateEnum.h">
+      <Filter>Source\追加物\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\追加物\Enum\ResourceEnum.h">
+      <Filter>Source\追加物\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\追加物\Singleton\DrawManager.h">
+      <Filter>Source\追加物\Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\追加物\Singleton\EndManager.h">
+      <Filter>Source\追加物\Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\追加物\Singleton\TimeManager.h">
+      <Filter>Source\追加物\Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\追加物\Struct\BitFlag.h">
+      <Filter>Source\追加物\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\追加物\Struct\DrawData.h">
+      <Filter>Source\追加物\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\追加物\Struct\TimeData.h">
+      <Filter>Source\追加物\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\追加物\TemplateTypeRestriction\TemplateType_Equal.h">
+      <Filter>Source\追加物\TemplateTypeRestriction</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\追加物\Singleton\KeyState.h">
+      <Filter>Source\追加物\Singleton</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

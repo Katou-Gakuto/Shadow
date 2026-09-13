@@ -2,14 +2,25 @@
 
 #include "../E_Scene/BaseSceneManager.h"
 
+#include "KeyState.h"
+#include "EndManager.h"
+#include "TimeManager.h"
+
 // 
 BaseSceneManager *Master::mpBaseSceneManager = nullptr;
 
+EndManager* Master::mpEndManager = nullptr;
+TimeManager* Master::mpTimeManager = nullptr;
+KeyState* Master::mpKeyState = nullptr;
 
 
 // Master‚ÌŠeƒƒ“ƒo‚ðnew‚·‚éŠÖ”
 int Master::Initialize()
 {
+    mpEndManager = new EndManager();
+    mpTimeManager = new TimeManager(17);
+    mpTimeManager->Initilize();
+    mpKeyState = new KeyState();
     // 
     return 0;
 }
