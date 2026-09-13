@@ -88,6 +88,12 @@
     <Filter Include="ヘッダー ファイル\川田">
       <UniqueIdentifier>{98ae5a7e-f00b-4979-8c31-de8f34fc456b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Shine">
+      <UniqueIdentifier>{c13e5384-d73c-41c3-bb0a-75d7070cc580}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Shine">
+      <UniqueIdentifier>{999895cc-5bc7-47ab-96a5-f66e0c2b4a63}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Imgui\imconfig.h">
@@ -246,6 +252,24 @@
     <ClInclude Include="Source\Util\UtilChange.h">
       <Filter>ヘッダー ファイル\Util</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Shine\ShineManager.h">
+      <Filter>ヘッダー ファイル\Shine</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Shine\ShineObject.h">
+      <Filter>ヘッダー ファイル\Shine</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Shine\WallObject.h">
+      <Filter>ヘッダー ファイル\Shine</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Shine\TestObjectBase.h">
+      <Filter>ヘッダー ファイル\Shine</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Struct\VECTOR.h">
+      <Filter>ヘッダー ファイル\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Struct\UseDeclaration.h">
+      <Filter>ヘッダー ファイル\Struct</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp">
@@ -349,6 +373,18 @@
     </ClCompile>
     <ClCompile Include="Source\Singleton\ResourceSingleton\ResourceSound.cpp">
       <Filter>ソース ファイル\Singleton\ResourceSingleton</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Shine\ShineManager.cpp">
+      <Filter>ソース ファイル\Shine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Shine\ShineObject.cpp">
+      <Filter>ソース ファイル\Shine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Shine\WallObject.cpp">
+      <Filter>ソース ファイル\Shine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Struct\VECTOR.cpp">
+      <Filter>ソース ファイル\Struct</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

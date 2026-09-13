@@ -104,12 +104,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)Imgui;$(ProjectDir)Imgui\backends;$(SolutionDir)プロジェクトに追加すべきファイル_VC用;$(ProjectDir)Source;$(ProjectDir)Source\Animation;$(ProjectDir)Source\Container;$(ProjectDir)Source\Enum;$(ProjectDir)Source\Model;$(ProjectDir)Source\Object;$(ProjectDir)Source\Object\Attack;$(ProjectDir)Source\Object\Building;$(ProjectDir)Source\Object\Character;$(ProjectDir)Source\Object\UI;$(ProjectDir)Source\Singleton;$(ProjectDir)Source\Singleton\ResourceSingleton;$(ProjectDir)Source\State;$(ProjectDir)Source\State\Character;$(ProjectDir)Source\State\Fsm;$(ProjectDir)Source\State\StateBase;$(ProjectDir)Source\State\UI;$(ProjectDir)Source\Struct;$(ProjectDir)Source\TemplateTypeRestriction;$(ProjectDir)Source\Util;$(ProjectDir)XML_Excel;$(ProjectDir)Source\川田\C_Component;$(ProjectDir)Source\川田\Y_Tool;$(ProjectDir)Source\川田\Z_Except</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Imgui;$(ProjectDir)Imgui\backends;$(SolutionDir)プロジェクトに追加すべきファイル_VC用;$(ProjectDir)Source;$(ProjectDir)Source\Animation;$(ProjectDir)Source\Container;$(ProjectDir)Source\Enum;$(ProjectDir)Source\Model;$(ProjectDir)Source\Object;$(ProjectDir)Source\Object\Attack;$(ProjectDir)Source\Object\Building;$(ProjectDir)Source\Object\Character;$(ProjectDir)Source\Object\UI;$(ProjectDir)Source\Shine;$(ProjectDir)Source\Singleton;$(ProjectDir)Source\Singleton\ResourceSingleton;$(ProjectDir)Source\State;$(ProjectDir)Source\State\Character;$(ProjectDir)Source\State\Fsm;$(ProjectDir)Source\State\StateBase;$(ProjectDir)Source\State\UI;$(ProjectDir)Source\Struct;$(ProjectDir)Source\TemplateTypeRestriction;$(ProjectDir)Source\Util;$(ProjectDir)XML_Excel;$(ProjectDir)Source\川田\C_Component;$(ProjectDir)Source\川田\Y_Tool;$(ProjectDir)Source\川田\Z_Except</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)Imgui;$(ProjectDir)Imgui\backends;$(SolutionDir)プロジェクトに追加すべきファイル_VC用;$(ProjectDir)Source;$(ProjectDir)Source\Animation;$(ProjectDir)Source\Container;$(ProjectDir)Source\Enum;$(ProjectDir)Source\Model;$(ProjectDir)Source\Object;$(ProjectDir)Source\Object\Attack;$(ProjectDir)Source\Object\Building;$(ProjectDir)Source\Object\Character;$(ProjectDir)Source\Object\UI;$(ProjectDir)Source\Singleton;$(ProjectDir)Source\Singleton\ResourceSingleton;$(ProjectDir)Source\State;$(ProjectDir)Source\State\Character;$(ProjectDir)Source\State\Fsm;$(ProjectDir)Source\State\StateBase;$(ProjectDir)Source\State\UI;$(ProjectDir)Source\Struct;$(ProjectDir)Source\TemplateTypeRestriction;$(ProjectDir)Source\Util;$(ProjectDir)XML_Excel;$(ProjectDir)Source\川田\C_Component;$(ProjectDir)Source\川田\Y_Tool;$(ProjectDir)Source\川田\Z_Except</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)Imgui;$(ProjectDir)Imgui\backends;$(SolutionDir)プロジェクトに追加すべきファイル_VC用;$(ProjectDir)Source;$(ProjectDir)Source\Animation;$(ProjectDir)Source\Container;$(ProjectDir)Source\Enum;$(ProjectDir)Source\Model;$(ProjectDir)Source\Object;$(ProjectDir)Source\Object\Attack;$(ProjectDir)Source\Object\Building;$(ProjectDir)Source\Object\Character;$(ProjectDir)Source\Object\UI;$(ProjectDir)Source\Shine;$(ProjectDir)Source\Singleton;$(ProjectDir)Source\Singleton\ResourceSingleton;$(ProjectDir)Source\State;$(ProjectDir)Source\State\Character;$(ProjectDir)Source\State\Fsm;$(ProjectDir)Source\State\StateBase;$(ProjectDir)Source\State\UI;$(ProjectDir)Source\Struct;$(ProjectDir)Source\TemplateTypeRestriction;$(ProjectDir)Source\Util;$(ProjectDir)XML_Excel;$(ProjectDir)Source\川田\C_Component;$(ProjectDir)Source\川田\Y_Tool;$(ProjectDir)Source\川田\Z_Except</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -144,6 +144,10 @@
     <ClInclude Include="Source\Enum\ImguiEnum.h" />
     <ClInclude Include="Source\Enum\KeyStateEnum.h" />
     <ClInclude Include="Source\Enum\ResourceEnum.h" />
+    <ClInclude Include="Source\Shine\ShineManager.h" />
+    <ClInclude Include="Source\Shine\ShineObject.h" />
+    <ClInclude Include="Source\Shine\TestObjectBase.h" />
+    <ClInclude Include="Source\Shine\WallObject.h" />
     <ClInclude Include="Source\Singleton\CameraManager.h" />
     <ClInclude Include="Source\Singleton\DotWeenManager.h" />
     <ClInclude Include="Source\Singleton\DrawManager.h" />
@@ -177,6 +181,8 @@
     <ClInclude Include="Source\Struct\ResourceData.h" />
     <ClInclude Include="Source\Struct\StateData.h" />
     <ClInclude Include="Source\Struct\TimeData.h" />
+    <ClInclude Include="Source\Struct\UseDeclaration.h" />
+    <ClInclude Include="Source\Struct\VECTOR.h" />
     <ClInclude Include="Source\Struct\Vector2.h" />
     <ClInclude Include="Source\TemplateTypeRestriction\TemplateType_Equal.h" />
     <ClInclude Include="Source\Util\UtilCalc.h" />
@@ -192,6 +198,9 @@
     <ClCompile Include="Imgui\imgui_widgets.cpp" />
     <ClCompile Include="Source\DebugLogs\DebugLog.cpp" />
     <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\Shine\ShineManager.cpp" />
+    <ClCompile Include="Source\Shine\ShineObject.cpp" />
+    <ClCompile Include="Source\Shine\WallObject.cpp" />
     <ClCompile Include="Source\Singleton\CameraManager.cpp" />
     <ClCompile Include="Source\Singleton\DotWeenManager.cpp" />
     <ClCompile Include="Source\Singleton\DrawManager.cpp" />
@@ -215,6 +224,7 @@
     <ClCompile Include="Source\State\StateDotWeen.cpp" />
     <ClCompile Include="Source\Struct\CameraData.cpp" />
     <ClCompile Include="Source\Struct\ResourceData.cpp" />
+    <ClCompile Include="Source\Struct\VECTOR.cpp" />
     <ClCompile Include="Source\Util\UtilCalc.cpp" />
     <ClCompile Include="Source\Util\UtilChange.cpp" />
   </ItemGroup>

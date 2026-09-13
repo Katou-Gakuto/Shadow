@@ -14,6 +14,7 @@
 #include "StopManager.h"
 #include "ThreadManager.h"
 #include "TimeManager.h"
+#include "ShineManager.h"
 
 #ifdef _DEBUG
 #include "DebugLogs/DebugLog.h"
@@ -30,6 +31,7 @@ ResourceManager* Master::mpResourceManager = new ResourceManager();
 StopManager* Master::mpStopManager = new StopManager();
 ThreadManager* Master::mpThreadManager = new ThreadManager();
 TimeManager* Master::mpTimeManager = new TimeManager();
+ShineManager* Master::mpShineManager = new ShineManager();
 
 /// <summary>
 /// ƒƒCƒ“

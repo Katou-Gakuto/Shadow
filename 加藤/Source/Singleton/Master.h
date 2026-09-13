@@ -11,6 +11,8 @@ class StopManager;
 class ThreadManager;
 class TimeManager;
 
+class ShineManager;
+
 // 変える
 class SoundManager;
 
@@ -27,6 +29,8 @@ public:
 	static StopManager* mpStopManager;	// ストップマネージャー
 	static ThreadManager* mpThreadManager;	// スレッドマネージャー
 	static TimeManager* mpTimeManager;	// タイムマネージャー
+
+	static ShineManager* mpShineManager;	// 光マネージャー
 
 	/*マスター所持物全削除処理*/
 	static void AllDelete();

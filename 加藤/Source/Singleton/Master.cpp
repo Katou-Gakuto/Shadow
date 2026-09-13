@@ -11,6 +11,8 @@
 #include "ThreadManager.h"
 #include "TimeManager.h"
 
+#include "ShineManager.h"
+
 // マスター所持物全削除処理
 void Master::AllDelete()
 {
@@ -20,7 +22,7 @@ void Master::AllDelete()
 	mpResourceManager->Finalize();
 	mpThreadManager->Finalize();
 	mpGameManager->Finalize();
-	
+
 	// 削除
 	delete mpDrawManager;
 	delete mpEndManager;
@@ -32,4 +34,6 @@ void Master::AllDelete()
 	delete mpStopManager;
 	delete mpThreadManager;
 	delete mpTimeManager;
+
+	delete mpStopManager;
 }

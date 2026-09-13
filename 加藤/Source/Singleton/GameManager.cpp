@@ -13,6 +13,8 @@
 #include "ThreadManager.h"
 #include "TimeManager.h"
 
+#include "ShineManager.h"
+
 #ifdef _DEBUG
 #include "DebugLogs/DebugLog.h"
 #endif
@@ -85,6 +87,8 @@ void GameManager::Initilize()
     SetDrawScreen(DX_SCREEN_BACK);
 
     mbUninitializedFlag = false;
+
+    Master::mpShineManager->Init();
 }
 
 // I—¹ˆ—
@@ -147,6 +151,9 @@ void GameManager::Update()
         IMGUI_TYPE::INPUT2
     )
     );
+
+
+    Master::mpShineManager->Update();
 }
 
 // •K—v‚Å‚ ‚ê‚Îíœ‚·‚é
@@ -376,6 +383,9 @@ void GameManager::Draw()
     //    testHandle,
     //    TRUE
     //);
+
+
+    Master::mpShineManager->Draw();
 
     ScreenFlip();
 }
