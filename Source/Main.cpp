@@ -1,15 +1,23 @@
 #include "DxLib.h"
 
+#include "E_Scene/BaseSceneManager.h"
+#include "Z_Except/Master.h"
 
 /*
-* ゲームループ詳細
-* gitに関して
-* ブランチ説明詳細
-* 
-* 一欄目が
-* 二欄目がひと段落
-* 三欄目が大きい変更
-* ここら辺苦手	
+【フォルダの規則】
+
+「どのフォルダにファイルを入れようか……」
+という悩みがあると思います。
+
+そういう場合は『どのような役割を持っているか』でフォルダの入れる先を決めてください。
+なお、ヘッダファイルとソースファイルでフォルダ分けはしない予定です。
+
+あとフォルダ名の頭についているアルファベットはソートの順番を指定したいだけなので気にしないでください。
+
+【】
+
+
+
 */
 
 /// <summary>
@@ -33,9 +41,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	// DXライブラリ後
 
-	// DXライブラリ使用の終了処理
-	DxLib::DxLib_End();
-
 	/*
 	* ゲームループ
 	* [
@@ -55,6 +60,21 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	*     ]
 	* ]
 	*/
+
+	// ↓約17ms経ってるか、とかメッセージの処理とか諸々が終わったよってところから
+	if (true)
+	{
+		// コントローラー二つ分の入力を取得する
+
+		// 
+		Master::mpBaseSceneManager->Update();
+		
+		// 
+		Master::mpBaseSceneManager->Draw();
+	}
+
+	// DXライブラリ使用の終了処理
+	DxLib::DxLib_End();
 
 	// ソフトの終了
 	return 0;
