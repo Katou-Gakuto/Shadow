@@ -41,7 +41,7 @@ public:
     virtual int Sumilate() = 0;
 
     // 実行に移すかをCheckerの結果も踏まえたうえで判断する関数
-    virtual int CheckExecute() = 0;
+    virtual int CheckExecute(bool checkerResult) = 0;
 
     // シミュレートの結果を実行を行う関数
     virtual int Execute() = 0;

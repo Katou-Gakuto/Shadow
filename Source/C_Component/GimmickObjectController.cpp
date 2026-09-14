@@ -53,10 +53,14 @@ int GimmickObjectController::Update()
             this->mlGimmickList[i].mpSumilater->Sumilate();
         }
 
-        // ここでシミュレートの内容を実行に移す処理
-        if (this->mlGimmickList[i].mpChecker->CheckExecute())
-        {
+        // 
+        checkerResult = this->mlGimmickList[i].mpChecker->CheckExecute();
 
+        // ここでシミュレートの内容を実行に移す処理
+        if (this->mlGimmickList[i].mpSumilater->CheckExecute(checkerResult))
+        {
+            // 
+            this->mlGimmickList[i].mpSumilater->Execute();
         }
     }
 
