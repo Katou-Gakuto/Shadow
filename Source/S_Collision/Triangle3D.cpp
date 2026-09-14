@@ -1,6 +1,6 @@
 #include "Triangle3D.h"
 
-#include "../V_Display/System.h"
+// #include "../V_Display/System.h"
 #include "../Z_Except/Master.h"
 
 Triangle3D::Triangle3D() :
@@ -40,6 +40,7 @@ int Triangle3D::Draw(const Material2D &color)
     VECTOR3D startPos;
     VECTOR3D endPos;
 
+#if 0
     // •`‰æ‚ª‰Â”\‚É‚È‚Á‚½‚çˆ—‚ðs‚¤
     if (Master::mpSystem->ChangeShaderMode(ShaderMode::ShaderMode_Normal_3DLine) == 0)
     {
@@ -54,6 +55,7 @@ int Triangle3D::Draw(const Material2D &color)
         endPos = this->mvVertexPos[0];
         Master::mpSystem->DrawLine(startPos, endPos, color);
     }
+#endif
 
     return 0;
 }

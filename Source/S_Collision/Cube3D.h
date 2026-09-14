@@ -61,7 +61,7 @@ class Cube3D : public BaseCollision3D
 {
 private:
     VECTOR3D mvVertexPos[InputCubeVertexNumber::CubeVertex_Max];
-    BitFlag mbProcessingQuadFlag;
+    FlagByte mbProcessingQuadFlag;
 
     // 頂点情報出力時のCubeの各面の頂点番号(OutputCubeVertexNumberの略)
     enum OCVN : unsigned char;

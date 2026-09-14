@@ -4,9 +4,9 @@
 #include "Animation2DList.h"
 #include "Pose2D.h"
 #include "../A_GameObject/GameObject2D.h"
-#include "../V_Display/System.h"
+// #include "../V_Display/System.h"
 #include "../Z_Except/Master.h"
-#include "../Z_Except/ResourceManager.h"
+// #include "../Z_Except/ResourceManager.h"
 
 Model2D::Model2D(TextureHandle model2DNum, Animation2DList *animationList, GameObject2D *myObject, ScreenNumber drawScreen) :
     mnHandle(model2DNum),
@@ -15,16 +15,18 @@ Model2D::Model2D(TextureHandle model2DNum, Animation2DList *animationList, GameO
     mvRightBottomPos(VECTOR2D::GetZero()),
     BaseModel(myObject, ModelType::ModelType_Model2D, drawScreen)
 {
+#if 0
     // Ž©g‚Ìƒ‚ƒfƒ‹‚ðŽæ“¾‚·‚é
     if (Master::mpResourceManager->LoadModel2D(model2DNum) == false)
     {
         this->mnHandle = TextureHandle::TextureHandle_Max;
     }
+#endif
 }
 
 Model2D::~Model2D()
 {
-    Master::mpResourceManager->DeleteModel2D(this->mnHandle);
+    // Master::mpResourceManager->DeleteModel2D(this->mnHandle);
     if (this->mpAnimation2DList != nullptr)
     {
         delete this->mpAnimation2DList;
@@ -63,10 +65,12 @@ int Model2D::Update()
 
 int Model2D::Draw()
 {
+#if 0
     if (Master::mpSystem->ChangeShaderMode(ShaderMode::ShaderMode_Index_2DTexture) != 0)
     {
         return -1;
     }
+#endif
 
     // ‚¨”C‚¹‚Å•`‰æ‚·‚éƒtƒ‰ƒO
     bool autoDrawFlag = true;
@@ -80,6 +84,7 @@ int Model2D::Draw()
             auto nowPose = nowAnimation->GetCurrentPose2D();
             if (nowPose != nullptr)
             {
+#if 0
                 // Žæ“¾‚·‚é
                 void *resource = Master::mpResourceManager->GetModel2D(this->mnHandle)->mpData;
 
@@ -90,6 +95,7 @@ int Model2D::Draw()
                     this->mvRightBottomPos,
                     nowPose->GetLeftUpUV(),
                     nowPose->GetRightBottomUV());
+#endif
 
                 // •`‰æ‚É¬Œ÷‚µ‚½‚Ì‚ÅA‚¨”C‚¹‚Å•`‰æ‚·‚éƒtƒ‰ƒO‚ðfalse‚É‚µ‚Ä‚¨‚­
                 autoDrawFlag = false;
@@ -100,6 +106,7 @@ int Model2D::Draw()
     // ‚¨”C‚¹‚Å•`‰æ‚·‚éˆ—
     if (autoDrawFlag)
     {
+#if 0
         // ƒVƒXƒeƒ€‚Éƒ‚ƒfƒ‹‘S‘Ì‚Ì•`‰æ‚ð‚¨Šè‚¢‚·‚é
         Master::mpSystem->DrawSprite(
             this->mnHandle,
@@ -107,6 +114,7 @@ int Model2D::Draw()
             this->mvRightBottomPos,
             VECTOR2D(0.0f, 0.0f),
             VECTOR2D(1.0f, 1.0f));
+#endif
     }
 
     return 0;

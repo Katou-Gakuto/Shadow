@@ -49,12 +49,13 @@ int BaseCollision::HitOnCollision(BaseCollision *hitCollision)
 
 int BaseCollision::AddProcessingTag(CollisionTag tag)
 {
-    return this->mbProcessingFlag.OnFlag((unsigned long)(tag));
+    this->mbProcessingFlag.OnFlag((unsigned long)(tag));
+    return 0;
 }
 
 bool BaseCollision::CheckProcessingFlag(CollisionTag tag)
 {
-    return (this->mbProcessingFlag.CheckActive() && this->mbProcessingFlag.CheckFlag((unsigned long)(tag)));
+    return this->mbProcessingFlag.GetFlag(tag);
 }
 
 CollisionDimension BaseCollision::GetCollisionDimension() const

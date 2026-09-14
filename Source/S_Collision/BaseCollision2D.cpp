@@ -1,6 +1,9 @@
 #include "BaseCollision2D.h"
 
 #include "BaseCollision2DManager.h"
+
+#include "../E_Scene/BaseScene.h"
+#include "../E_Scene/BaseSceneManager.h"
 #include "../Z_Except/Master.h"
 
 BaseCollision2D::BaseCollision2D(
@@ -55,12 +58,16 @@ int BaseCollision2D::SetNextPos(void *posData)
 
 int BaseCollision2D::WorldConnectMySelf()
 {
-    return Master::mpBaseCollision2DManager->Add(this);
+    auto nowScene = Master::mpBaseSceneManager->SearchSceneNow();
+
+    return nowScene->GetBaseCollision2DManager()->Add(this);
 }
 
 int BaseCollision2D::WorldIsolateMySelf()
 {
-    return Master::mpBaseCollision2DManager->IsolateTarget(this);
+    auto nowScene = Master::mpBaseSceneManager->SearchSceneNow();
+
+    return nowScene->GetBaseCollision2DManager()->IsolateTarget(this);
 }
 
 int BaseCollision2D::SetBaseParamMySelf()

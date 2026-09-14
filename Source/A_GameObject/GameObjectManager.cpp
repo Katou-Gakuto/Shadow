@@ -1,18 +1,7 @@
 #include "GameObjectManager.h"
 #include "GameObject.h"
-#include "BaseCamera.h"
-
-#include "FPSCamera.h"
-#include "LineMap.h"
-#include "Obstacle.h"
-#include "Fence.h"
-
-#include "TestEmitter.h"
-#include "Player.h"
-#include "Enemy.h"
 
 #include "../S_Collision/BaseCollisionList.h"
-#include "../H_PlayerSide/PlayerSideComand2D.h"
 #include "../Z_Except/Master.h"
 
 // GameObjectManager::Draw()で関数の始めに呼び出す、カメラのアップデートから行列を更新する関数
@@ -36,6 +25,7 @@ int GameObjectManager::UpdateMatrix()
     // 返り値
     int temp = -1;
 
+#if 0
     // 目的のカメラがnullptrでなければ処理を行う
     if (this->mlCameraBox[(unsigned char)(this->mnNowCameraNumber)] != nullptr)
     {
@@ -52,6 +42,7 @@ int GameObjectManager::UpdateMatrix()
             }
         }
     }
+#endif
 
     // 結果を返す
     return temp;
@@ -89,6 +80,7 @@ int GameObjectManager::SetNowCamera(UseCameraNumber nextUseCamera)
     // 返り値(初期化の値は失敗を意味する値)
     int temp = -1;
 
+#if 0
     // 目的のカメラがnullptrでなければ処理を行う
     if (this->mlCameraBox[(unsigned char)(nextUseCamera)] != nullptr)
     {
@@ -111,6 +103,7 @@ int GameObjectManager::SetNowCamera(UseCameraNumber nextUseCamera)
             }
         }
     }
+#endif
 
     // 結果を返す
     return temp;

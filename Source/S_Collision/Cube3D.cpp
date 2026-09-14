@@ -3,7 +3,7 @@
 #include "Triangle3D.h"
 #include "Quadrangle3D.h"
 #include "../Z_Except/Master.h"
-#include "../V_Display/System.h"
+// #include "../V_Display/System.h"
 
 typedef InputCubeVertexNumber ICVN;
 
@@ -95,8 +95,7 @@ int Cube3D::GetFaceQuad(Quadrangle3D *dest, CubeFaceNumber face, CollisionNorm n
         {
             return -1;
         }
-        if (this->mbProcessingQuadFlag.CheckActive() == false ||
-            this->mbProcessingQuadFlag.CheckFlag((unsigned long)((unsigned char)(face))) == false)
+        if (this->mbProcessingQuadFlag.GetFlag((unsigned long)((unsigned char)(face))) == false)
         {
             return -1;
         }
@@ -274,7 +273,7 @@ int Cube3D::Draw(const Material2D &color)
     // ì‹Æ—p•Ï”
     VECTOR3D startPos;
     VECTOR3D endPos;
-
+#if 0
     // •`‰æ‚ª‰Â”\‚É‚È‚Á‚½‚çˆ—‚ðs‚¤
     if (Master::mpSystem->ChangeShaderMode(ShaderMode::ShaderMode_Normal_3DLine) == 0)
     {
@@ -320,6 +319,8 @@ int Cube3D::Draw(const Material2D &color)
         endPos = this->mvVertexPos[OCVN::OCVN_Out_BackFace_LeftBottom];
         Master::mpSystem->DrawLineLight3D(startPos, endPos, color, 1.0f, 20.0f);
     }
+#endif
+
     return 0;
 }
 
@@ -476,12 +477,14 @@ void Cube3D::SetShapeParameter(
 
 int Cube3D::AddProcessingFace(CubeFaceNumber face)
 {
-    return this->mbProcessingQuadFlag.OnFlag((unsigned long)((unsigned char)(face)));
+    this->mbProcessingQuadFlag.OnFlag((unsigned long)((unsigned char)(face)));
+    return 0;
 }
 
 int Cube3D::DeleteProcessingFace(CubeFaceNumber face)
 {
-    return this->mbProcessingQuadFlag.OffFlag((unsigned long)((unsigned char)(face)));
+    this->mbProcessingQuadFlag.OffFlag((unsigned long)((unsigned char)(face)));
+    return 0;
 }
 
 bool Cube3D::CheckInPoint(const VECTOR3D &pointNowPos, const VECTOR3D &pointMoveVec, VECTOR3D &pointUseNorm)
@@ -523,7 +526,7 @@ bool Cube3D::CheckInPoint(const VECTOR3D &pointNowPos, const VECTOR3D &pointMove
             returnValue = false;
             break;
         }
-        if (this->mbProcessingQuadFlag.CheckFlag(currentFace))
+        if (this->mbProcessingQuadFlag.GetFlag(currentFace))
         {
             onPlanePos = thisQuad.GetMovedPos(thisQuad.GetVertexPos(0));
 

@@ -302,12 +302,12 @@ void PartsBox::SetUV(BoxFace face, float uStart, float vStart, float uEnd, float
     vertex[((unsigned char)(face) * 4) + 3].mfU = uEnd;
     vertex[((unsigned char)(face) * 4) + 3].mfV = vEnd;
 }
-
+#if 0
 void PartsBox::SetGraphHandle(TextureHandle handle)
 {
     this->mnGraphHandle = handle;
 }
-
+#endif
 void PartsBox::SetParent(PartsBox *parent)
 {
     this->mpParent = parent;

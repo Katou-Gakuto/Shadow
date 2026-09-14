@@ -3,7 +3,7 @@
 #include "../A_GameObject/GameObject.h"
 #include "BaseModelList.h"
 
-#include "../V_Display/System.h"
+// #include "../V_Display/System.h"
 #include "../Z_Except/Master.h"
 
 void BaseModel::SetDrawBit(bool flag)
@@ -58,10 +58,12 @@ int BaseModel::Draw()
 int BaseModel::BaseDraw()
 {
     int temp = 0;
+#if 0
     if (Master::mpSystem->ChangeDrawScreen(this->mnDrawScreen) == 0)
     {
         temp = this->Draw();
     }
+#endif
     return temp;
 }
 

@@ -2,7 +2,7 @@
 
 #include "../Y_Tool/VECTOR.h"
 #include "../Y_Tool/MyMatrix.h"
-#include "../Z_Except/Resource.h"
+// #include "../Z_Except/Resource.h"
 
 struct VERTEX3D
 {
@@ -30,7 +30,9 @@ class PartsBox
 private:
     VERTEX3D vertex[24];
     unsigned short index[36];
+#if 0
     TextureHandle mnGraphHandle;
+#endif
 
     VECTOR3D mvScalingParam;        // 拡縮行列の各軸の値
     VECTOR3D mvOffSetParam;         // 回転前の原点調整の行列
@@ -63,8 +65,9 @@ public:
     void SetTranslation(const VECTOR3D &translation);
 
     void SetUV(BoxFace face, float uStart, float vStart, float uEnd, float vEnd);
-
+#if 0
     void SetGraphHandle(TextureHandle handle);
+#endif
     void SetParent(PartsBox *parent);
     VECTOR3D GetScaling();
     VECTOR3D GetOffSet();
