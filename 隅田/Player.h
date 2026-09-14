@@ -1,4 +1,4 @@
-#include "DXLib.h
+#include "DxLib.h"
 #include "KeyState.h"
 #include "BaseComponent.h"
 
@@ -22,9 +22,9 @@ private:
 
     struct PlayerData
     {
-        VECTOR3D Pos;
-        VECTOR3D OldPos;
-        VECTOR3D moveVec;
+        VECTOR Pos;
+        VECTOR OldPos;
+        VECTOR moveVec;
         int PlayerNum //P1‚©P2‚©
     };
 

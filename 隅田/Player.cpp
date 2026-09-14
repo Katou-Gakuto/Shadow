@@ -2,6 +2,7 @@
 
 Player::Create()
 {
+    Pos = OldPos;
 }
 
 
@@ -17,7 +18,7 @@ Player::Finalize()
 
 Player::EarlyUpdate(KeyState keystate)
 {
-    PDate.Pos.x
+    OldPos = Pos;
 }
 
 
@@ -41,10 +42,14 @@ Player::HitOnCollision(BaseCollision *myCollision, BaseCollision *hitCollision)
 
 Player::LateUpdate()
 {
-    
+    if (moveVec.x != 0)
+        Pos.x += moveVec.x;
+    if (moveVec.y != 0)
+        Pos.y += moveVec.y;
 }
 
 
 Player::Draw()
 {
+    DrawBox(Pos.x; Pos.y, Pos.x + 30, Pos.y + 60, 0xFFFFFF, true);
 }
