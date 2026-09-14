@@ -149,6 +149,8 @@
     <ClCompile Include="Source\E_Scene\BaseScene.cpp" />
     <ClCompile Include="Source\E_Scene\BaseSceneManager.cpp" />
     <ClCompile Include="Source\E_Scene\TestScene.cpp" />
+    <ClCompile Include="Source\F_PuzzleGimmick\ButtonGimmickChecker.cpp" />
+    <ClCompile Include="Source\F_PuzzleGimmick\MoveGimmickSumilater.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\S_Collision\BaseCollision.cpp" />
     <ClCompile Include="Source\S_Collision\BaseCollision2D.cpp" />
