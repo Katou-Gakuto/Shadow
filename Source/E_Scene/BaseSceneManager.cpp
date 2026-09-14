@@ -1,11 +1,6 @@
 #include "BaseSceneManager.h"
 
 #include "BaseScene.h"
-#include "TitleScene.h"
-#include "ResultScene.h"
-#include "NetworkScene.h"
-#include "SoloBattleScene.h"
-#include "MultiBattleScene.h"
 
 #include "../Y_Tool/MyTimer.h"
 
@@ -60,11 +55,13 @@ int BaseSceneManager::Create()
 {
     if (this->mbFlag.GetFlag())
     {
+        /*
         this->mpSceneBox[SceneTag::ST_Title] = new TitleScene();
         this->mpSceneBox[SceneTag::ST_Network] = new NetworkScene();
         this->mpSceneBox[SceneTag::ST_SoloBattle] = new SoloBattleScene();
         this->mpSceneBox[SceneTag::ST_MultiBattle] = new MultiBattleScene();
         this->mpSceneBox[SceneTag::ST_Result] = new ResultScene();
+        */
 
         // シーンで共有するデータ
         this->mlUniqueDataList.Add(new SceneTag, CSDN::CSDN_SceneTag_BattleMode);
