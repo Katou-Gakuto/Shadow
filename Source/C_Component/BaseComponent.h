@@ -12,13 +12,10 @@ class BaseCollision;
 typedef enum ComponentTagAndOrder : unsigned long
 {
     CTAO_PlayerController = 0,
+    CTAO_WallController,
     CTAO_MirrorController,
     CTAO_DirectionLightController,
     CTAO_PointLightController,
-    CTAO_SoundVisualizerController,
-    CTAT_PowerSpotController,
-    CTAO_CharacterLife,
-    CTAO_TestEmitterController,
 
 } CTAO;
 

@@ -21,6 +21,7 @@ public:
     bool GetFlag() const;
 
     // 現在このボタンの上にプレイヤーがいるのか
+    // 
     bool GetOnPlayer() const;
 
 private:
