@@ -1,4 +1,3 @@
-#pragma once
 
 #include "BaseComponent.h"
 
@@ -25,20 +24,21 @@ Button→GimmickObject
 class GimmickObjectController : public BaseComponent
 {
 public:
+    /// TODO: これ中身簡易的に作成したから本来の用途とちがうと思う
     // 
-    GimmickObjectController();
+    GimmickObjectController() :BaseComponent(nullptr, ComponentTagAndOrder::CTAO_CharacterLife){}
 
     //
-    ~GimmickObjectController();
+    ~GimmickObjectController() {}
 
-    int Create() override;
-    int Initialize() override;
-    int Finalize() override;
-    int EarlyUpdate() override;
-    int Update() override;
-    int HitOnCollision(BaseCollision *myCollision, BaseCollision *hitCollision) override;
-    int LateUpdate() override;
-    int Draw() override;
+    int Create() override { return 0; }
+    int Initialize() override { return 0; }
+    int Finalize() override { return 0; }
+    int EarlyUpdate() override { return 0; }
+    int Update() override { return 0; }
+    int HitOnCollision(BaseCollision *myCollision, BaseCollision *hitCollision) override { return 0; }
+    int LateUpdate() override { return 0; }
+    int Draw() override { return 0; }
 
 private:
     // 

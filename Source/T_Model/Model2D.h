@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdint>
 
 #include "BaseModel.h"
 #include "../Y_Tool/VECTOR.h"
