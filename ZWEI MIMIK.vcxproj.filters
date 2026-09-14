@@ -274,6 +274,9 @@
     <ClCompile Include="Source\C_Component\WallObjectController.cpp">
       <Filter>Source\C_Component</Filter>
     </ClCompile>
+    <ClCompile Include="Source\C_Component\GimmickObjectController.cpp">
+      <Filter>Source\C_Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\A_GameObject\GameObject.h">

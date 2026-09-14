@@ -142,6 +142,7 @@
     <ClCompile Include="Source\B_BehaviorTree\MonoBehavior.cpp" />
     <ClCompile Include="Source\C_Component\BaseComponent.cpp" />
     <ClCompile Include="Source\C_Component\BaseComponentList.cpp" />
+    <ClCompile Include="Source\C_Component\GimmickObjectController.cpp" />
     <ClCompile Include="Source\C_Component\LightObjectController.cpp" />
     <ClCompile Include="Source\C_Component\Player.cpp" />
     <ClCompile Include="Source\C_Component\MirrorObjectController.cpp" />

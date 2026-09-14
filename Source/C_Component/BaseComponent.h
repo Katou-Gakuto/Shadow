@@ -14,6 +14,7 @@ typedef enum ComponentTagAndOrder : unsigned long
     CTAO_PlayerController = 0,
     CTAO_WallController,
     CTAO_MirrorController,
+    CTAO_GimmickController,
     CTAO_DirectionLightController,
     CTAO_PointLightController,
 
