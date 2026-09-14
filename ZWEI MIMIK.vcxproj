@@ -140,6 +140,8 @@
     <ClCompile Include="Source\C_Component\BaseComponent.cpp" />
     <ClCompile Include="Source\C_Component\BaseComponentList.cpp" />
     <ClCompile Include="Source\C_Component\LightObjectController.cpp" />
+    <ClCompile Include="Source\C_Component\MirrorObjectController.cpp" />
+    <ClCompile Include="Source\C_Component\WallObjectController.cpp" />
     <ClCompile Include="Source\E_Scene\BaseScene.cpp" />
     <ClCompile Include="Source\E_Scene\BaseSceneManager.cpp" />
     <ClCompile Include="Source\Main.cpp" />
@@ -206,6 +208,8 @@
     <ClInclude Include="Source\C_Component\ButtonObjectController.h" />
     <ClInclude Include="Source\C_Component\LightObjectController.h" />
     <ClInclude Include="Source\C_Component\GimmickObjectController.h" />
+    <ClInclude Include="Source\C_Component\MirrorObjectController.h" />
+    <ClInclude Include="Source\C_Component\WallObjectController.h" />
     <ClInclude Include="Source\E_Scene\BaseScene.h" />
     <ClInclude Include="Source\E_Scene\BaseSceneManager.h" />
     <ClInclude Include="Source\F_PuzzleGimmick\ButtonGimmickChecker.h" />

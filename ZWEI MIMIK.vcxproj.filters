@@ -223,6 +223,12 @@
     <ClCompile Include="Source\Z_Except\Master.cpp">
       <Filter>Source\Z_Except</Filter>
     </ClCompile>
+    <ClCompile Include="Source\C_Component\MirrorObjectController.cpp">
+      <Filter>Source\C_Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\C_Component\WallObjectController.cpp">
+      <Filter>Source\C_Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\A_GameObject\GameObject.h">
@@ -455,6 +461,12 @@
     </ClInclude>
     <ClInclude Include="Source\F_PuzzleGimmick\ButtonGimmickChecker.h">
       <Filter>Source\F_PuzzleGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\C_Component\MirrorObjectController.h">
+      <Filter>Source\C_Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\C_Component\WallObjectController.h">
+      <Filter>Source\C_Component</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

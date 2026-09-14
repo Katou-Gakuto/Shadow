@@ -1,6 +1,9 @@
 #pragma once
 
 #include "BaseModel.h"
+
+#include <cstdint>
+
 #include "../Y_Tool/VECTOR.h"
 #if 0
 #include "../Z_Except/Resource.h"

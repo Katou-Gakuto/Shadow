@@ -15,7 +15,7 @@ public:
     LightObjectController();
 
     // 
-    ~LightObjectController();
+    virtual ~LightObjectController() override;
 
     virtual int Create() override;
     virtual int Initialize() override;
@@ -71,7 +71,7 @@ public:
     DirectionLightController();
 
     // 
-    ~DirectionLightController();
+    ~DirectionLightController() override;
 
     int Create() override;
     int Initialize() override;
