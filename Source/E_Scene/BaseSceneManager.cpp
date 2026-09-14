@@ -1,6 +1,7 @@
 #include "BaseSceneManager.h"
 
 #include "BaseScene.h"
+#include "TestScene.h"
 
 #include "../Y_Tool/MyTimer.h"
 
@@ -23,7 +24,7 @@ BaseSceneManager::BaseSceneManager() :
     mpSceneBox(),
     mnSceneOld(SceneTag::ST_Max),
     mnSceneNow(SceneTag::ST_Max),
-    mnChangeScene(SceneTag::ST_Title),
+    mnChangeScene(SceneTag::ST_Test),
     mnResreveScene(SceneTag::ST_Max),
     mbFlag()
 {
@@ -55,13 +56,11 @@ int BaseSceneManager::Create()
 {
     if (this->mbFlag.GetFlag())
     {
-        /*
-        this->mpSceneBox[SceneTag::ST_Title] = new TitleScene();
-        this->mpSceneBox[SceneTag::ST_Network] = new NetworkScene();
-        this->mpSceneBox[SceneTag::ST_SoloBattle] = new SoloBattleScene();
-        this->mpSceneBox[SceneTag::ST_MultiBattle] = new MultiBattleScene();
-        this->mpSceneBox[SceneTag::ST_Result] = new ResultScene();
-        */
+        this->mpSceneBox[SceneTag::ST_Test] = new TestScene();
+        //this->mpSceneBox[SceneTag::ST_Network] = new NetworkScene();
+        //this->mpSceneBox[SceneTag::ST_SoloBattle] = new SoloBattleScene();
+        //this->mpSceneBox[SceneTag::ST_MultiBattle] = new MultiBattleScene();
+        //this->mpSceneBox[SceneTag::ST_Result] = new ResultScene();
 
         // シーンで共有するデータ
         this->mlUniqueDataList.Add(new SceneTag, CSDN::CSDN_SceneTag_BattleMode);

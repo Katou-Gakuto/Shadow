@@ -17,13 +17,16 @@ KeyState* Master::mpKeyState = nullptr;
 // Master‚ÌŠeƒƒ“ƒo‚ðnew‚·‚éŠÖ”
 int Master::Initialize()
 {
-    mpBaseSceneManager = new BaseSceneManager();
 
     mpEndManager = new EndManager();
     mpTimeManager = new TimeManager(17);
     mpTimeManager->Initilize();
     mpKeyState = new KeyState();
     // 
+
+    mpBaseSceneManager = new BaseSceneManager();
+    mpBaseSceneManager->Initialize();
+
     return 0;
 }
 

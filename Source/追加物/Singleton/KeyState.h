@@ -1,4 +1,5 @@
 #pragma once
+#include <stdint.h>
 #include <Windows.h>
 
 #include "KeyStateEnum.h"
@@ -114,6 +115,9 @@ private:
 	/*コントローラー最大数*/
 	static constexpr int CONTROLLER_MAX = (const int)CONTROLLER_KEY_NUMBER::MAX_CONTROLLER;
 
+	/*コントローラーのデッドゾーン*/
+	short mshDeadzone;
+
 public:
 
 	/*-----【指定のコントローラーの押し始めたキーフラグを全取得(コントローラー)】-----*/
@@ -199,6 +203,11 @@ public:
 	short GetKeyVariable_Controller(CONTROLLER_KEY_VARIABLE_NUMBER getNumber, int controllerNumber) const;
 	/*【キーの変動値取得(コントローラー)】*/
 	inline short GetKeyVariable_Controller(CONTROLLER_KEY_VARIABLE_NUMBER getNumber, CONTROLLER_KEY_NUMBER controllerNumber = CONTROLLER_KEY_NUMBER::MAX_CONTROLLER) const { return GetKeyVariable_Controller(getNumber, (int)controllerNumber); }
+	/*----------------------------------------------*/
+
+	/*-----【デッドゾーン設定(コントローラー)】-----*/
+	void SetDeadzone(short deadzone) { mshDeadzone = deadzone; }
+	void SetDeadzone(float deadzoneRate) { mshDeadzone = (INT16_MAX * deadzoneRate); }
 	/*----------------------------------------------*/
 
 private:

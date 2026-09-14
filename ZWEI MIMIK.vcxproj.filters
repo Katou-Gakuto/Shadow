@@ -259,6 +259,15 @@
     <ClCompile Include="Source\追加物\Struct\ResourceData.cpp">
       <Filter>Source\追加物\Struct</Filter>
     </ClCompile>
+    <ClCompile Include="Source\E_Scene\TestScene.cpp">
+      <Filter>Source\E_Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\A_GameObject\PlayerObject.cpp">
+      <Filter>Source\A_GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\C_Component\Player.cpp">
+      <Filter>Source\C_Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\A_GameObject\GameObject.h">
@@ -533,6 +542,15 @@
     </ClInclude>
     <ClInclude Include="Source\追加物\Struct\Vector2.h">
       <Filter>Source\追加物\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\E_Scene\TestScene.h">
+      <Filter>Source\E_Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\A_GameObject\PlayerObject.h">
+      <Filter>Source\A_GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\C_Component\Player.h">
+      <Filter>Source\C_Component</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

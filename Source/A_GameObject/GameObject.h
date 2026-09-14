@@ -7,22 +7,7 @@
 // プレイヤーなのか、壁なのか、いったい何なのか
 enum GameObjectTag : unsigned long
 {
-    GOT_TPSCamera = 0,
-    GOT_FPSCamera,
-    GOT_ScrollCamera,
-    GOT_Fence,
-    GOT_LineMap,
-    GOT_SoundVisualizer,
-    GOT_TestEmitter,
-
-    GOT_Obstacle,
-    GOT_Skyscraper,
-
-    GOT_PowerSpot,
-
-    GOT_Player,
-    GOT_Enemy,
-    GOT_OtherPlayer,
+    GOT_Player = 0,
 
     GOT_Max,
 };

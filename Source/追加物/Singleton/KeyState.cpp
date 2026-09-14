@@ -20,6 +20,7 @@ KeyState::KeyState()
 , mucToggleFlag(BIT_FLAG<unsigned char>())
 , mdxsMsg()
 , mbMsgSetFlag(false)
+, mshDeadzone(INT16_MAX * 0.4)
 {
 	// キーフラグ(コントローラー)
 	memset(munControllerKeyFlags, 0, sizeof(BIT_FLAG<unsigned int>) * (int)FLAG_TYPE::MAX * (int)CONTROLLER_KEY_NUMBER::MAX_CONTROLLER);
@@ -139,17 +140,17 @@ void KeyState::SetKey()
 			mshNowRightStickX[i] = state.Gamepad.sThumbRX;
 			mshNowRightStickY[i] = state.Gamepad.sThumbRY;
 
-			SetNowKey_Controller(mshNowLeftStickX[i] > 0, CONTROLLER_KEY_TYPE::LEFT_STICK_RIGHT, i);
-			SetNowKey_Controller(mshNowLeftStickX[i] < 0, CONTROLLER_KEY_TYPE::LEFT_STICK_LEFT, i);
+			SetNowKey_Controller(mshNowLeftStickX[i] > mshDeadzone, CONTROLLER_KEY_TYPE::LEFT_STICK_RIGHT, i);
+			SetNowKey_Controller(mshNowLeftStickX[i] < -mshDeadzone, CONTROLLER_KEY_TYPE::LEFT_STICK_LEFT, i);
 
-			SetNowKey_Controller(mshNowLeftStickY[i] < 0, CONTROLLER_KEY_TYPE::LEFT_STICK_UP, i);
-			SetNowKey_Controller(mshNowLeftStickY[i] > 0, CONTROLLER_KEY_TYPE::LEFT_STICK_DOWN, i);
+			SetNowKey_Controller(mshNowLeftStickY[i] > mshDeadzone, CONTROLLER_KEY_TYPE::LEFT_STICK_UP, i);
+			SetNowKey_Controller(mshNowLeftStickY[i] < -mshDeadzone, CONTROLLER_KEY_TYPE::LEFT_STICK_DOWN, i);
 
-			SetNowKey_Controller(mshNowRightStickX[i] > 0, CONTROLLER_KEY_TYPE::RIGHT_STICK_RIGHT, i);
-			SetNowKey_Controller(mshNowRightStickX[i] < 0, CONTROLLER_KEY_TYPE::RIGHT_STICK_LEFT, i);
+			SetNowKey_Controller(mshNowRightStickX[i] > mshDeadzone, CONTROLLER_KEY_TYPE::RIGHT_STICK_RIGHT, i);
+			SetNowKey_Controller(mshNowRightStickX[i] < -mshDeadzone, CONTROLLER_KEY_TYPE::RIGHT_STICK_LEFT, i);
 
-			SetNowKey_Controller(mshNowRightStickY[i] < 0, CONTROLLER_KEY_TYPE::RIGHT_STICK_UP, i);
-			SetNowKey_Controller(mshNowRightStickY[i] > 0, CONTROLLER_KEY_TYPE::RIGHT_STICK_DOWN, i);
+			SetNowKey_Controller(mshNowRightStickY[i] > mshDeadzone, CONTROLLER_KEY_TYPE::RIGHT_STICK_UP, i);
+			SetNowKey_Controller(mshNowRightStickY[i] < -mshDeadzone, CONTROLLER_KEY_TYPE::RIGHT_STICK_DOWN, i);
 		}
 	}
 
@@ -342,7 +343,8 @@ void KeyState::SetKey_ShadowGame()
 				{
 					GetWordKey_Board(KEY_BOARD_WORD::W),
 					GetWordKey_Board(KEY_BOARD_WORD::ARROW_UP),
-					GetKey_Controller(CONTROLLER_KEY_TYPE::UP, CONTROLLER_KEY_NUMBER::CONTROLLER_1)
+					GetKey_Controller(CONTROLLER_KEY_TYPE::UP, CONTROLLER_KEY_NUMBER::CONTROLLER_1),
+					GetKey_Controller(CONTROLLER_KEY_TYPE::LEFT_STICK_UP, CONTROLLER_KEY_NUMBER::CONTROLLER_1),
 				}
 			);
 
@@ -351,7 +353,8 @@ void KeyState::SetKey_ShadowGame()
 				{
 					GetWordKey_Board(KEY_BOARD_WORD::S),
 					GetWordKey_Board(KEY_BOARD_WORD::ARROW_DOWN),
-					GetKey_Controller(CONTROLLER_KEY_TYPE::DOWN, CONTROLLER_KEY_NUMBER::CONTROLLER_1)
+					GetKey_Controller(CONTROLLER_KEY_TYPE::DOWN, CONTROLLER_KEY_NUMBER::CONTROLLER_1),
+					GetKey_Controller(CONTROLLER_KEY_TYPE::LEFT_STICK_DOWN, CONTROLLER_KEY_NUMBER::CONTROLLER_1),
 				}
 			);
 
@@ -360,7 +363,8 @@ void KeyState::SetKey_ShadowGame()
 				{
 					GetWordKey_Board(KEY_BOARD_WORD::A),
 					GetWordKey_Board(KEY_BOARD_WORD::ARROW_LEFT),
-					GetKey_Controller(CONTROLLER_KEY_TYPE::RIGHT, CONTROLLER_KEY_NUMBER::CONTROLLER_1)
+					GetKey_Controller(CONTROLLER_KEY_TYPE::LEFT, CONTROLLER_KEY_NUMBER::CONTROLLER_1),
+					GetKey_Controller(CONTROLLER_KEY_TYPE::LEFT_STICK_LEFT, CONTROLLER_KEY_NUMBER::CONTROLLER_1),
 				}
 			);
 
@@ -369,7 +373,8 @@ void KeyState::SetKey_ShadowGame()
 				{
 					GetWordKey_Board(KEY_BOARD_WORD::D),
 					GetWordKey_Board(KEY_BOARD_WORD::ARROW_RIGHT),
-					GetKey_Controller(CONTROLLER_KEY_TYPE::LEFT, CONTROLLER_KEY_NUMBER::CONTROLLER_1)
+					GetKey_Controller(CONTROLLER_KEY_TYPE::RIGHT, CONTROLLER_KEY_NUMBER::CONTROLLER_1),
+					GetKey_Controller(CONTROLLER_KEY_TYPE::LEFT_STICK_RIGHT, CONTROLLER_KEY_NUMBER::CONTROLLER_1),
 				}
 			);
 

@@ -352,20 +352,20 @@ int GameObjectManager::UpdateModel()
 // モデルの描画
 int GameObjectManager::Draw()
 {
-    // カメラが無効なものなら処理を行わない
-    if (this->mnNowCameraNumber == UseCameraNumber::UCN_Max)
-    {
-        return -1;
-    }
+    //// カメラが無効なものなら処理を行わない
+    //if (this->mnNowCameraNumber == UseCameraNumber::UCN_Max)
+    //{
+    //    return -1;
+    //}
 
-    // 現在のカメラの更新を行う
-    int result = UpdateMatrix();
-    
-    // 更新に失敗していた場合は関数を終了する
-    if (result != 0)
-    {
-        return result;
-    }
+    //// 現在のカメラの更新を行う
+    //int result = UpdateMatrix();
+    //
+    //// 更新に失敗していた場合は関数を終了する
+    //if (result != 0)
+    //{
+    //    return result;
+    //}
 
     // オブジェクトごとの描画を行う
     GameObject *current = this->mpFirstGameObject;

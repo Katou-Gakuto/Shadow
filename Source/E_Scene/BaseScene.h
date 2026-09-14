@@ -12,6 +12,8 @@ enum SceneTag : unsigned char
     ST_MultiBattle,
     ST_Result,
 
+    ST_Test,
+
     ST_Max,
 };
 

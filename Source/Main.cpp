@@ -128,17 +128,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 			// 
 			Master::mpBaseSceneManager->Draw();
-			
-			// Šm”F—p(Á‚µ‚Ä—Ç‚¢)
-			{
-				static int test = 0;
-				if (Master::mpKeyState->GetShadowGameKey(KEY_SHADOW_GAME_TYPE::RIGHT))
-				{
-					test++;
-				}
-
-				DrawBox(0 + test, 0, 200 + test, 200, GetColor(255, 255, 255), TRUE);
-			}
 
 			ScreenFlip();
 		}
