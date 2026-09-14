@@ -9,7 +9,14 @@ GimmickObjectController::GimmickObjectController(GameObject *myObject) :
 //
 GimmickObjectController::~GimmickObjectController()
 {
+    // 
+    for (auto &data : this->mlGimmickList)
+    {
+        delete data.mpChecker;
+        delete data.mpSumilater;
+    }
 
+    this->mlGimmickList.clear();
 }
 
 // 
@@ -44,20 +51,20 @@ int GimmickObjectController::Update()
     for (uint32_t i = 0; i < this->mlGimmickList.size(); i++)
     {
         // 
-        bool checkerResult = this->mlGimmickList[i].mpChecker->CheckSumilate();
+        this->mlGimmickList[i].mbSumilating = this->mlGimmickList[i].mpChecker->CheckSumilate();
 
         // 
-        if (this->mlGimmickList[i].mpSumilater->CheckSumilate(checkerResult))
+        if (this->mlGimmickList[i].mpSumilater->CheckSumilate(this->mlGimmickList[i].mbSumilating))
         {
             // 
             this->mlGimmickList[i].mpSumilater->Sumilate();
         }
 
         // 
-        checkerResult = this->mlGimmickList[i].mpChecker->CheckExecute();
+        this->mlGimmickList[i].mbExecuting = this->mlGimmickList[i].mpChecker->CheckExecute();
 
         // ここでシミュレートの内容を実行に移す処理
-        if (this->mlGimmickList[i].mpSumilater->CheckExecute(checkerResult))
+        if (this->mlGimmickList[i].mpSumilater->CheckExecute(this->mlGimmickList[i].mbExecuting))
         {
             // 
             this->mlGimmickList[i].mpSumilater->Execute();
@@ -82,6 +89,17 @@ int GimmickObjectController::LateUpdate()
 
 int GimmickObjectController::Draw()
 {
+    // 
+    for (uint32_t i = 0; i < this->mlGimmickList.size(); i++)
+    {
+        // ここでシミュレートの内容を実行に移す処理
+        if (this->mlGimmickList[i].mpSumilater->Draw(this->mlGimmickList[i].mbSumilating, this->mlGimmickList[i].mbExecuting) != 0)
+        {
+            // 
+            return -1;
+        }
+    }
+
     // 
     return 0;
 }

@@ -143,13 +143,13 @@
     <ClCompile Include="Source\C_Component\BaseComponent.cpp" />
     <ClCompile Include="Source\C_Component\BaseComponentList.cpp" />
     <ClCompile Include="Source\C_Component\GimmickObjectController.cpp" />
-    <ClCompile Include="Source\C_Component\LightObjectController.cpp" />
     <ClCompile Include="Source\C_Component\Player.cpp" />
     <ClCompile Include="Source\C_Component\MirrorObjectController.cpp" />
     <ClCompile Include="Source\C_Component\WallObjectController.cpp" />
     <ClCompile Include="Source\E_Scene\BaseScene.cpp" />
     <ClCompile Include="Source\E_Scene\BaseSceneManager.cpp" />
     <ClCompile Include="Source\E_Scene\TestScene.cpp" />
+    <ClCompile Include="Source\F_PuzzleGimmick\LightGimmickSumilater.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\S_Collision\BaseCollision.cpp" />
     <ClCompile Include="Source\S_Collision\BaseCollision2D.cpp" />
@@ -219,7 +219,6 @@
     <ClInclude Include="Source\C_Component\BaseComponent.h" />
     <ClInclude Include="Source\C_Component\BaseComponentList.h" />
     <ClInclude Include="Source\C_Component\ButtonObjectController.h" />
-    <ClInclude Include="Source\C_Component\LightObjectController.h" />
     <ClInclude Include="Source\C_Component\GimmickObjectController.h" />
     <ClInclude Include="Source\C_Component\Player.h" />
     <ClInclude Include="Source\C_Component\MirrorObjectController.h" />
@@ -228,6 +227,7 @@
     <ClInclude Include="Source\E_Scene\BaseSceneManager.h" />
     <ClInclude Include="Source\E_Scene\TestScene.h" />
     <ClInclude Include="Source\F_PuzzleGimmick\ButtonGimmickChecker.h" />
+    <ClInclude Include="Source\F_PuzzleGimmick\LightGimmickSumilater.h" />
     <ClInclude Include="Source\F_PuzzleGimmick\MoveGimmickSumilater.h" />
     <ClInclude Include="Source\F_PuzzleGimmick\PuzzleGimmickData.h" />
     <ClInclude Include="Source\S_Collision\AABB.h" />

@@ -32,7 +32,7 @@ public:
     BaseGimmickSumilater() = default;
 
     // デフォルトデストラクタ
-    ~BaseGimmickSumilater() = default;
+    virtual ~BaseGimmickSumilater() = default;
 
     // シミュレーションを行うかをCheckerの結果も踏まえたうえで判断する関数
     virtual bool CheckSumilate(bool checkerResult) = 0;
@@ -45,6 +45,10 @@ public:
 
     // シミュレートの結果を実行を行う関数
     virtual int Execute() = 0;
+
+    // シミュレーション内容を描画する関数
+    // ※既に実行段階である場合は引数がtrueになります。実行段階では描画しない、あるいはその逆の場合はこの引数を使ってください。
+    virtual int Draw(bool sumilating, bool executing) = 0;
 };
 
 // パズルのギミックに必要なデータをまとめた構造体
@@ -56,4 +60,10 @@ struct PuzzleGimmickData
 
     // シミュレーションを行うメンバ
     BaseGimmickSumilater *mpSumilater;
+
+    // このフレーム時点でシミュレーション段階にあるか
+    bool mbSumilating;
+
+    // このフレーム時点で実行段階にあるか
+    bool mbExecuting;
 };

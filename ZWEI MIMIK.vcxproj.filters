@@ -85,9 +85,6 @@
     <ClCompile Include="Source\C_Component\BaseComponentList.cpp">
       <Filter>Source\C_Component</Filter>
     </ClCompile>
-    <ClCompile Include="Source\C_Component\LightObjectController.cpp">
-      <Filter>Source\C_Component</Filter>
-    </ClCompile>
     <ClCompile Include="Source\S_Collision\BaseCollision.cpp">
       <Filter>Source\S_Collision</Filter>
     </ClCompile>
@@ -277,6 +274,9 @@
     <ClCompile Include="Source\C_Component\GimmickObjectController.cpp">
       <Filter>Source\C_Component</Filter>
     </ClCompile>
+    <ClCompile Include="Source\F_PuzzleGimmick\LightGimmickSumilater.cpp">
+      <Filter>Source\F_PuzzleGimmick</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\A_GameObject\GameObject.h">
@@ -310,9 +310,6 @@
       <Filter>Source\C_Component</Filter>
     </ClInclude>
     <ClInclude Include="Source\C_Component\ButtonObjectController.h">
-      <Filter>Source\C_Component</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\C_Component\LightObjectController.h">
       <Filter>Source\C_Component</Filter>
     </ClInclude>
     <ClInclude Include="Source\C_Component\GimmickObjectController.h">
@@ -566,6 +563,9 @@
     </ClInclude>
     <ClInclude Include="Source\C_Component\WallObjectController.h">
       <Filter>Source\C_Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\F_PuzzleGimmick\LightGimmickSumilater.h">
+      <Filter>Source\F_PuzzleGimmick</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
