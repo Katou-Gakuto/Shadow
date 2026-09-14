@@ -1,8 +1,17 @@
 #pragma once
 
 #include "../Y_Tool/CountDownSystem.h"
-#include "../V_Display/Material2D.h"
-#include "../Y_Tool/BitFlag.h"
+// #include "../V_Display/Material2D.h"
+
+struct Material2D
+{
+    float r;
+    float g;
+    float b;
+    float a;
+};
+
+#include "../Y_Tool/FlagByte.h"
 
 #include "CollisionCheckResult.h"
 
@@ -15,7 +24,6 @@ enum CollisionTag : unsigned short
     CollisionTag_CharaBody,                     // キャラクターの当たり判定
     CollisionTag_Attack,                        // 攻撃の当たり判定
     CollisionTag_Max,                           // この列挙子の数の合計
-
 
     // 以下、現在は使用していないもの
     CollisionTag_SoundLine,                     
@@ -73,7 +81,7 @@ private:
     bool mbHitMove;                             // この当たり判定は他の当たり判定と衝突した際に反発移動するのか
     float mfMoveLate;                           // この当たり判定は他の当たり判定と当たった際の反発移動の量。数が大きいほど動く(0.0f～1.0f)いわばスライド時の法線ベクトルの取得量みたいな？
     CountDownSystem mnDeleteCountDown;          // この当たり判定が消えるまでのカウントダウン(他の当たり判定との計算を行うごとに1ずつ減っていく)
-    BitFlag mbProcessingFlag;                   // 当たり判定の計算をする対象を選別するための仕組み
+    FlagByte mbProcessingFlag;                  // 当たり判定の計算をする対象を選別するための仕組み
     BaseCollision *mpPrevList;                  // 前の当たり判定へのポインタ(オブジェクト線形リスト)
     BaseCollision *mpNextList;                  // 次の当たり判定へのポインタ(オブジェクト線形リスト)
 

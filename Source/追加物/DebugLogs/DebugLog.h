@@ -16,6 +16,7 @@ namespace DEBUG
 		DEBUG_BASE = 0,
 		DEBUG_SCENE_TITLE,
 		DEBUG_TIME,
+		DEBUG_ARRIVAL,
 	};
 
 	// デバッグ用処理種類

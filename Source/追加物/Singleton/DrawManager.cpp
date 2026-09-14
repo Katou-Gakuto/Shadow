@@ -6,8 +6,6 @@
 #include "Master.h"
 
 #include "DrawManager.h"
-#include "ResourceGraph.h"
-#include "ResourceManager.h"
 
 /*--------*/
 /*y‹¤’Êz*/
@@ -129,7 +127,7 @@ void DrawManager::DeleteDrawData_ID(int id)
                 switch (it->drawManagerDrawType)
                 {
                 case DRAW_MANAGER_DRAW_TYPE::GRAPH:
-                    Master::mpResourceManager->GetGraphResource()->ReduceResourceHandle(it->drawGraphData.handle);
+                    //Master::mpResourceManager->GetGraphResource()->ReduceResourceHandle(it->drawGraphData.handle);
                     break;
                 }
 
@@ -154,7 +152,7 @@ void DrawManager::DeleteDrawData()
             switch (drawData.drawManagerDrawType)
             {
             case DRAW_MANAGER_DRAW_TYPE::GRAPH:
-                Master::mpResourceManager->GetGraphResource()->ReduceResourceHandle(drawData.drawGraphData.handle);
+                //Master::mpResourceManager->GetGraphResource()->ReduceResourceHandle(drawData.drawGraphData.handle);
                 break;
             }
         }
@@ -345,7 +343,7 @@ DRAW_GRAPH_DATA DrawManager::GetDrawGraphData(int handle, int x, int y, float si
 	drawData.pos.x = x;
 	drawData.pos.y = y;
 
-	drawData.size = ResourceManager::mstDisplaySize.LeftUp_Ratio(Vector2(sizeXRatio, sizeYRatio));
+	//drawData.size = ResourceManager::mstDisplaySize.LeftUp_Ratio(Vector2(sizeXRatio, sizeYRatio));
 
 	return drawData;
 }
@@ -361,7 +359,7 @@ DRAW_GRAPH_DATA DrawManager::GetDrawGraphData(int handle, float xRatio, float yR
 	}
 	drawData.transFlag = TRUE;
 
-	drawData.pos = ResourceManager::mstDisplaySize.LeftUp_Ratio(Vector2(xRatio, yRatio));
+	//drawData.pos = ResourceManager::mstDisplaySize.LeftUp_Ratio(Vector2(xRatio, yRatio));
 
 	return drawData;
 }
@@ -377,7 +375,7 @@ DRAW_GRAPH_DATA DrawManager::GetDrawGraphData(int handle, float xRatio, float yR
 	}
 	drawData.transFlag = TRUE;
 
-	drawData.pos = ResourceManager::mstDisplaySize.LeftUp_Ratio(Vector2(xRatio, yRatio));
+	//drawData.pos = ResourceManager::mstDisplaySize.LeftUp_Ratio(Vector2(xRatio, yRatio));
 
 	drawData.size.x = sizeX;
 	drawData.size.y = sizeY;
@@ -396,9 +394,9 @@ DRAW_GRAPH_DATA DrawManager::GetDrawGraphData(int handle, float xRatio, float yR
 	}
 	drawData.transFlag = TRUE;
 
-	drawData.pos = ResourceManager::mstDisplaySize.LeftUp_Ratio(Vector2(xRatio, yRatio));
+	//drawData.pos = ResourceManager::mstDisplaySize.LeftUp_Ratio(Vector2(xRatio, yRatio));
 
-	drawData.size = ResourceManager::mstDisplaySize.LeftUp_Ratio(Vector2(sizeXRatio, sizeYRatio));
+	//drawData.size = ResourceManager::mstDisplaySize.LeftUp_Ratio(Vector2(sizeXRatio, sizeYRatio));
 
 	return drawData;
 }
