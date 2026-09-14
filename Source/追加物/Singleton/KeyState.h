@@ -1,7 +1,9 @@
 #pragma once
+#include <Windows.h>
+
 #include "KeyStateEnum.h"
 #include "BitFlag.h"
-#include "VECTOR.h"
+#include "Vector2.h"
 
 /*------------------------------------------*/
 /*          【キーステートクラス】          */
@@ -347,7 +349,7 @@ private:
 	BIT_FLAG<unsigned int> munMouseFlags;
 
 	// マウスのポジション
-	VECTOR2D mstCursorPos[(int)CURSOR_POSITION_TYPE::MAX];
+	Vector2 mstCursorPos[(int)CURSOR_POSITION_TYPE::MAX];
 
 	// マウスホイールの回転量
 	short mshWheelVolume;
@@ -383,9 +385,9 @@ public:
 	/*----------------------------------------------------------*/
 
 	/*-----【指定タイミングのカーソルポジション取得】-----*/
-	inline VECTOR2D GetCursorPosition(int number) const { return mstCursorPos[number]; }
+	inline Vector2 GetCursorPosition(int number) const { return mstCursorPos[number]; }
 	/*【指定タイミングのカーソルポジション取得】*/
-	inline VECTOR2D GetCursorPosition(CURSOR_POSITION_TYPE number) const { return GetCursorPosition((int)number); }
+	inline Vector2 GetCursorPosition(CURSOR_POSITION_TYPE number) const { return GetCursorPosition((int)number); }
 	/*----------------------------------------------------*/
 
 	/*マウスホイール回転取得(他の入力があるまで反応し続ける(キーボードも含めた))*/

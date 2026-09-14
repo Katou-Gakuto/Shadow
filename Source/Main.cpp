@@ -1,3 +1,5 @@
+#pragma comment(lib, "winmm.lib")
+
 #include "DxLib.h"
 
 #include "E_Scene/BaseSceneManager.h"
@@ -35,8 +37,7 @@
 /// <param name="lpCmdLine">LPSTR</param>
 /// <param name="nCmdShow">int</param>
 /// <returns>int</returns>
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
-	LPSTR lpCmdLine, int nCmdShow)
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 #ifdef _DEBUG
 
@@ -55,12 +56,23 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		/**/
 		DEBUG::DebugCreateLogFileName(DEBUG::DEBUG_MAP_TYPE::DEBUG_TIME, { "_Time" });
 		DEBUG::DebugLogAddData(DEBUG::DEBUG_PROCESS_TYPE::TIME, DEBUG::DEBUG_MAP_TYPE::DEBUG_TIME);//*/
+
+		/**/
+		DEBUG::DebugCreateLogFileName(DEBUG::DEBUG_MAP_TYPE::DEBUG_ARRIVAL, { "_Arrival" });
+		DEBUG::DebugLogAddData(DEBUG::DEBUG_PROCESS_TYPE::FUNCTION_CALL, DEBUG::DEBUG_MAP_TYPE::DEBUG_ARRIVAL);//*/
 	}
 #endif
 	// DXライブラリ前初期化
+	{
+		// ウインドウモードで起動
+		ChangeWindowMode(true);
 
+		// 画面サイズ
+		SetGraphMode(1280, 960, 32);
+	}
+	
 	// DXライブラリ初期化処理
-	if (DxLib::DxLib_Init() == -1)
+	if (DxLib_Init() == -1)
 	{
 		return -1;		// エラーが起きたら直ちに終了
 	}
@@ -78,11 +90,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	//// 画面サイズ
 	//SetGraphMode(1280, 960, 32);
 
-	SetDrawScreen(DX_SCREEN_BACK);
-
 	// DXライブラリ後
 	Master::Initialize();
-
 
 	/*
 	* ゲームループ
@@ -115,8 +124,23 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			// 
 			Master::mpBaseSceneManager->Update();
 
+			ClearDrawScreen();
+
 			// 
 			Master::mpBaseSceneManager->Draw();
+			
+			// 確認用(消して良い)
+			{
+				static int test = 0;
+				if (Master::mpKeyState->GetShadowGameKey(KEY_SHADOW_GAME_TYPE::RIGHT))
+				{
+					test++;
+				}
+
+				DrawBox(0 + test, 0, 200 + test, 200, GetColor(255, 255, 255), TRUE);
+			}
+
+			ScreenFlip();
 		}
 	}
 
@@ -124,7 +148,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	// DXライブラリ使用の終了処理
 	DxLib::DxLib_End();
-
 	// ソフトの終了
 	return 0;
 }

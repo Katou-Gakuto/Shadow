@@ -198,6 +198,7 @@
     <ClCompile Include="Source\追加物\Singleton\EndManager.cpp" />
     <ClCompile Include="Source\追加物\Singleton\KeyState.cpp" />
     <ClCompile Include="Source\追加物\Singleton\TimeManager.cpp" />
+    <ClCompile Include="Source\追加物\Struct\ResourceData.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\A_GameObject\GameObject.h" />
@@ -287,7 +288,9 @@
     <ClInclude Include="Source\追加物\Singleton\TimeManager.h" />
     <ClInclude Include="Source\追加物\Struct\BitFlag.h" />
     <ClInclude Include="Source\追加物\Struct\DrawData.h" />
+    <ClInclude Include="Source\追加物\Struct\ResourceData.h" />
     <ClInclude Include="Source\追加物\Struct\TimeData.h" />
+    <ClInclude Include="Source\追加物\Struct\Vector2.h" />
     <ClInclude Include="Source\追加物\TemplateTypeRestriction\TemplateType_Equal.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

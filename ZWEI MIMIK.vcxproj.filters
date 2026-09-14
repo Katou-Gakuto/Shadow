@@ -256,6 +256,9 @@
     <ClCompile Include="Source\追加物\Singleton\KeyState.cpp">
       <Filter>Source\追加物\Singleton</Filter>
     </ClCompile>
+    <ClCompile Include="Source\追加物\Struct\ResourceData.cpp">
+      <Filter>Source\追加物\Struct</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\A_GameObject\GameObject.h">
@@ -524,6 +527,12 @@
     </ClInclude>
     <ClInclude Include="Source\追加物\Singleton\KeyState.h">
       <Filter>Source\追加物\Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\追加物\Struct\ResourceData.h">
+      <Filter>Source\追加物\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\追加物\Struct\Vector2.h">
+      <Filter>Source\追加物\Struct</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
