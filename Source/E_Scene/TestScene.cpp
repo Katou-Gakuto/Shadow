@@ -22,7 +22,9 @@ int TestScene::Create()
 
 	GameObject2D* currentObject = nullptr;
 
-	currentObject = new PlayerObject();
+	currentObject = new PlayerObject(1);
+	this->mpGameObjectManager->Add(currentObject);
+	currentObject = new PlayerObject(2);
 	this->mpGameObjectManager->Add(currentObject);
 
 	this->mpGameObjectManager->Create();

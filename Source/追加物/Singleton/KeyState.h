@@ -40,7 +40,7 @@ private:
 	/*
 	* 上下左右
 	*/
-	BIT_FLAG<unsigned long> mulShadowGameFlags[static_cast<int>(FLAG_TYPE::MAX)];
+	BIT_FLAG<unsigned long> mulShadowGameFlags[static_cast<int>(FLAG_TYPE::MAX)][KEY_PLAYER_NUMBER::PLAYER_NUMBER_MAX];
 
 	/// <summary>
 	/// シャドウゲームで使用するキーを設定
@@ -52,41 +52,41 @@ private:
 	/// </summary>
 	/// <param name="keyNumber">設定するキー</param>
 	/// <param name="flags">フラグたち</param>
-	void SetOneFlag_Shadow(KEY_SHADOW_GAME_TYPE keyNumber, std::initializer_list<bool> flags);
+	void SetOneFlag_Shadow(KEY_SHADOW_GAME_TYPE keyNumber, int playerNumber, std::initializer_list<bool> flags);
 
 public:
 	/// <summary>
 	/// 押し始めたシャドウゲーム関連キーフラグを全取得(キーボード)
 	/// </summary>
 	/// <returns>ビットフラグ</returns>
-	inline BIT_FLAG<unsigned long> GetShadowGameAllDownKeyFlags() const { return mulShadowGameFlags[static_cast<int>(FLAG_TYPE::DOWN)]; }
+	inline BIT_FLAG<unsigned long> GetShadowGameAllDownKeyFlags(int playerNumber) const { return mulShadowGameFlags[static_cast<int>(FLAG_TYPE::DOWN)][playerNumber]; }
 
 	/// <summary>
 	/// 押しているシャドウゲーム関連キーフラグを全取得(キーボード)
 	/// </summary>
 	/// <returns>ビットフラグ</returns>
-	inline BIT_FLAG<unsigned long> GetShadowGameAllNowKeyFlags() const { return mulShadowGameFlags[static_cast<int>(FLAG_TYPE::NOW)]; }
+	inline BIT_FLAG<unsigned long> GetShadowGameAllNowKeyFlags(int playerNumber) const { return mulShadowGameFlags[static_cast<int>(FLAG_TYPE::NOW)][playerNumber]; }
 
 	/// <summary>
 	/// 離したシャドウゲーム関連キーフラグを全取得(キーボード)
 	/// </summary>
 	/// <returns>ビットフラグ</returns>
-	inline BIT_FLAG<unsigned long> GetShadowGameAllUpKeyFlags() const { return mulShadowGameFlags[static_cast<int>(FLAG_TYPE::UP)]; }
+	inline BIT_FLAG<unsigned long> GetShadowGameAllUpKeyFlags(int playerNumber) const { return mulShadowGameFlags[static_cast<int>(FLAG_TYPE::UP)][playerNumber]; }
 
 	/*-----【指定のシャドウゲーム関連キーが押しているなら「true」を返す(キーボード)】-----*/
-	inline bool GetShadowGameKey(int keyNumber) const { return mulShadowGameFlags[static_cast<int>(FLAG_TYPE::NOW)].GetFlag_BitShift(keyNumber); }
+	inline bool GetShadowGameKey(int keyNumber, int playerNumber) const { return mulShadowGameFlags[static_cast<int>(FLAG_TYPE::NOW)][playerNumber].GetFlag_BitShift(keyNumber); }
 	/*【指定のシャドウゲーム関連キーが押しているなら「true」を返す(キーボード)】*/
-	inline bool GetShadowGameKey(KEY_SHADOW_GAME_TYPE keyNumber) const { return mulShadowGameFlags[static_cast<int>(FLAG_TYPE::NOW)].GetFlag_BitShift(keyNumber); }
+	inline bool GetShadowGameKey(KEY_SHADOW_GAME_TYPE keyNumber, int playerNumber) const { return mulShadowGameFlags[static_cast<int>(FLAG_TYPE::NOW)][playerNumber].GetFlag_BitShift(keyNumber); }
 	/*----------------------------------------------------------------------------*/
 	/*-----【指定のシャドウゲーム関連キーが押し始めた瞬間なら「true」を返す(キーボード)】-----*/
-	inline bool GetShadowGameKeyDown(int keyNumber) const { return mulShadowGameFlags[static_cast<int>(FLAG_TYPE::DOWN)].GetFlag_BitShift(keyNumber); }
+	inline bool GetShadowGameKeyDown(int keyNumber, int playerNumber) const { return mulShadowGameFlags[static_cast<int>(FLAG_TYPE::DOWN)][playerNumber].GetFlag_BitShift(keyNumber); }
 	/*【指定のシャドウゲーム関連キーが押し始めた瞬間なら「true」を返す(キーボード)】*/
-	inline bool GetShadowGameKeyDown(KEY_SHADOW_GAME_TYPE keyNumber) const { return mulShadowGameFlags[static_cast<int>(FLAG_TYPE::DOWN)].GetFlag_BitShift(keyNumber); }
+	inline bool GetShadowGameKeyDown(KEY_SHADOW_GAME_TYPE keyNumber, int playerNumber) const { return mulShadowGameFlags[static_cast<int>(FLAG_TYPE::DOWN)][playerNumber].GetFlag_BitShift(keyNumber); }
 	/*--------------------------------------------------------------------------------*/
 	/*-----【指定のシャドウゲーム関連キーが離した瞬間なら「true」を返す(キーボード)】-----*/
-	inline bool GetShadowGameKeyUp(int keyNumber) const { return mulShadowGameFlags[static_cast<int>(FLAG_TYPE::UP)].GetFlag_BitShift(keyNumber); }
+	inline bool GetShadowGameKeyUp(int keyNumber, int playerNumber) const { return mulShadowGameFlags[static_cast<int>(FLAG_TYPE::UP)][playerNumber].GetFlag_BitShift(keyNumber); }
 	/*【指定のシャドウゲーム関連キーが離した瞬間なら「true」を返す(キーボード)】*/
-	inline bool GetShadowGameKeyUp(KEY_SHADOW_GAME_TYPE keyNumber) const { return mulShadowGameFlags[static_cast<int>(FLAG_TYPE::UP)].GetFlag_BitShift(keyNumber); }
+	inline bool GetShadowGameKeyUp(KEY_SHADOW_GAME_TYPE keyNumber, int playerNumber) const { return mulShadowGameFlags[static_cast<int>(FLAG_TYPE::UP)][playerNumber].GetFlag_BitShift(keyNumber); }
 	/*----------------------------------------------------------------------------*/
 
 	/*------------------*/

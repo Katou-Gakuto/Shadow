@@ -20,6 +20,13 @@ enum class KEY_SHADOW_GAME_TYPE
 
 };
 
+enum KEY_PLAYER_NUMBER
+{
+	PLAYER_NUMBER_1 = 0,
+	PLAYER_NUMBER_2,
+	PLAYER_NUMBER_MAX
+};
+
 
 /*--------------------*/
 /*     ÅyÉtÉâÉOÅz     */

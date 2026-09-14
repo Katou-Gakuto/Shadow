@@ -1,8 +1,9 @@
 #include "PlayerObject.h"
 #include "Player.h"
 
-PlayerObject::PlayerObject()
+PlayerObject::PlayerObject(int playerNumber)
 : GameObject2D(GameObjectTag::GOT_Player)
+, mnPlayerNumber(playerNumber)
 {
 }
 
@@ -14,7 +15,7 @@ int PlayerObject::Create()
 {
 	this->CreateObjectComponentList();
 	this->CreateObjectCollisionList();
-	this->AddComponent(new Player(this));
+	this->AddComponent(new Player(this, mnPlayerNumber));
 
 	return 0;
 }

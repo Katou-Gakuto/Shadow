@@ -3,8 +3,9 @@
 
 class PlayerObject : public GameObject2D
 {
+	int mnPlayerNumber;
 public:
-	PlayerObject();
+	PlayerObject(int playerNumber);
 	~PlayerObject();
 
 	int Create() override;
