@@ -51,7 +51,7 @@ int GimmickObjectController::Update()
     for (uint32_t i = 0; i < this->mlGimmickList.size(); i++)
     {
         // 
-        this->mlGimmickList[i].mbSumilating = this->mlGimmickList[i].mpChecker->CheckSumilate();
+        this->mlGimmickList[i].mbSumilating = this->mlGimmickList[i].mpChecker->GetSignalSumilate();
 
         // 
         if (this->mlGimmickList[i].mpSumilater->CheckSumilate(this->mlGimmickList[i].mbSumilating))
@@ -61,7 +61,7 @@ int GimmickObjectController::Update()
         }
 
         // 
-        this->mlGimmickList[i].mbExecuting = this->mlGimmickList[i].mpChecker->CheckExecute();
+        this->mlGimmickList[i].mbExecuting = this->mlGimmickList[i].mpChecker->GetSignalExecute();
 
         // ここでシミュレートの内容を実行に移す処理
         if (this->mlGimmickList[i].mpSumilater->CheckExecute(this->mlGimmickList[i].mbExecuting))

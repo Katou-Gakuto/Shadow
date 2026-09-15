@@ -8,6 +8,8 @@ class EndManager;
 class TimeManager;
 // キー情報
 class KeyState;
+// 光域の管理をするクラス
+class LightAreaManager;
 
 // 
 class Master
@@ -25,6 +27,7 @@ public:
     static KeyState* mpKeyState;
 
     // そのほかManager
+    static LightAreaManager *mpLightManager;
 
     // Masterの各メンバをnewする関数
     static int Initialize();

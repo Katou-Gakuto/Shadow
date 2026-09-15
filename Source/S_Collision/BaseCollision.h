@@ -22,6 +22,7 @@ enum CollisionTag : unsigned short
     CollisionTag_Ground,                        // 地面の当たり判定
     CollisionTag_Mirror,                        // 鏡面の当たり判定
     CollisionTag_CharaBody,                     // キャラクターの当たり判定
+    CollisionTag_Button,                        // ボタンの当たり判定
     CollisionTag_Attack,                        // 攻撃の当たり判定
     CollisionTag_Max,                           // この列挙子の数の合計
 

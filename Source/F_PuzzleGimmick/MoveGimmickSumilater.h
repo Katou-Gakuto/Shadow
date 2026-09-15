@@ -7,16 +7,6 @@
 
 #include "../Y_Tool/VECTOR.h"
 
-// 自身の移動状態のON/OFFをどのように決めるのか
-enum MoveGimmickOnMode
-{
-    // ONになっているフレームのみ動く
-    MoveGimmickOnMode_HitFrame,
-
-    // 一度でもONになったら最後まで動く
-    MoveGimmickOnMode_OnePush,
-};
-
 // 自身の移動状態がOFFの際に、どのような挙動を取るのか
 enum MoveGimmickOffMode
 {
@@ -51,7 +41,7 @@ public:
     ~MoveGimmickData();
 
     // 初期化を行う関数
-    int Initialize(MoveGimmickOnMode onMode, MoveGimmickOffMode offMode, bool loop, bool startOn);
+    int Initialize(MoveGimmickOffMode offMode, bool loop, bool startOn);
 
     // キーフレームを登録する関数
     int Add(const MoveGimmickKeyFrame keyFrame);
@@ -73,9 +63,6 @@ private:
     // キーフレームからキーフレームまではLeapで補間
     std::vector<MoveGimmickKeyFrame> mlKeyFramesBox;
 
-    // ONの状態でどのような移動を行うのかの設定
-    MoveGimmickOnMode mnOnMode;
-
     // OFFの状態でどのような移動を行うのかの設定
     MoveGimmickOffMode mnOffMode;
 
@@ -84,14 +71,10 @@ private:
 
     // 現在ON状態なのか
     bool mdNowOn;
-
-    // ON状態からスタートする場合はtrueを設定してください
-    // (初期化した際に最後のKeyFrameを採用します。また、OnModeがLoopの場合は失敗になるかもしれないので要注意)
-    bool mbOnStart;
 };
 
 // 
-class MoveGimmickSumilater : public BaseGimmickSumilater
+class MoveGimmickSumilater : public BaseGimmickSumilator
 {
 public:
     // コンストラクタ

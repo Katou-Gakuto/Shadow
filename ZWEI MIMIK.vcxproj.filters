@@ -53,6 +53,9 @@
     <Filter Include="Source\追加物\Struct">
       <UniqueIdentifier>{b90b5cbd-cb3a-40b2-b923-ab6937bcc09f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\G_LightArea">
+      <UniqueIdentifier>{5bd067bb-5584-4082-9201-d52a87474ab1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\A_GameObject\GameObject.cpp">
@@ -223,9 +226,6 @@
     <ClCompile Include="Source\Y_Tool\VoidList.cpp">
       <Filter>Source\Y_Tool</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Z_Except\LightLineNode.cpp">
-      <Filter>Source\Z_Except</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -275,6 +275,21 @@
       <Filter>Source\C_Component</Filter>
     </ClCompile>
     <ClCompile Include="Source\F_PuzzleGimmick\LightGimmickSumilater.cpp">
+      <Filter>Source\F_PuzzleGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\C_Component\ButtonObjectController.cpp">
+      <Filter>Source\C_Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\G_LightArea\LightLineNode.cpp">
+      <Filter>Source\G_LightArea</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\G_LightArea\LightArea.cpp">
+      <Filter>Source\G_LightArea</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\G_LightArea\LightAreaManager.cpp">
+      <Filter>Source\G_LightArea</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\F_PuzzleGimmick\ButtonGimmickChecker.cpp">
       <Filter>Source\F_PuzzleGimmick</Filter>
     </ClCompile>
   </ItemGroup>
@@ -486,9 +501,6 @@
     <ClInclude Include="Source\Y_Tool\VoidList.h">
       <Filter>Source\Y_Tool</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Z_Except\LightLineNode.h">
-      <Filter>Source\Z_Except</Filter>
-    </ClInclude>
     <ClInclude Include="Source\E_Scene\BaseScene.h">
       <Filter>Source\E_Scene</Filter>
     </ClInclude>
@@ -566,6 +578,15 @@
     </ClInclude>
     <ClInclude Include="Source\F_PuzzleGimmick\LightGimmickSumilater.h">
       <Filter>Source\F_PuzzleGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\G_LightArea\LightLineNode.h">
+      <Filter>Source\G_LightArea</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\G_LightArea\LightArea.h">
+      <Filter>Source\G_LightArea</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\G_LightArea\LightAreaManager.h">
+      <Filter>Source\G_LightArea</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

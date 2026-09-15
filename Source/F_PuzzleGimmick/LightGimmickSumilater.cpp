@@ -5,6 +5,9 @@
 #include "../E_Scene/BaseScene.h"
 #include "../E_Scene/BaseSceneManager.h"
 
+#include "../G_LightArea/LightArea.h"
+#include "../G_LightArea/LightAreaManager.h"
+
 #include "../S_Collision/BaseCollision2D.h"
 #include "../S_Collision/Ray2D.h"
 #include "../S_Collision/BaseCollision2DManager.h"
@@ -19,7 +22,9 @@ LightGimmickSumilater::LightGimmickSumilater() :
     mfBaseAngle(0.0f),
     mfLightAngle(MyFunctions::GetAllRad()),
     mvStartPos(),
-    mpNowLightArea(nullptr)
+    mnAreaIndex(0),
+    mbLightOn(true),
+    BaseGimmickSumilator()
 {
 }
 
@@ -29,29 +34,70 @@ LightGimmickSumilater::~LightGimmickSumilater()
 }
 
 // シミュレーションを行うかをCheckerの結果も踏まえたうえで判断する関数
-bool LightGimmickSumilater::CheckSumilate(bool checkerResult)
+bool LightGimmickSumilater::CheckSumilate(bool checkerSignal) const
 {
+    // 
+    if (this->mdActiveParam.GetSignalNot())
+    {
+        // 
+        checkerSignal = !checkerSignal;
+    }
+
+    // 
+    return checkerSignal;
 }
 
 // シミュレーションを行う関数
 int LightGimmickSumilater::Sumilate()
 {
+    // 
+    this->mbLightOn = true;
+    
+    // 
+    this->CalculateLineEndPos(this->mvStartPos);
+
+    // 
+    return 0;
 }
 
 // 実行に移すかをCheckerの結果も踏まえたうえで判断する関数
-int LightGimmickSumilater::CheckExecute(bool checkerResult)
+int LightGimmickSumilater::CheckExecute(bool checkerSignal) const
 {
+    // 
+    if (this->mdActiveParam.GetSignalNot())
+    {
+        // 
+        checkerSignal = !checkerSignal;
+    }
+
+    // 
+    return checkerSignal;
 }
 
 // シミュレートの結果を実行を行う関数
 int LightGimmickSumilater::Execute()
 {
+    // 
+    if (this->mbLightOn)
+    {
+        // 
+        this->GetMyLightArea()->OnLight();
+    }
+    else
+    {
+        // 
+        this->GetMyLightArea()->OffLight();
+    }
+
+    // 
+    return 0;
 }
 
 // シミュレーション内容を描画する関数
 // ※既に実行段階である場合は引数がtrueになります。実行段階では描画しない、あるいはその逆の場合はこの引数を使ってください。
 int LightGimmickSumilater::Draw(bool sumilating, bool executing)
 {
+    // 光域のシミュレーターは描画はしません
 }
 
 // このライトのレイの角度を設定する関数
@@ -93,7 +139,7 @@ bool LightGimmickSumilater::CalculateLineEndPos(const VECTOR2D &startPos)
     CollisionCheckResult2D resultNewr = GetCollisionCheckResult2DZero();
 
     // 
-    return this->mpNowLightArea->CalculateNode(
+    return this->GetMyLightArea()->CalculateNode(
         this->mfBaseAngle,
         this->mfLength,
         startPos,
@@ -108,14 +154,14 @@ bool LightGimmickSumilater::CalculateLineEndPos(const VECTOR2D &startPos)
 VECTOR2D *LightGimmickSumilater::GetLineEndPosBox()
 {
     // 
-    return this->mpNowLightArea->GetLineEndPosBox();
+    return this->GetMyLightArea()->GetLineEndPosBox();
 }
 
 // このライトのレイの本数を取得する関数
 uint32_t LightGimmickSumilater::GetLightLineCount() const
 {
     // 
-    return this->mpNowLightArea->GetLightLineCount();
+    return this->GetMyLightArea()->GetLightLineCount();
 }
 
 // このライトの長さを取得する関数
@@ -129,7 +175,7 @@ float LightGimmickSumilater::GetLength() const
 void LightGimmickSumilater::SetLightLineCount(uint32_t count)
 {
     // 
-    this->mpNowLightArea->SetLightLineCount(count);
+    this->GetMyLightArea()->SetLightLineCount(count);
 }
 
 // このライトの長さを設定する関数
@@ -154,5 +200,12 @@ void LightGimmickSumilater::SetLightAngle(float radian)
 void LightGimmickSumilater::SetLineAngleBox_In(uint32_t lineCount, float maxAngle)
 {
     // 
-    this->mpNowLightArea->SetLightLineAngleBox(lineCount, maxAngle);
+    this->GetMyLightArea()->SetLightLineAngleBox(lineCount, maxAngle);
+}
+
+// 
+LightArea *LightGimmickSumilater::GetMyLightArea() const
+{
+    // 
+    return Master::mpLightManager->SearchArea(this->mnAreaIndex);
 }

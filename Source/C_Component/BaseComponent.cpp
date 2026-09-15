@@ -116,12 +116,12 @@ GameObject *BaseComponent::GetMyObject() const
     return this->mpUp;
 }
 
-GameObject2D *BaseComponent::GetMyObject2D()
+GameObject2D *BaseComponent::GetMyObject2D() const
 {
     return static_cast<GameObject2D *>(this->mpUp);
 }
 
-GameObject3D *BaseComponent::GetMyObject3D()
+GameObject3D *BaseComponent::GetMyObject3D() const
 {
     return static_cast<GameObject3D *>(this->mpUp);
 }

@@ -16,10 +16,10 @@ public:
     ~ButtonSumilationChecker() override;
 
     // 
-    bool CheckSumilate() override;
+    bool GetSignalSumilate() override;
 
     // 
-    bool CheckExecute()override;
+    bool GetSignalExecute()override;
 
     // 
     bool AddButton(ButtonObjectController *button);

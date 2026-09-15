@@ -2,10 +2,12 @@
 
 #include "PuzzleGimmickData.h"
 
-#include "../Z_Except/LightLineNode.h"
+#include "../G_LightArea/LightArea.h"
 
-// 
-class LightGimmickSumilater : public BaseGimmickSumilater
+#include "../Y_Tool/VECTOR.h"
+
+// LightのON/OFFを行うシミュレーター
+class LightGimmickSumilater : public BaseGimmickSumilator
 {
 public:
     // コンストラクタ
@@ -15,13 +17,13 @@ public:
     ~LightGimmickSumilater() override;
 
     // シミュレーションを行うかをCheckerの結果も踏まえたうえで判断する関数
-    bool CheckSumilate(bool checkerResult) override;
+    bool CheckSumilate(bool checkerSignal) const override;
 
     // シミュレーションを行う関数
     int Sumilate() override;
 
     // 実行に移すかをCheckerの結果も踏まえたうえで判断する関数
-    int CheckExecute(bool checkerResult) override;
+    int CheckExecute(bool checkerSignal) const override;
 
     // シミュレートの結果を実行を行う関数
     int Execute() override;
@@ -61,7 +63,13 @@ protected:
     // このライトのレイの角度を設定する関数
     void SetLineAngleBox_In(uint32_t lineCount, float maxAngle);
 
+    // この光域を取得する関数
+    LightArea *GetMyLightArea() const;
+
 private:
+    // 今ライトが点いているか
+    bool mbLightOn;
+
     // ライトの距離。3000くらいあったらこのゲームでは無限くらいだと思うけど、無限って意味で0にするのはやめてね。
     float mfLength;
 
@@ -75,5 +83,5 @@ private:
     VECTOR2D mvStartPos;
 
     // 
-    LightArea *mpNowLightArea;
+    int mnAreaIndex;
 };

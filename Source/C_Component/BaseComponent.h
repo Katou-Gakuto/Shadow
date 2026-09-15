@@ -15,6 +15,7 @@ typedef enum ComponentTagAndOrder : unsigned long
     CTAO_WallController,
     CTAO_MirrorController,
     CTAO_GimmickController,
+    CTAO_ButtonController,
     CTAO_DirectionLightController,
     CTAO_PointLightController,
 
@@ -56,8 +57,8 @@ public:
     bool GetActiveFlag() const;
     bool GetInitializedFlag() const;
     GameObject *GetMyObject() const;
-    GameObject2D *GetMyObject2D();
-    GameObject3D *GetMyObject3D();
+    GameObject2D *GetMyObject2D() const;
+    GameObject3D *GetMyObject3D() const;
 
     void SetPrevNext(BaseComponent *prev, BaseComponent *next);
     BaseComponent *GetPrev() const;
