@@ -182,7 +182,6 @@
     <ClInclude Include="Source\Struct\StateData.h" />
     <ClInclude Include="Source\Struct\TimeData.h" />
     <ClInclude Include="Source\Struct\UseDeclaration.h" />
-    <ClInclude Include="Source\Struct\VECTOR.h" />
     <ClInclude Include="Source\Struct\Vector2.h" />
     <ClInclude Include="Source\TemplateTypeRestriction\TemplateType_Equal.h" />
     <ClInclude Include="Source\Util\UtilCalc.h" />
@@ -224,7 +223,6 @@
     <ClCompile Include="Source\State\StateDotWeen.cpp" />
     <ClCompile Include="Source\Struct\CameraData.cpp" />
     <ClCompile Include="Source\Struct\ResourceData.cpp" />
-    <ClCompile Include="Source\Struct\VECTOR.cpp" />
     <ClCompile Include="Source\Util\UtilCalc.cpp" />
     <ClCompile Include="Source\Util\UtilChange.cpp" />
   </ItemGroup>

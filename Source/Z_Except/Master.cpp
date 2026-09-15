@@ -19,7 +19,7 @@ int Master::Initialize()
 {
 
     mpEndManager = new EndManager();
-    mpTimeManager = new TimeManager(17);
+    mpTimeManager = new TimeManager(/*/1/*/17/**/);
     mpTimeManager->Initilize();
     mpKeyState = new KeyState();
     // 

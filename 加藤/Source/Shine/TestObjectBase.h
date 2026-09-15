@@ -1,15 +1,15 @@
 #pragma once
-#include "VECTOR.h"
+#include "Vector2.h"
 #include "ShineManager.h"
 
 class TestObjectBase
 {
 private:
 	// ポジション
-	VECTOR2D mv2Position;
+	Vector2 mv2Position;
 
 	// サイズ
-	VECTOR2D mv2Size;
+	Vector2 mv2Size;
 
 	ShineManager* mpShineManager;
 public:

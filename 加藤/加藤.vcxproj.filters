@@ -264,9 +264,6 @@
     <ClInclude Include="Source\Shine\TestObjectBase.h">
       <Filter>ヘッダー ファイル\Shine</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Struct\VECTOR.h">
-      <Filter>ヘッダー ファイル\Struct</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Struct\UseDeclaration.h">
       <Filter>ヘッダー ファイル\Struct</Filter>
     </ClInclude>
@@ -374,17 +371,14 @@
     <ClCompile Include="Source\Singleton\ResourceSingleton\ResourceSound.cpp">
       <Filter>ソース ファイル\Singleton\ResourceSingleton</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Shine\ShineManager.cpp">
-      <Filter>ソース ファイル\Shine</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Shine\ShineObject.cpp">
       <Filter>ソース ファイル\Shine</Filter>
     </ClCompile>
     <ClCompile Include="Source\Shine\WallObject.cpp">
       <Filter>ソース ファイル\Shine</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Struct\VECTOR.cpp">
-      <Filter>ソース ファイル\Struct</Filter>
+    <ClCompile Include="Source\Shine\ShineManager.cpp">
+      <Filter>ソース ファイル\Shine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

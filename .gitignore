@@ -427,4 +427,5 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
-/Log.txt
+**/Log.txt
+**/LogDebug

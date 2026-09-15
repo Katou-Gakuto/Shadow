@@ -552,7 +552,9 @@
     <ClInclude Include="Source\C_Component\Player.h">
       <Filter>Source\C_Component</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h" />
+    <ClInclude Include="resource.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">

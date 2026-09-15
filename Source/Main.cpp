@@ -84,12 +84,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetOutApplicationLogValidFlag(FALSE);
 #endif
 
-	//// ウインドウモードで起動
-	//ChangeWindowMode(true);
-
-	//// 画面サイズ
-	//SetGraphMode(1280, 960, 32);
-
 	// DXライブラリ後
 	Master::Initialize();
 

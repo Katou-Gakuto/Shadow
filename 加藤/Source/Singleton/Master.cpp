@@ -35,5 +35,5 @@ void Master::AllDelete()
 	delete mpThreadManager;
 	delete mpTimeManager;
 
-	delete mpStopManager;
+	delete mpShineManager;
 }
