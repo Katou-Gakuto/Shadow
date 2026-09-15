@@ -204,6 +204,7 @@
     <ClCompile Include="Source\追加物\Struct\ResourceData.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Source\A_GameObject\GameObject.h" />
     <ClInclude Include="Source\A_GameObject\GameObject2D.h" />
     <ClInclude Include="Source\A_GameObject\GameObject3D.h" />
@@ -298,6 +299,12 @@
     <ClInclude Include="Source\追加物\Struct\TimeData.h" />
     <ClInclude Include="Source\追加物\Struct\Vector2.h" />
     <ClInclude Include="Source\追加物\TemplateTypeRestriction\TemplateType_Equal.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ZWEI_MIMIK.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
