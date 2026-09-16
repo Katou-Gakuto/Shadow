@@ -82,12 +82,6 @@
     <Filter Include="ソース ファイル\State\FSM">
       <UniqueIdentifier>{227a4250-f7bc-4b6c-b023-c55ae812a36c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\川田">
-      <UniqueIdentifier>{63d4bfe7-8e56-4fd0-a717-12e68f71a4c9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\川田">
-      <UniqueIdentifier>{98ae5a7e-f00b-4979-8c31-de8f34fc456b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Shine">
       <UniqueIdentifier>{c13e5384-d73c-41c3-bb0a-75d7070cc580}</UniqueIdentifier>
     </Filter>

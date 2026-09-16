@@ -1,0 +1,40 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build ZWEI MIMIK x64 Debug",
+            "type": "process",
+            "command": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe",
+            "args": [
+                "${workspaceFolder}\\ZWEI MIMIK.vcxproj",
+                "/t:Build",
+                "/p:Configuration=Debug",
+                "/p:Platform=x64",
+                "/m"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Build 加藤 x64 Debug",
+            "type": "process",
+            "command": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe",
+            "args": [
+                "${workspaceFolder}\\加藤\\加藤.vcxproj",
+                "/t:Build",
+                "/p:Configuration=Debug",
+                "/p:Platform=x64",
+                "/p:ForceImportBeforeCppTargets=${workspaceFolder}\\.vscode\\DxLibPath.props",
+                "/m"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}\\加藤"
+            },
+            "group": "build",
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

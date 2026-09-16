@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run ZWEI MIMIK",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\x64\\Debug\\ZWEI MIMIK.exe",
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "Build ZWEI MIMIK x64 Debug",
+            "console": "externalTerminal"
+        },
+        {
+            "name": "Run 加藤",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\加藤\\x64\\Debug\\加藤.exe",
+            "cwd": "${workspaceFolder}\\加藤",
+            "preLaunchTask": "Build 加藤 x64 Debug",
+            "console": "externalTerminal"
+        }
+    ]
+}
