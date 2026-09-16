@@ -4,37 +4,48 @@
 
 #include <cstdint>
 
+#include "../Y_Tool/VECTOR.h"
+
 // 
 class ButtonObjectController : public BaseComponent
 {
 public:
     // 
-
-
-    // 
-    void Push();
+    ButtonObjectController(GameObject *myObject, const VECTOR2D &localLeftUp, const VECTOR2D &localRightDown);
 
     // 
-    void Hit();
+    ~ButtonObjectController() override;
+
+    int Create() override;
+    int Initialize() override;
+    int Finalize() override;
+    int EarlyUpdate() override;
+    int Update() override;
+    int HitOnCollision(BaseCollision *myCollision, BaseCollision *hitCollision) override;
+    int LateUpdate() override;
+    int Draw() override;
 
     // 現在このボタンはONの状態なのか
-    bool GetFlag() const;
+    bool CheckButtonSignal() const;
 
     // 現在このボタンの上にプレイヤーがいるのか
-    bool GetOnPlayer() const;
+    bool GetLightSide() const;
+
+    // 現在このボタンの上にプレイヤーがいるのか
+    bool CheckOnPlayer() const;
 
 private:
-    // この値がtrueの時は毎フレーム押し込み判定が続いているかを確認する
+    // 現在スイッチがONになっているか
+    bool mbNowOn;
+
+    // この値がtrueの時は毎フレーム押し込み判定が必要なのかを確認する
     bool mbHitButton;
 
-    // 現在スイッチがONになっているか
-    bool mdNowOn;
+    // 前回のフレームでもボタンを踏んでいるか
+    bool mbPushLastFrame;
 
     // 現在スイッチは光域に位置しているのか
-    bool mdLightSide;
-
-    // 現在このスイッチの上にプレイヤーが乗っているのか
-    bool mbOnPlayer;
+    bool mbLightSide;
 
     // ここが0以外の値になっていたらこのフレーム分だけONになり、後は自動でOFFになるという設定
     uint32_t mnOnFrameCount;
@@ -43,5 +54,12 @@ private:
     uint32_t mnNowFrameCount;
 
     // 
-    void CheckOnPlayer();
+    VECTOR2D mvLeftUp;
+
+    // 
+    VECTOR2D mvRightDown;
+
+    // 
+    void CheckLightSide();
+
 };

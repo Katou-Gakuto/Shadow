@@ -9,7 +9,7 @@ class Player : public BaseComponent
 public:
     KeyState keystate;
 
-    Player(GameObject* myObject);
+    Player(GameObject* myObject, int playerNumber);
     ~Player();
 
     int Create() override;

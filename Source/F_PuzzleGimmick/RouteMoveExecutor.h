@@ -7,54 +7,41 @@
 
 #include "../Y_Tool/VECTOR.h"
 
-// 自身の移動状態のON/OFFをどのように決めるのか
-enum MoveGimmickOnMode
-{
-    // ONになっているフレームのみ動く
-    MoveGimmickOnMode_HitFrame,
-
-    // 一度でもONになったら最後まで動く
-    MoveGimmickOnMode_OnePush,
-};
-
 // 自身の移動状態がOFFの際に、どのような挙動を取るのか
-enum MoveGimmickOffMode
+enum RouteOffMode
 {
     // 自身の状態がOFFになった瞬間にその場で止まる
-    MoveGimmickOffMode_Stop,
+    RouteOffMode_Stop,
 
     // 自身の状態がOFFになった瞬間にその場から移動の逆再生を始める
-    MoveGimmickOffMode_Return,
+    RouteOffMode_Return,
 };
 
 // キーフレームの設定
-struct MoveGimmickKeyFrame
+struct RouteKeyFrame
 {
     // 何フレーム目のものか
     uint32_t mnFrameCount;
-
-    // このフレームでの回転量はどのくらいか
-    float mfRotate;
 
     // このフレームでの座標はどこか
     VECTOR2D mvPos;
 };
 
 // 0フレーム時点の情報も記録しておいてください
-class MoveGimmickData
+class RouteData
 {
 public:
     // コンストラクタ
-    MoveGimmickData();
+    RouteData();
 
     // デストラクタ
-    ~MoveGimmickData();
+    ~RouteData();
 
     // 初期化を行う関数
-    int Initialize(MoveGimmickOnMode onMode, MoveGimmickOffMode offMode, bool loop, bool startOn);
+    int Initialize(RouteOffMode offMode, bool loop, bool startOn);
 
     // キーフレームを登録する関数
-    int Add(const MoveGimmickKeyFrame keyFrame);
+    int Add(const RouteKeyFrame keyFrame);
 
     // 現在の状態を更新する関数
     void Update(bool nowOn);
@@ -66,45 +53,51 @@ public:
     float GetRotatedParam(uint32_t frameCount) const;
 
     // 代入演算子(コピー)
-    MoveGimmickData operator =(const MoveGimmickData &right);
+    RouteData operator =(const RouteData &right);
 
 private:
     // 登録されたキーフレームを記憶する動的配列
     // キーフレームからキーフレームまではLeapで補間
-    std::vector<MoveGimmickKeyFrame> mlKeyFramesBox;
-
-    // ONの状態でどのような移動を行うのかの設定
-    MoveGimmickOnMode mnOnMode;
+    std::vector<RouteKeyFrame> mlKeyFramesBox;
 
     // OFFの状態でどのような移動を行うのかの設定
-    MoveGimmickOffMode mnOffMode;
+    RouteOffMode mnOffMode;
 
     // ON時に最後のキーフレームまで到達した場合、移動の逆再生を行うかどうか
     bool mbOnLoop;
 
     // 現在ON状態なのか
     bool mdNowOn;
-
-    // ON状態からスタートする場合はtrueを設定してください
-    // (初期化した際に最後のKeyFrameを採用します。また、OnModeがLoopの場合は失敗になるかもしれないので要注意)
-    bool mbOnStart;
 };
 
 // 
-class MoveGimmickSumilater : public BaseGimmickSumilater
+class RouteMoveExecutor : public BaseGimmickExecutor
 {
 public:
     // コンストラクタ
-    MoveGimmickSumilater();
+    RouteMoveExecutor(PuzzleGimmickActiveParam param);
 
     // デストラクタ
-    ~MoveGimmickSumilater();
+    ~RouteMoveExecutor() override;
 
-    // シュミレーションを行う関数
-    int Sumilate() override;
+    // ギミックの内容を実行する関数
+    // ※GameObject::EarlyUpdate()のタイミングで呼ばれます
+    int EarlyUpdate(bool triggerSignal) override;
+
+    // ギミックの内容を実行する関数
+    // ※GameObject::Update()のタイミングで呼ばれます
+    int Update(bool triggerSignal) override;
+
+    // ギミックの内容を実行する関数
+    // ※GameObject::LateUpdate()のタイミングで呼ばれます
+    int LateUpdate(bool triggerSignal) override;
+
+    // ギミック内容を描画する関数
+    // ※既に実行段階である場合は引数がtrueになります。実行段階では描画しない、あるいはその逆の場合はこの引数を使ってください。
+    int Draw(bool triggerSignal) override;
 
     // 
-    bool SetMoveData(const MoveGimmickData &data);
+    bool SetMoveData(const RouteData &data);
 
     // 
     float GetRotate() const;
@@ -117,7 +110,7 @@ public:
 
 private:
     // 
-    MoveGimmickData mdMoveData;
+    RouteData mdMoveData;
 
     // 
     uint32_t mnFrameCount;

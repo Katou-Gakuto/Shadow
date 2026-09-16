@@ -2,8 +2,9 @@
 #include "GameObject2D.h"
 #include "Master.h"
 
-Player::Player(GameObject* myObject)
+Player::Player(GameObject* myObject, int playerNumber)
 : BaseComponent(myObject, ComponentTagAndOrder::CTAO_CharacterLife)
+, PlayerNum(playerNumber)
 {
 }
 
@@ -35,19 +36,19 @@ int Player::EarlyUpdate()
     moveVec = VECTOR2D::GetZero();
 
 	//\Žšƒ{ƒ^ƒ“
-	if (Master::mpKeyState->GetShadowGameKey(KEY_SHADOW_GAME_TYPE::UP)/*(CONTROLLER_KEY_TYPE::UP, CONTROLLER_KEY_NUMBER::CONTROLLER_1)*/)
+	if (Master::mpKeyState->GetShadowGameKey(KEY_SHADOW_GAME_TYPE::UP, PlayerNum - 1)/*(CONTROLLER_KEY_TYPE::UP, CONTROLLER_KEY_NUMBER::CONTROLLER_1)*/)
 	{
         moveVec.SetY(-4);
 	}
-	if (Master::mpKeyState->GetShadowGameKey(KEY_SHADOW_GAME_TYPE::DOWN)/*(CONTROLLER_KEY_TYPE::DOWN, CONTROLLER_KEY_NUMBER::CONTROLLER_1)*/)
+	if (Master::mpKeyState->GetShadowGameKey(KEY_SHADOW_GAME_TYPE::DOWN, PlayerNum - 1)/*(CONTROLLER_KEY_TYPE::DOWN, CONTROLLER_KEY_NUMBER::CONTROLLER_1)*/)
 	{
         moveVec.SetY(4);
 	}
-	if (Master::mpKeyState->GetShadowGameKey(KEY_SHADOW_GAME_TYPE::LEFT)/*(CONTROLLER_KEY_TYPE::LEFT, CONTROLLER_KEY_NUMBER::CONTROLLER_1)*/)
+	if (Master::mpKeyState->GetShadowGameKey(KEY_SHADOW_GAME_TYPE::LEFT, PlayerNum - 1)/*(CONTROLLER_KEY_TYPE::LEFT, CONTROLLER_KEY_NUMBER::CONTROLLER_1)*/)
 	{
         moveVec.SetX(-4);
 	}
-	if (Master::mpKeyState->GetShadowGameKey(KEY_SHADOW_GAME_TYPE::RIGHT)/*(CONTROLLER_KEY_TYPE::RIGHT, CONTROLLER_KEY_NUMBER::CONTROLLER_1)*/)
+	if (Master::mpKeyState->GetShadowGameKey(KEY_SHADOW_GAME_TYPE::RIGHT, PlayerNum - 1)/*(CONTROLLER_KEY_TYPE::RIGHT, CONTROLLER_KEY_NUMBER::CONTROLLER_1)*/)
 	{
         moveVec.SetX(4);
 	}
@@ -85,6 +86,10 @@ int Player::LateUpdate()
 int Player::Draw()
 {
     GameObject2D* player = GetMyObject2D();
-    DrawBox(player->GetPosition().GetX(), player->GetPosition().GetY(), player->GetPosition().GetX() + 30, player->GetPosition().GetY() + 60, 0xFFFFFF, true);
+    DrawBox(player->GetPosition().GetX(), player->GetPosition().GetY(), player->GetPosition().GetX() + 30, player->GetPosition().GetY() + 60, 0x0000FF, true);
+    if (PlayerNum == 0)
+    {
+        DrawBox(player->GetPosition().GetX(), player->GetPosition().GetY(), player->GetPosition().GetX() + 30, player->GetPosition().GetY() + 60, GetColor(255, 0, 0), true);
+    }
     return 0;
 }
