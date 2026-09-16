@@ -100,7 +100,7 @@ public:
     // デストラクタ
     ~MoveGimmickSumilater();
 
-    // シュミレーションを行う関数
+    // シミュレーションを行う関数
     int Sumilate() override;
 
     // 
