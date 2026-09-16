@@ -5,7 +5,7 @@
 // 
 class ButtonObjectController;
 
-// ボタンの状態を確認し、シミュレーションを行うかを判断するクラス
+// ボタンの状態を確認し、シュミレーションを行うかを判断するクラス
 class ButtonSumilationChecker : public BaseGimmickChecker
 {
 public:
@@ -15,7 +15,7 @@ public:
     // 
     ~ButtonSumilationChecker() override;
 
-    // ギミックのシミュレーション
+    // 
     bool CheckSumilate() override;
 
     // 
