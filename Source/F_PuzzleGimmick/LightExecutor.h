@@ -7,30 +7,30 @@
 #include "../Y_Tool/VECTOR.h"
 
 // LightのON/OFFを行うシミュレーター
-class LightGimmickSumilater : public BaseGimmickSumilator
+class LightExecutor : public BaseGimmickExecutor
 {
 public:
     // コンストラクタ
-    LightGimmickSumilater();
+    LightExecutor(PuzzleGimmickActiveParam param);
 
     // デストラクタ
-    ~LightGimmickSumilater() override;
+    ~LightExecutor() override;
 
-    // シミュレーションを行うかをCheckerの結果も踏まえたうえで判断する関数
-    bool CheckSumilate(bool checkerSignal) const override;
+    // ギミックの内容を実行する関数
+    // ※GameObject::EarlyUpdate()のタイミングで呼ばれます
+    int EarlyUpdate(bool triggerSignal) override;
 
-    // シミュレーションを行う関数
-    int Sumilate() override;
+    // ギミックの内容を実行する関数
+    // ※GameObject::Update()のタイミングで呼ばれます
+    int Update(bool triggerSignal) override;
 
-    // 実行に移すかをCheckerの結果も踏まえたうえで判断する関数
-    int CheckExecute(bool checkerSignal) const override;
-
-    // シミュレートの結果を実行を行う関数
-    int Execute() override;
+    // ギミックの内容を実行する関数
+    // ※GameObject::LateUpdate()のタイミングで呼ばれます
+    int LateUpdate(bool triggerSignal) override;
 
     // シミュレーション内容を描画する関数
     // ※既に実行段階である場合は引数がtrueになります。実行段階では描画しない、あるいはその逆の場合はこの引数を使ってください。
-    int Draw(bool sumilating, bool executing) override;
+    int Draw(bool triggerSignal) override;
 
     // このライトのレイの角度を設定する関数
     virtual void SetLineAngleBox(uint32_t lineCount);

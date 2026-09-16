@@ -150,8 +150,8 @@
     <ClCompile Include="Source\E_Scene\BaseScene.cpp" />
     <ClCompile Include="Source\E_Scene\BaseSceneManager.cpp" />
     <ClCompile Include="Source\E_Scene\TestScene.cpp" />
-    <ClCompile Include="Source\F_PuzzleGimmick\ButtonGimmickChecker.cpp" />
-    <ClCompile Include="Source\F_PuzzleGimmick\LightGimmickSumilater.cpp" />
+    <ClCompile Include="Source\F_PuzzleGimmick\ButtonTrigger.cpp" />
+    <ClCompile Include="Source\F_PuzzleGimmick\LightExecutor.cpp" />
     <ClCompile Include="Source\G_LightArea\LightArea.cpp" />
     <ClCompile Include="Source\G_LightArea\LightAreaManager.cpp" />
     <ClCompile Include="Source\G_LightArea\LightLineNode.cpp" />
@@ -230,9 +230,12 @@
     <ClInclude Include="Source\E_Scene\BaseScene.h" />
     <ClInclude Include="Source\E_Scene\BaseSceneManager.h" />
     <ClInclude Include="Source\E_Scene\TestScene.h" />
-    <ClInclude Include="Source\F_PuzzleGimmick\ButtonGimmickChecker.h" />
-    <ClInclude Include="Source\F_PuzzleGimmick\LightGimmickSumilater.h" />
-    <ClInclude Include="Source\F_PuzzleGimmick\MoveGimmickSumilater.h" />
+    <ClInclude Include="Source\F_PuzzleGimmick\ButtonTrigger.h" />
+    <ClInclude Include="Source\F_PuzzleGimmick\FreeMoveExecutor.h" />
+    <ClInclude Include="Source\F_PuzzleGimmick\HoldTrigger.h" />
+    <ClInclude Include="Source\F_PuzzleGimmick\LightExecutor.h" />
+    <ClInclude Include="Source\F_PuzzleGimmick\RotateExecutor.h" />
+    <ClInclude Include="Source\F_PuzzleGimmick\RouteMoveExecutor.h" />
     <ClInclude Include="Source\F_PuzzleGimmick\PuzzleGimmickData.h" />
     <ClInclude Include="Source\G_LightArea\LightArea.h" />
     <ClInclude Include="Source\G_LightArea\LightAreaManager.h" />

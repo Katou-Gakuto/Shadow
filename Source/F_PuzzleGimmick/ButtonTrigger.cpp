@@ -1,16 +1,16 @@
-#include "ButtonGimmickChecker.h"
+#include "ButtonTrigger.h"
 
 #include "../C_Component/ButtonObjectController.h"
 
 // 
-ButtonSumilationChecker::ButtonSumilationChecker() :
+ButtonTrigger::ButtonTrigger() :
     mlFlagButtonBox(),
-    BaseGimmickChecker()
+    BaseGimmickTrigger()
 {
 }
 
 // 
-ButtonSumilationChecker::~ButtonSumilationChecker()
+ButtonTrigger::~ButtonTrigger()
 {
     // 
     for (auto &currentButton : this->mlFlagButtonBox)
@@ -24,7 +24,7 @@ ButtonSumilationChecker::~ButtonSumilationChecker()
 }
 
 // 
-bool ButtonSumilationChecker::GetSignalSumilate()
+bool ButtonTrigger::GetSignal()
 {
     // 
     for (auto currentButton : this->mlFlagButtonBox)
@@ -42,25 +42,7 @@ bool ButtonSumilationChecker::GetSignalSumilate()
 }
 
 // 
-bool ButtonSumilationChecker::GetSignalExecute()
-{
-    // 
-    for (auto currentButton : this->mlFlagButtonBox)
-    {
-        // 
-        if (!currentButton->CheckButtonSignal())
-        {
-            // 
-            return false;
-        }
-    }
-
-    // 
-    return true;
-}
-
-// 
-bool ButtonSumilationChecker::AddButton(ButtonObjectController *button)
+bool ButtonTrigger::AddButton(ButtonObjectController *button)
 {
     // 
     this->mlFlagButtonBox.push_back(button);

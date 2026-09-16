@@ -274,7 +274,7 @@
     <ClCompile Include="Source\C_Component\GimmickObjectController.cpp">
       <Filter>Source\C_Component</Filter>
     </ClCompile>
-    <ClCompile Include="Source\F_PuzzleGimmick\LightGimmickSumilater.cpp">
+    <ClCompile Include="Source\F_PuzzleGimmick\LightExecutor.cpp">
       <Filter>Source\F_PuzzleGimmick</Filter>
     </ClCompile>
     <ClCompile Include="Source\C_Component\ButtonObjectController.cpp">
@@ -289,7 +289,7 @@
     <ClCompile Include="Source\G_LightArea\LightAreaManager.cpp">
       <Filter>Source\G_LightArea</Filter>
     </ClCompile>
-    <ClCompile Include="Source\F_PuzzleGimmick\ButtonGimmickChecker.cpp">
+    <ClCompile Include="Source\F_PuzzleGimmick\ButtonTrigger.cpp">
       <Filter>Source\F_PuzzleGimmick</Filter>
     </ClCompile>
   </ItemGroup>
@@ -510,13 +510,13 @@
     <ClInclude Include="Source\Z_Except\Master.h">
       <Filter>Source\Z_Except</Filter>
     </ClInclude>
-    <ClInclude Include="Source\F_PuzzleGimmick\MoveGimmickSumilater.h">
+    <ClInclude Include="Source\F_PuzzleGimmick\RouteMoveExecutor.h">
       <Filter>Source\F_PuzzleGimmick</Filter>
     </ClInclude>
     <ClInclude Include="Source\F_PuzzleGimmick\PuzzleGimmickData.h">
       <Filter>Source\F_PuzzleGimmick</Filter>
     </ClInclude>
-    <ClInclude Include="Source\F_PuzzleGimmick\ButtonGimmickChecker.h">
+    <ClInclude Include="Source\F_PuzzleGimmick\ButtonTrigger.h">
       <Filter>Source\F_PuzzleGimmick</Filter>
     </ClInclude>
     <ClInclude Include="Source\追加物\DebugLogs\DebugLog.h">
@@ -576,7 +576,7 @@
     <ClInclude Include="Source\C_Component\WallObjectController.h">
       <Filter>Source\C_Component</Filter>
     </ClInclude>
-    <ClInclude Include="Source\F_PuzzleGimmick\LightGimmickSumilater.h">
+    <ClInclude Include="Source\F_PuzzleGimmick\LightExecutor.h">
       <Filter>Source\F_PuzzleGimmick</Filter>
     </ClInclude>
     <ClInclude Include="Source\G_LightArea\LightLineNode.h">
@@ -587,6 +587,15 @@
     </ClInclude>
     <ClInclude Include="Source\G_LightArea\LightAreaManager.h">
       <Filter>Source\G_LightArea</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\F_PuzzleGimmick\FreeMoveExecutor.h">
+      <Filter>Source\F_PuzzleGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\F_PuzzleGimmick\HoldTrigger.h">
+      <Filter>Source\F_PuzzleGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\F_PuzzleGimmick\RotateExecutor.h">
+      <Filter>Source\F_PuzzleGimmick</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

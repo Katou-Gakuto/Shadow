@@ -1,4 +1,4 @@
-#include "LightGimmickSumilater.h"
+#include "LightExecutor.h"
 
 #include "../A_GameObject/GameObject2D.h"
 
@@ -17,71 +17,81 @@
 #include "../Z_Except/Master.h"
 
 // コンストラクタ
-LightGimmickSumilater::LightGimmickSumilater() :
+LightExecutor::LightExecutor(PuzzleGimmickActiveParam param) :
     mfLength(0.0f),
     mfBaseAngle(0.0f),
     mfLightAngle(MyFunctions::GetAllRad()),
     mvStartPos(),
     mnAreaIndex(0),
     mbLightOn(true),
-    BaseGimmickSumilator()
+    BaseGimmickExecutor(param)
 {
 }
 
 // デストラクタ
-LightGimmickSumilater::~LightGimmickSumilater()
+LightExecutor::~LightExecutor()
 {
 }
 
-// シミュレーションを行うかをCheckerの結果も踏まえたうえで判断する関数
-bool LightGimmickSumilater::CheckSumilate(bool checkerSignal) const
+// ギミックの内容を実行する関数
+// ※GameObject::EarlyUpdate()のタイミングで呼ばれます
+int LightExecutor::EarlyUpdate(bool triggerSignal)
 {
     // 
-    if (this->mdActiveParam.GetSignalNot())
+    if (this->GetActiveParam().GetSignalNot())
     {
         // 
-        checkerSignal = !checkerSignal;
+        triggerSignal = !triggerSignal;
     }
 
     // 
-    return checkerSignal;
-}
-
-// シミュレーションを行う関数
-int LightGimmickSumilater::Sumilate()
-{
-    // 
-    this->mbLightOn = true;
-    
-    // 
-    this->CalculateLineEndPos(this->mvStartPos);
+    if (!triggerSignal)
+    {
+        // 
+        return 0;
+    }
 
     // 
     return 0;
 }
 
-// 実行に移すかをCheckerの結果も踏まえたうえで判断する関数
-int LightGimmickSumilater::CheckExecute(bool checkerSignal) const
+// ギミックの内容を実行する関数
+// ※GameObject::Update()のタイミングで呼ばれます
+int LightExecutor::Update(bool triggerSignal)
 {
     // 
-    if (this->mdActiveParam.GetSignalNot())
+    if (this->GetActiveParam().GetSignalNot())
     {
         // 
-        checkerSignal = !checkerSignal;
+        triggerSignal = !triggerSignal;
     }
 
     // 
-    return checkerSignal;
+    this->mbLightOn = triggerSignal;
+
+    // 
+    return 0;
 }
 
-// シミュレートの結果を実行を行う関数
-int LightGimmickSumilater::Execute()
+// ギミックの内容を実行する関数
+// ※GameObject::LateUpdate()のタイミングで呼ばれます
+int LightExecutor::LateUpdate(bool triggerSignal)
 {
+    // 
+    if (this->GetActiveParam().GetSignalNot())
+    {
+        // 
+        triggerSignal = !triggerSignal;
+    }
+
     // 
     if (this->mbLightOn)
     {
         // 
         this->GetMyLightArea()->OnLight();
+
+        // 
+        this->CalculateLineEndPos(this->mvStartPos);
     }
     else
     {
@@ -95,20 +105,20 @@ int LightGimmickSumilater::Execute()
 
 // シミュレーション内容を描画する関数
 // ※既に実行段階である場合は引数がtrueになります。実行段階では描画しない、あるいはその逆の場合はこの引数を使ってください。
-int LightGimmickSumilater::Draw(bool sumilating, bool executing)
+int LightExecutor::Draw(bool triggerSignal)
 {
     // 光域のシミュレーターは描画はしません
 }
 
 // このライトのレイの角度を設定する関数
-void LightGimmickSumilater::SetLineAngleBox(uint32_t lineCount)
+void LightExecutor::SetLineAngleBox(uint32_t lineCount)
 {
     // 
     this->SetLineAngleBox_In(lineCount, this->mfLightAngle);
 }
 
 // このライトの光域を計算する関数
-bool LightGimmickSumilater::CalculateLineEndPos(const VECTOR2D &startPos)
+bool LightExecutor::CalculateLineEndPos(const VECTOR2D &startPos)
 {
     // 
     std::vector<BaseCollision2D *> objectCollisionBox;
@@ -151,60 +161,60 @@ bool LightGimmickSumilater::CalculateLineEndPos(const VECTOR2D &startPos)
 }
 
 // このライトのレイの終点座標の配列を取得する関数
-VECTOR2D *LightGimmickSumilater::GetLineEndPosBox()
+VECTOR2D *LightExecutor::GetLineEndPosBox()
 {
     // 
     return this->GetMyLightArea()->GetLineEndPosBox();
 }
 
 // このライトのレイの本数を取得する関数
-uint32_t LightGimmickSumilater::GetLightLineCount() const
+uint32_t LightExecutor::GetLightLineCount() const
 {
     // 
     return this->GetMyLightArea()->GetLightLineCount();
 }
 
 // このライトの長さを取得する関数
-float LightGimmickSumilater::GetLength() const
+float LightExecutor::GetLength() const
 {
     // 
     return this->mfLength;
 }
 
 // このライトのレイの本数を設定する関数
-void LightGimmickSumilater::SetLightLineCount(uint32_t count)
+void LightExecutor::SetLightLineCount(uint32_t count)
 {
     // 
     this->GetMyLightArea()->SetLightLineCount(count);
 }
 
 // このライトの長さを設定する関数
-void LightGimmickSumilater::SetLength(float length)
+void LightExecutor::SetLength(float length)
 {
     this->mfLength = length;
 }
 
 // このライトの視点を設定する関数
-void LightGimmickSumilater::SetStartPos(const VECTOR2D &pos)
+void LightExecutor::SetStartPos(const VECTOR2D &pos)
 {
     this->mvStartPos = pos;
 }
 
 // このライトの全体の角度を設定する関数
-void LightGimmickSumilater::SetLightAngle(float radian)
+void LightExecutor::SetLightAngle(float radian)
 {
     this->mfLightAngle = radian;
 }
 
 // このライトのレイの角度を設定する関数
-void LightGimmickSumilater::SetLineAngleBox_In(uint32_t lineCount, float maxAngle)
+void LightExecutor::SetLineAngleBox_In(uint32_t lineCount, float maxAngle)
 {
     // 
     this->GetMyLightArea()->SetLightLineAngleBox(lineCount, maxAngle);
 }
 
 // 
-LightArea *LightGimmickSumilater::GetMyLightArea() const
+LightArea *LightExecutor::GetMyLightArea() const
 {
     // 
     return Master::mpLightManager->SearchArea(this->mnAreaIndex);
