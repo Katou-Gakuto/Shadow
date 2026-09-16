@@ -3,7 +3,7 @@
 #include "Master.h"
 
 Player::Player(GameObject* myObject, int playerNumber)
-: BaseComponent(myObject, ComponentTagAndOrder::CTAO_CharacterLife)
+: BaseComponent(myObject, ComponentTagAndOrder::CTAO_PlayerController)
 , PlayerNum(playerNumber)
 {
 }
@@ -52,6 +52,26 @@ int Player::EarlyUpdate()
 	{
         moveVec.SetX(4);
 	}
+
+	//ボタン
+	if (Master::mpKeyState->GetShadowGameKey(KEY_SHADOW_GAME_TYPE::A, PlayerNum - 1)/*(CONTROLLER_KEY_TYPE::UP, CONTROLLER_KEY_NUMBER::CONTROLLER_1)*/)
+	{
+		// この中にAを押したときの処理を追加する
+	}
+	if (Master::mpKeyState->GetShadowGameKey(KEY_SHADOW_GAME_TYPE::B, PlayerNum - 1)/*(CONTROLLER_KEY_TYPE::DOWN, CONTROLLER_KEY_NUMBER::CONTROLLER_1)*/)
+	{
+		// この中にBを押したときの処理を処理を追加する
+	}
+	if (Master::mpKeyState->GetShadowGameKey(KEY_SHADOW_GAME_TYPE::X, PlayerNum - 1)/*(CONTROLLER_KEY_TYPE::LEFT, CONTROLLER_KEY_NUMBER::CONTROLLER_1)*/)
+	{
+		// この中にXを押したときの処理を処理を追加する
+	}
+	if (Master::mpKeyState->GetShadowGameKey(KEY_SHADOW_GAME_TYPE::Y, PlayerNum - 1)/*(CONTROLLER_KEY_TYPE::RIGHT, CONTROLLER_KEY_NUMBER::CONTROLLER_1)*/)
+	{
+		// この中にYを押したときの処理を処理を追加する
+	}
+
+
     return 0;
 }
 
@@ -85,11 +105,10 @@ int Player::LateUpdate()
 
 int Player::Draw()
 {
-    GameObject2D* player = GetMyObject2D();
-    DrawBox(player->GetPosition().GetX(), player->GetPosition().GetY(), player->GetPosition().GetX() + 30, player->GetPosition().GetY() + 60, 0x0000FF, true);
-    if (PlayerNum == 0)
-    {
-        DrawBox(player->GetPosition().GetX(), player->GetPosition().GetY(), player->GetPosition().GetX() + 30, player->GetPosition().GetY() + 60, GetColor(255, 0, 0), true);
-    }
+    GameObject2D *player = GetMyObject2D();
+	if (PlayerNum == 1)// プレイヤー1の場合は赤色で描画
+        DrawBox(player->GetPosition().GetX(), player->GetPosition().GetY(), player->GetPosition().GetX() + 30, player->GetPosition().GetY() + 60, 0xFF0000, true);
+	else// プレイヤー2の場合は青色で描画
+        DrawBox(player->GetPosition().GetX(), player->GetPosition().GetY(), player->GetPosition().GetX() + 30, player->GetPosition().GetY() + 60, 0x0000FF, true);
     return 0;
 }

@@ -42,6 +42,7 @@ private:
 	*/
 	BIT_FLAG<unsigned long> mulShadowGameFlags[static_cast<int>(FLAG_TYPE::MAX)][KEY_PLAYER_NUMBER::PLAYER_NUMBER_MAX];
 
+
 	/// <summary>
 	/// シャドウゲームで使用するキーを設定
 	/// </summary>

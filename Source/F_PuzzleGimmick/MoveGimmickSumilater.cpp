@@ -28,14 +28,3 @@ int MoveGimmickData::Add(const MoveGimmickKeyFrame keyFrame)
 void MoveGimmickData::Update(bool nowOn)
 {
 }
-
-// フレームに合わせた座標を取得する関数
-VECTOR2D MoveGimmickData::GetMovedPos(uint32_t frameCount)
-{
-}
-
-
-// フレームに合わせた回転量を取得する関数
-float MoveGimmickData::GetRotatedParam(uint32_t frameCount)
-{
-}

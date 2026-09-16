@@ -26,7 +26,7 @@ class GimmickObjectController : public BaseComponent
 public:
     /// TODO: これ中身簡易的に作成したから本来の用途とちがうと思う
     // 
-    GimmickObjectController() :BaseComponent(nullptr, ComponentTagAndOrder::CTAO_CharacterLife){}
+    GimmickObjectController() :BaseComponent(nullptr, ComponentTagAndOrder::CTAO_PlayerController){}
 
     //
     ~GimmickObjectController() {}
