@@ -50,7 +50,7 @@ int MirrorObjectController::Create()
         collision = new Ray2D(VECTOR2D(), VECTOR2D(), obj, setTag, false, false, 0.0f);
 
         // 
-        if (obj->AddCollision(collision, 0) != 0)
+        if (obj->AddCollision(collision, this->mdHandle[i]) != 0)
         {
             // 
             return -1;
@@ -91,7 +91,7 @@ int MirrorObjectController::Initialize()
     for (unsigned char i = 0; i < 4; i++)
     {
         // 
-        Ray2D *currentRay = static_cast<Ray2D *>(list->SearchCollisionNum(i));
+        Ray2D *currentRay = static_cast<Ray2D *>(list->SearchCollision(this->mdHandle[i]));
 
         // 
         if (currentRay == nullptr)

@@ -103,8 +103,8 @@ public:
     virtual int Draw(const Material2D &color);
     virtual int SetPosToMoveVec();
 
-    virtual int SetMoveVec(void *moveData) = 0;
-    virtual int SetNextPos(void *posData) = 0;
+    virtual int SetMoveVec(const void *moveData) = 0;
+    virtual int SetNextPos(const void *posData) = 0;
     virtual int WorldConnectMySelf() = 0;
     virtual int WorldIsolateMySelf() = 0;
 

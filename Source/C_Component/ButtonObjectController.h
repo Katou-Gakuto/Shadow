@@ -60,6 +60,9 @@ private:
     VECTOR2D mvRightDown;
 
     // 
+    CollisionHandle mbBody;
+
+    // 
     void CheckLightSide();
 
 };

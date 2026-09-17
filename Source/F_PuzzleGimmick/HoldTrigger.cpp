@@ -21,6 +21,13 @@ HoldTrigger::~HoldTrigger()
 // ※GameObject::Update()のタイミングで呼ばれ、自身と紐づけられてるExecutor::Update()の直前で呼ばれます
 bool HoldTrigger::GetSignal()
 {
-    // 光のプレイヤー
+    // 
+    if (this->mpMyHold == nullptr)
+    {
+        // 
+        return false;
+    }
+
+    // 掴まれているかを確認し、それをそのまま返す
     return this->mpMyHold->CheckHold();
 }

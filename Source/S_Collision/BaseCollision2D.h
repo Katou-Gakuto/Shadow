@@ -28,8 +28,8 @@ public:
     virtual int Draw(const Material2D &color) override;
     virtual int SetPosToMoveVec() override;
 
-    int SetMoveVec(void *moveData) override;
-    int SetNextPos(void *posData) override;
+    int SetMoveVec(const void *moveData) override;
+    int SetNextPos(const void *posData) override;
     virtual int SlideMove(const CollisionCheckResult2D &result, float moveLate) = 0;
 
     int WorldConnectMySelf() override;

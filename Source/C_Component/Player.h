@@ -2,6 +2,8 @@
 #include "KeyState.h"
 #include "BaseComponent.h"
 
+#include "../S_Collision/CollisionHandle.h"
+
 #include "VECTOR.h"
 
 class HoldObjectController;
@@ -9,7 +11,6 @@ class HoldObjectController;
 class Player : public BaseComponent
 {
 public:
-    KeyState keystate;
 
     Player(GameObject* myObject, int playerNumber);
     ~Player();
@@ -23,14 +24,17 @@ public:
     int LateUpdate() override;
     int Draw() override;
 
-    // 
-    int HoldObject(BaseCollision *hitCollision);
+    // HitOnCollision()が呼ばれたら行う関数で、オブジェクトが掴める際に掴む関数
+    int Hold(BaseCollision *hitCollision);
 
-    // 
+    // オブジェクトをつかんでいる状態でHitOnCollision()が呼ばれたら行う関数
     int HoldMove();
 
     // 
     bool CheckHoldObject(const HoldObjectController *hold) const;
+
+    // 
+    bool SyncPlayerMoveVec(const VECTOR2D &vec);
 
 private:
 
@@ -41,6 +45,12 @@ private:
 
     // 自身がつかんでいるオブジェクト
     HoldObjectController *mpHold;
+
+    // このプレイヤーの当たり判定
+    CollisionHandle mdBodyCollision;
+
+    // 
+    bool mbHoldFlag;
 
     // 
     bool CheckHoldNow() const;

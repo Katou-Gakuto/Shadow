@@ -307,6 +307,9 @@
     <ClCompile Include="Source\C_Component\HoldObjectController.cpp">
       <Filter>Source\C_Component</Filter>
     </ClCompile>
+    <ClCompile Include="Source\S_Collision\CollisionHandle.cpp">
+      <Filter>Source\S_Collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\A_GameObject\GameObject.h">
@@ -590,6 +593,9 @@
     </ClInclude>
     <ClInclude Include="Source\C_Component\HoldObjectController.h">
       <Filter>Source\C_Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\S_Collision\CollisionHandle.h">
+      <Filter>Source\S_Collision</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

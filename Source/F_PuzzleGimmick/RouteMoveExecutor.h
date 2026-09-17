@@ -28,54 +28,64 @@ struct RouteKeyFrame
 };
 
 // 0フレーム時点の情報も記録しておいてください
+// また、LoopをONにする場合は0フレーム目と同じ座標まで戻るように設定してください
+// (反復を繰り返すのか、一周を繰り返すのか設定するのはKeyFrame側)
+// ※RouteOffMode_StopはloopがONの時以外許されないので気を付けてください
 class RouteData
 {
 public:
+    // デフォルトコンストラクタは削除
+    RouteData() = delete;
+
     // コンストラクタ
-    RouteData();
+    RouteData(RouteOffMode offMode, bool loop);
+
+    // コピーコンストラクタ
+    RouteData(const RouteData &src);
 
     // デストラクタ
     ~RouteData();
 
-    // 初期化を行う関数
-    int Initialize(RouteOffMode offMode, bool loop, bool startOn);
-
     // キーフレームを登録する関数
     int Add(const RouteKeyFrame keyFrame);
-
-    // 現在の状態を更新する関数
-    void Update(bool nowOn);
 
     // フレームに合わせた座標を取得する関数
     VECTOR2D GetMovedPos(uint32_t frameCount) const;
 
-    // フレームに合わせた回転量を取得する関数
-    float GetRotatedParam(uint32_t frameCount) const;
+    // ループを行うのか
+    bool GetLoopFlag();
 
-    // 代入演算子(コピー)
-    RouteData operator =(const RouteData &right);
+    // OFF時の挙動を取得する関数
+    RouteOffMode GetOffMode() const;
+
+    // OFFになった際に最後まで行くのか
+    bool GetReturnFlag();
+
+    // この移動ルートの最後のフレーム(LoopがOnなら時計でいうなら0:00で、0フレームと同じ扱いができそうなところ)
+    uint32_t GetFinalFrame() const;
 
 private:
     // 登録されたキーフレームを記憶する動的配列
     // キーフレームからキーフレームまではLeapで補間
+    // 最初に動いた際に処理に使用するフレーム数は1です
     std::vector<RouteKeyFrame> mlKeyFramesBox;
 
     // OFFの状態でどのような移動を行うのかの設定
     RouteOffMode mnOffMode;
 
-    // ON時に最後のキーフレームまで到達した場合、移動の逆再生を行うかどうか
-    bool mbOnLoop;
-
-    // 現在ON状態なのか
-    bool mdNowOn;
+    // ON時に最後のキーフレームまで到達した場合、そのまま0フレームから再生を行うかどうか
+    bool mbLoop;
 };
+
+// 
+class GameObject2D;
 
 // 
 class RouteMoveExecutor : public BaseGimmickExecutor
 {
 public:
     // コンストラクタ
-    RouteMoveExecutor(PuzzleGimmickActiveParam param);
+    RouteMoveExecutor(PuzzleGimmickActiveParam param, GameObject2D *myObject, const RouteData &routeData);
 
     // デストラクタ
     ~RouteMoveExecutor() override;
@@ -97,15 +107,6 @@ public:
     int Draw(bool triggerSignal) override;
 
     // 
-    bool SetMoveData(const RouteData &data);
-
-    // 
-    float GetRotate() const;
-
-    // 
-    const VECTOR2D &GetPos() const;
-
-    // 
     void SetFrameCount(uint32_t frameCount);
 
 private:
@@ -116,8 +117,5 @@ private:
     uint32_t mnFrameCount;
 
     // 
-    float mfRotate;
-
-    // 
-    VECTOR2D mvPos;
+    GameObject2D *mpMyObject;
 };

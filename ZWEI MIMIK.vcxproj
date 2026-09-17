@@ -171,6 +171,7 @@
     <ClCompile Include="Source\S_Collision\Capsule3D.cpp" />
     <ClCompile Include="Source\S_Collision\Circle2D.cpp" />
     <ClCompile Include="Source\S_Collision\CollisionCheckResult.cpp" />
+    <ClCompile Include="Source\S_Collision\CollisionHandle.cpp" />
     <ClCompile Include="Source\S_Collision\Cube3D.cpp" />
     <ClCompile Include="Source\S_Collision\Point2D.cpp" />
     <ClCompile Include="Source\S_Collision\Point3D.cpp" />
@@ -258,6 +259,7 @@
     <ClInclude Include="Source\S_Collision\Capsule3D.h" />
     <ClInclude Include="Source\S_Collision\Circle2D.h" />
     <ClInclude Include="Source\S_Collision\CollisionCheckResult.h" />
+    <ClInclude Include="Source\S_Collision\CollisionHandle.h" />
     <ClInclude Include="Source\S_Collision\Cube3D.h" />
     <ClInclude Include="Source\S_Collision\Point2D.h" />
     <ClInclude Include="Source\S_Collision\Point3D.h" />

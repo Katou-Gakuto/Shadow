@@ -8,17 +8,17 @@
 
 #include "../Z_Except/Master.h"
 
-
 BaseCollisionList::BaseCollisionList() : 
     mpFirstBaseCollision(nullptr),
-    mpGameObject(nullptr)
+    mpGameObject(nullptr),
+    mnNextNumber(0)
 {
-
 }
 
 BaseCollisionList::BaseCollisionList(GameObject *object) :
     mpFirstBaseCollision(nullptr),
-    mpGameObject(object)
+    mpGameObject(object),
+    mnNextNumber(0)
 {
 
 }
@@ -28,7 +28,7 @@ BaseCollisionList::~BaseCollisionList()
     this->DeleteAll();
 }
 
-int BaseCollisionList::SetCollisionMoveVec(CollisionDimension dimension, void *moveData)
+int BaseCollisionList::SetCollisionMoveVec(CollisionDimension dimension, const void *moveData)
 {
     BaseCollision *current = this->mpFirstBaseCollision;
     while (current != nullptr)
@@ -43,14 +43,14 @@ int BaseCollisionList::SetCollisionMoveVec(CollisionDimension dimension, void *m
     return 0;
 }
 
-int BaseCollisionList::SetCollisionNextPos(CollisionDimension dimension, void *posData)
+int BaseCollisionList::SetCollisionNextPos(CollisionDimension dimension, const void *posData)
 {
     BaseCollision *current = this->mpFirstBaseCollision;
     while (current != nullptr)
     {
         if (current->GetCollisionDimension() == dimension)
         {
-            current->SetMoveVec(posData);
+            current->SetNextPos(posData);
         }
         current = current->GetNextList();
     }
@@ -102,13 +102,16 @@ int BaseCollisionList::ListCollisionDeactivate()
     return 0;
 }
 
-int BaseCollisionList::Add(BaseCollision *target, unsigned long listNum)
+int BaseCollisionList::Add(BaseCollision *target, CollisionHandle &out)
 {
     // ‚»‚à‚»‚àtarget‚ªnull‚Ìê‡
     if (target == nullptr)
     {
         return -1;
     }
+
+    // 
+    unsigned long long *handlePtr = reinterpret_cast<unsigned long long *>(&out);
 
     // mpActionFirst‚·‚ç‚È‚¢ê‡
     if (mpFirstBaseCollision == nullptr)
@@ -117,7 +120,13 @@ int BaseCollisionList::Add(BaseCollision *target, unsigned long listNum)
         mpFirstBaseCollision = target;
         
         // ”Ô†‚ğİ’è‚·‚é
-        target->SetListNum(listNum);
+        target->SetListNum(this->mnNextNumber);
+
+        // 
+        *handlePtr = this->mnNextNumber;
+
+        // 
+        this->mnNextNumber++;
 
         // ãè‚­‚¢‚Á‚½‚±‚Æ‚ğ•Ô‚·
         return 0;
@@ -127,12 +136,6 @@ int BaseCollisionList::Add(BaseCollision *target, unsigned long listNum)
     BaseCollision *current = mpFirstBaseCollision;
     while (current->GetNextList() != nullptr)
     {
-        // ’…–Ú’†‚Ì“–‚½‚è”»’è‚ª“¯‚¶”Ô†‚ğ‚Á‚Ä‚¢‚½‚çŠÖ”‚ğ‚»‚Ì“_‚ÅI—¹‚µfalse‚ğ•Ô‚·
-        if (current->GetListNum() == listNum)
-        {
-            return 1;
-        }
-
         // ’…–Ú“–‚½‚è”»’è‚ğŸ‚Éi‚ß‚é
         current = current->GetNextList();
     }
@@ -141,7 +144,13 @@ int BaseCollisionList::Add(BaseCollision *target, unsigned long listNum)
     BaseCollisionList::ConnectTarget(current, target, nullptr);
 
     // ”Ô†‚ğİ’è‚·‚é
-    target->SetListNum(listNum);
+    target->SetListNum(this->mnNextNumber);
+
+    // 
+    *handlePtr = this->mnNextNumber;
+
+    // 
+    this->mnNextNumber++;
 
     // ãè‚­‚¢‚Á‚½‚±‚Æ‚ğ•Ô‚·
     return 0;
@@ -284,7 +293,7 @@ int BaseCollisionList::IsolateTarget(BaseCollision *target)
     return 0;
 }
 
-BaseCollision *BaseCollisionList::SearchCollisionNum(unsigned long collisionNum)
+BaseCollision *BaseCollisionList::SearchCollision(const CollisionHandle &handle)
 {
     BaseCollision *temp = nullptr;
 
@@ -293,10 +302,13 @@ BaseCollision *BaseCollisionList::SearchCollisionNum(unsigned long collisionNum)
         return temp;
     }
 
+    // 
+    auto number = this->Handle2NumberPtr(handle);
+
     BaseCollision *current = mpFirstBaseCollision;
     while (current != nullptr)
     {
-        if (current->GetListNum() == collisionNum)
+        if (current->GetListNum() == *number)
         {
             temp = current;
             break;
@@ -306,4 +318,20 @@ BaseCollision *BaseCollisionList::SearchCollisionNum(unsigned long collisionNum)
     }
 
     return temp;
+}
+
+// 
+unsigned long long *BaseCollisionList::Handle2NumberPtr(CollisionHandle &handle)
+{
+    // 
+    return reinterpret_cast<unsigned long long *>(&handle);
+
+}
+
+// 
+const unsigned long long *BaseCollisionList::Handle2NumberPtr(const CollisionHandle &handle)
+{
+    // 
+    return reinterpret_cast<const unsigned long long *>(&handle);
+
 }

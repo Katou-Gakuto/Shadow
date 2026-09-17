@@ -36,7 +36,7 @@ int BaseCollision2D::SetPosToMoveVec()
     return 0;
 }
 
-int BaseCollision2D::SetMoveVec(void *moveData)
+int BaseCollision2D::SetMoveVec(const void *moveData)
 {
     if (moveData != nullptr)
     {
@@ -46,7 +46,7 @@ int BaseCollision2D::SetMoveVec(void *moveData)
     return 0;
 }
 
-int BaseCollision2D::SetNextPos(void *posData)
+int BaseCollision2D::SetNextPos(const void *posData)
 {
     if (posData != nullptr)
     {

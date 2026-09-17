@@ -26,4 +26,5 @@ protected:
     VECTOR2D mvRightDownInit;
     VECTOR2D mvLeftUp;
     VECTOR2D mvRightDown;
+    CollisionHandle mdBody;
 };

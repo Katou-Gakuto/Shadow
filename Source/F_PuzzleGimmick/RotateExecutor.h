@@ -28,6 +28,15 @@ public:
     // ※既に実行段階である場合は引数がtrueになります。実行段階では描画しない、あるいはその逆の場合はこの引数を使ってください。
     int Draw(bool triggerSignal) override;
 
+    // 
+    float GetNowRotate() const;
+
+    // 
+    void SetNowRotate(float radian);
+
+    // 
+    void AddNowRotate(float radian);
+
 private:
     // 
     float mfNowRotate;

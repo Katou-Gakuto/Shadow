@@ -36,7 +36,7 @@ int BaseCollision3D::SetPosToMoveVec()
     return 0;
 }
 
-int BaseCollision3D::SetMoveVec(void *moveData)
+int BaseCollision3D::SetMoveVec(const void *moveData)
 {
     if (moveData != nullptr)
     {
@@ -46,7 +46,7 @@ int BaseCollision3D::SetMoveVec(void *moveData)
     return 0;
 }
 
-int BaseCollision3D::SetNextPos(void *posData)
+int BaseCollision3D::SetNextPos(const void *posData)
 {
     if (posData != nullptr)
     {

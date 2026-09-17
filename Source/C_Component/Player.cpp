@@ -2,15 +2,21 @@
 #include "GameObject2D.h"
 #include "Master.h"
 
+#include "../C_Component/BaseComponentList.h"
+#include "../C_Component/HoldObjectController.h"
+
 #include "../E_Scene/BaseScene.h"
 #include "../E_Scene/BaseSceneManager.h"
 
 #include "../S_Collision/BaseCollision.h"
+#include "../S_Collision/BaseCollisionList.h"
 #include "../S_Collision/Circle2D.h"
 
 Player::Player(GameObject* myObject, int playerNumber)
 : BaseComponent(myObject, ComponentTagAndOrder::CTAO_PlayerController)
+, mdBodyCollision()
 , PlayerNum(playerNumber)
+, mpHold(nullptr)
 {
 }
 
@@ -40,7 +46,7 @@ int Player::Create()
         1.0f);
 
     // 
-    obj->AddCollision(body, 0);
+    obj->AddCollision(body, this->mdBodyCollision);
 
     // 
     return 0;
@@ -115,18 +121,20 @@ int Player::Update()
 
 int Player::HitOnCollision(BaseCollision *myCollision, BaseCollision *hitCollision)
 {
-    // 自身の攻撃の当たり判定が相手の体の当たり判定にあたっている場合は処理を行う
-    if (myCollision->GetMyObject() != hitCollision->GetMyObject() && 
+    // 自身の体の当たり判定と当たっている場合は処理を行う
+    if (myCollision->GetMyObject() != hitCollision->GetMyObject() &&
         myCollision->GetCollisionTag() == CollisionTag::CollisionTag_CharaBody)
     {
         // 当たったオブジェクトが普通のオブジェクト、ライト、鏡のいずれかの場合は処理を行う
-        if (hitCollision->GetCollisionTag() == CollisionTag::CollisionTag_Wall ||
-            hitCollision->GetCollisionTag() == CollisionTag::CollisionTag_LightBody ||
-            hitCollision->GetCollisionTag() == CollisionTag::CollisionTag_Mirror)
-        {
-            // 
-            HoldObject(hitCollision);
-        }
+        Hold(hitCollision);
+
+    }
+
+    // 
+    if (this->CheckHoldNow())
+    {
+        //
+        HoldMove();
     }
 
     // 
@@ -151,7 +159,7 @@ int Player::Draw()
 }
 
 // 
-int Player::HoldObject(BaseCollision *hitCollision)
+int Player::Hold(BaseCollision *hitCollision)
 {
     // @Debug
     // アクションボタン
@@ -179,20 +187,49 @@ int Player::HoldObject(BaseCollision *hitCollision)
     }
 
     // 
-    BaseScene *nowScene = Master::mpBaseSceneManager->SearchSceneNow();
+    GameObject2D *hitObject = hitCollision->GetMyObject2D();
+    if (hitObject == nullptr)
+    {
+        // 
+        return 0;
+    }
 
     // 
-    nowScene->GetBaseCollision2DManager();
+    BaseComponentList *compList = hitObject->GetBaseComponentList();
+    if (compList == nullptr)
+    {
+        // 
+        return 0;
+    }
 
     // 
-    hitCollision;
+    auto conponentBox = compList->SearchComponent(ComponentTagAndOrder::CTAO_HoldController);
+    if (conponentBox.empty() ||
+        conponentBox[0] == nullptr)
+    {
+        // 
+        return 0;
+    }
+
+    // 
+    mbHoldFlag = true;
+
+    // 
+    this->mpHold = static_cast<HoldObjectController *>(conponentBox[0]);
+
+    // 
+    return 0;
 }
 
 // 
 int Player::HoldMove()
 {
     // 
-
+    if (this->mpHold != nullptr)
+    {
+        // 現状のMoveVecを更新する
+        this->mpHold->SyncHoldMoveVec(this->GetMyObject2D()->GetMoveVec2D());
+    }
 
     // 
     return 0;
@@ -203,6 +240,27 @@ bool Player::CheckHoldObject(const HoldObjectController *hold) const
 {
     // 
     return this->mpHold == hold;
+}
+
+// 
+bool Player::SyncPlayerMoveVec(const VECTOR2D &holdMoveVec)
+{
+    // 
+    this->GetMyObject2D()->SetMoveVec(holdMoveVec);
+
+    // 
+    BaseCollisionList *list = this->GetMyObject2D()->GetBaseCollisionList();
+    if (list == nullptr)
+    {
+        // 
+        return 0;
+    }
+
+    // 
+    list->SetCollisionMoveVec(CollisionDimension::CollisionDimension_2D, &holdMoveVec);
+
+    // 
+    return true;
 }
 
 // 

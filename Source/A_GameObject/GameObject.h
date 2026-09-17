@@ -16,6 +16,7 @@ class BaseModel;
 class BaseModelList;
 class BaseCollision;
 class BaseCollisionList;
+class CollisionHandle;
 class MonoBehavior;
 class BehaviorNode;
 class BehaviorTree;
@@ -110,7 +111,7 @@ public:
     BaseComponentList *GetBaseComponentList()const;
 
     int AddModel(BaseModel *model, unsigned long number);
-    int AddCollision(BaseCollision *collision, unsigned long number);
+    int AddCollision(BaseCollision *collision, CollisionHandle &out);
     int AddBehaviorNode(BehaviorNode *node, unsigned long number);
     int AddMonoBehavior(MonoBehavior *mono, const BehaviorAccessData &accessData);
     int AddComponent(BaseComponent *component);

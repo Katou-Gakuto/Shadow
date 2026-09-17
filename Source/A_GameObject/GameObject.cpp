@@ -526,14 +526,14 @@ int GameObject::AddModel(BaseModel *model, unsigned long number)
     return this->mpModelList->Add(model, number);
 }
 
-int GameObject::AddCollision(BaseCollision *collision, unsigned long number)
+int GameObject::AddCollision(BaseCollision *collision, CollisionHandle &out)
 {
     if (collision == nullptr ||
         this->mpBaseCollisionList == nullptr)
     {
         return -1;
     }
-    return this->mpBaseCollisionList->Add(collision, number);
+    return this->mpBaseCollisionList->Add(collision, out);
 }
 
 int GameObject::AddBehaviorNode(BehaviorNode *node, unsigned long number)

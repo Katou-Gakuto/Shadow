@@ -2,6 +2,8 @@
 
 #include "../A_GameObject/GameObject2D.h"
 
+#include "../S_Collision/BaseCollisionList.h"
+
 // 
 FreeMoveExecutor::FreeMoveExecutor(PuzzleGimmickActiveParam param, GameObject2D *myObject) :
     mvMoveVec(),
@@ -28,6 +30,27 @@ int FreeMoveExecutor::EarlyUpdate(bool triggerSignal)
 int FreeMoveExecutor::Update(bool triggerSignal)
 {
     // 
+    if (this->mpMyObject == nullptr)
+    {
+        // 
+        return -1;
+    }
+
+    // 
+    BaseCollisionList *list = this->mpMyObject->GetBaseCollisionList();
+    if (list == nullptr)
+    {
+        // 
+        return -1;
+    }
+    
+    // 
+    this->mpMyObject->SetMoveVec(this->mvMoveVec);
+
+    // 
+    list->SetCollisionMoveVec(CollisionDimension::CollisionDimension_2D, &this->mvMoveVec);
+
+    // 
     return 0;
 }
 
@@ -49,10 +72,6 @@ int FreeMoveExecutor::LateUpdate(bool triggerSignal)
     }
 
     // 
-    this->mpMyObject;
-    this->mvMoveVec;
-
-    // 
     return 0;
 }
 
@@ -62,4 +81,11 @@ int FreeMoveExecutor::Draw(bool triggerSignal)
 {
     // 
     return 0;
+}
+
+// 
+void FreeMoveExecutor::SetMoveVec(const VECTOR2D &vec)
+{
+    // 
+    this->mvMoveVec = vec;
 }

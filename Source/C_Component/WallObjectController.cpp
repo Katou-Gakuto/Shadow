@@ -49,7 +49,7 @@ int WallObjectController::Create()
         0.0f);
 
     // 
-    if (obj->AddCollision(collision, 0) != 0)
+    if (obj->AddCollision(collision, this->mdBody) != 0)
     {
         // 
         return -1;
@@ -90,7 +90,7 @@ int WallObjectController::Initialize()
     BaseCollisionList *list = obj->GetBaseCollisionList();
 
     // 
-    collision = static_cast<Quadrangle2D *>(list->SearchCollisionNum(0));
+    collision = static_cast<Quadrangle2D *>(list->SearchCollision(this->mdBody));
 
     // 
     collision->SetShapeParameter(tempPos[0], tempPos[1], tempPos[2], tempPos[3]);

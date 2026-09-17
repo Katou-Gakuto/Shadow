@@ -60,7 +60,7 @@ int ButtonObjectController::Create()
         0.0f);
 
     // 
-    obj->AddCollision(collision, 0);
+    obj->AddCollision(collision, this->mbBody);
 
     // 
     return 0;
@@ -93,7 +93,7 @@ int ButtonObjectController::Initialize()
     tempPosBox[3] = this->mvRightDown;
 
     // 
-    Quadrangle2D *collision = static_cast<Quadrangle2D *>(list->SearchCollisionNum(0));
+    Quadrangle2D *collision = static_cast<Quadrangle2D *>(list->SearchCollision(this->mbBody));
 
     // 
     collision->SetShapeParameter(tempPosBox[0], tempPosBox[1], tempPosBox[2], tempPosBox[3]);
@@ -136,7 +136,7 @@ int ButtonObjectController::Update()
     }
 
     // 
-    Quadrangle2D *collision = static_cast<Quadrangle2D *>(list->SearchCollisionNum(0));
+    Quadrangle2D *collision = static_cast<Quadrangle2D *>(list->SearchCollision(this->mbBody));
     if (collision == nullptr)
     {
         // 
@@ -211,7 +211,7 @@ bool ButtonObjectController::CheckOnPlayer() const
     }
 
     // 
-    Quadrangle2D *collision = static_cast<Quadrangle2D *>(list->SearchCollisionNum(0));
+    Quadrangle2D *collision = static_cast<Quadrangle2D *>(list->SearchCollision(this->mbBody));
     if (collision == nullptr)
     {
         // 

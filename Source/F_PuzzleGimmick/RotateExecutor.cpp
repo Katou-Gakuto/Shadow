@@ -1,5 +1,7 @@
 #include "RotateExecutor.h"
 
+#include "../Y_Tool/MyFunctions.h"
+
 // 
 RotateExecutor::RotateExecutor(PuzzleGimmickActiveParam param) :
     mfNowRotate(0.0f),
@@ -42,4 +44,28 @@ int RotateExecutor::Draw(bool triggerSignal)
 {
     // 
     return 0;
+}
+
+// 
+float RotateExecutor::GetNowRotate() const
+{
+    // 
+    return this->mfNowRotate;
+}
+
+// 
+void RotateExecutor::SetNowRotate(float radian)
+{
+    // 
+    this->mfNowRotate = radian;
+}
+
+// 
+void RotateExecutor::AddNowRotate(float radian)
+{
+    // 
+    this->mfNowRotate += radian;
+
+    // 
+    this->mfNowRotate = MyFunctions::GetArrangeRad(this->mfNowRotate);
 }
