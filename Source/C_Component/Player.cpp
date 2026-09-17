@@ -60,15 +60,15 @@ int Player::EarlyUpdate()
 	}
 	if (Master::mpKeyState->GetShadowGameKey(KEY_SHADOW_GAME_TYPE::B, PlayerNum - 1)/*(CONTROLLER_KEY_TYPE::DOWN, CONTROLLER_KEY_NUMBER::CONTROLLER_1)*/)
 	{
-		// ‚±‚Ì’†‚ÉB‚ð‰Ÿ‚µ‚½‚Æ‚«‚Ìˆ—‚ðˆ—‚ð’Ç‰Á‚·‚é
+		// ‚±‚Ì’†‚ÉB‚ð‰Ÿ‚µ‚½‚Æ‚«‚Ìˆ—‚ð’Ç‰Á‚·‚é
 	}
 	if (Master::mpKeyState->GetShadowGameKey(KEY_SHADOW_GAME_TYPE::X, PlayerNum - 1)/*(CONTROLLER_KEY_TYPE::LEFT, CONTROLLER_KEY_NUMBER::CONTROLLER_1)*/)
 	{
-		// ‚±‚Ì’†‚ÉX‚ð‰Ÿ‚µ‚½‚Æ‚«‚Ìˆ—‚ðˆ—‚ð’Ç‰Á‚·‚é
+		// ‚±‚Ì’†‚ÉX‚ð‰Ÿ‚µ‚½‚Æ‚«‚Ìˆ—‚ð’Ç‰Á‚·‚é
 	}
 	if (Master::mpKeyState->GetShadowGameKey(KEY_SHADOW_GAME_TYPE::Y, PlayerNum - 1)/*(CONTROLLER_KEY_TYPE::RIGHT, CONTROLLER_KEY_NUMBER::CONTROLLER_1)*/)
 	{
-		// ‚±‚Ì’†‚ÉY‚ð‰Ÿ‚µ‚½‚Æ‚«‚Ìˆ—‚ðˆ—‚ð’Ç‰Á‚·‚é
+		// ‚±‚Ì’†‚ÉY‚ð‰Ÿ‚µ‚½‚Æ‚«‚Ìˆ—‚ð’Ç‰Á‚·‚é
 	}
 
 
