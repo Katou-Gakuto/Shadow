@@ -221,6 +221,9 @@ bool LightArea::OnLight()
 {
     // 
     this->mbOffLight = false;
+
+    // 
+    return true;
 }
 
 // 
@@ -228,4 +231,7 @@ bool LightArea::OffLight()
 {
     // 
     this->mbOffLight = true;
+
+    // 
+    return true;
 }

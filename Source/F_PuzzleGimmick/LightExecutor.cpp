@@ -101,6 +101,7 @@ int LightExecutor::LateUpdate(bool triggerSignal)
 int LightExecutor::Draw(bool triggerSignal)
 {
     // 光域のシミュレーターは描画はしません
+    return 0;
 }
 
 // このライトのレイの角度を設定する関数

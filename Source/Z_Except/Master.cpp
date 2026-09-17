@@ -6,12 +6,19 @@
 #include "EndManager.h"
 #include "TimeManager.h"
 
+#include "../C_Component/Player.h"
+#include "../G_LightArea/LightAreaManager.h"
+
 // 
 BaseSceneManager *Master::mpBaseSceneManager = nullptr;
 
 EndManager* Master::mpEndManager = nullptr;
 TimeManager* Master::mpTimeManager = nullptr;
 KeyState* Master::mpKeyState = nullptr;
+
+Player* Master::mpPlayerLight = nullptr;
+Player* Master::mpPlayerShadow = nullptr;
+LightAreaManager* Master::mpLightManager = nullptr;
 
 
 // Master‚ÌŠeƒƒ“ƒo‚ðnew‚·‚éŠÖ”
@@ -26,6 +33,9 @@ int Master::Initialize()
 
     mpBaseSceneManager = new BaseSceneManager();
     mpBaseSceneManager->Initialize();
+
+    mpLightManager = new LightAreaManager();
+
 
     return 0;
 }

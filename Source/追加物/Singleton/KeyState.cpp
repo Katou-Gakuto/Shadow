@@ -390,6 +390,33 @@ void KeyState::SetKey_ShadowGame()
 					(mulShadowGameFlags[(int)FLAG_TYPE::NOW][KEY_PLAYER_NUMBER::PLAYER_NUMBER_1].GetNumber(0xf, KEY_SHADOW_GAME_TYPE::UP) != 0)
 				}
 			);
+
+
+			// ボタン
+			SetOneFlag_Shadow(KEY_SHADOW_GAME_TYPE::A,
+				KEY_PLAYER_NUMBER::PLAYER_NUMBER_1,
+				{
+					GetKey_Controller(CONTROLLER_KEY_TYPE::A, CONTROLLER_KEY_NUMBER::CONTROLLER_1),
+				}
+				);
+			SetOneFlag_Shadow(KEY_SHADOW_GAME_TYPE::B,
+				KEY_PLAYER_NUMBER::PLAYER_NUMBER_1,
+				{
+					GetKey_Controller(CONTROLLER_KEY_TYPE::B, CONTROLLER_KEY_NUMBER::CONTROLLER_1),
+				}
+				);
+			SetOneFlag_Shadow(KEY_SHADOW_GAME_TYPE::X,
+				KEY_PLAYER_NUMBER::PLAYER_NUMBER_1,
+				{
+					GetKey_Controller(CONTROLLER_KEY_TYPE::X, CONTROLLER_KEY_NUMBER::CONTROLLER_1),
+				}
+				);
+			SetOneFlag_Shadow(KEY_SHADOW_GAME_TYPE::Y,
+				KEY_PLAYER_NUMBER::PLAYER_NUMBER_1,
+				{
+					GetKey_Controller(CONTROLLER_KEY_TYPE::Y, CONTROLLER_KEY_NUMBER::CONTROLLER_1),
+				}
+				);
 		}
 
 		// 移動 プレイヤー2
@@ -441,6 +468,32 @@ void KeyState::SetKey_ShadowGame()
 					(mulShadowGameFlags[(int)FLAG_TYPE::NOW][KEY_PLAYER_NUMBER::PLAYER_NUMBER_1].GetNumber(0xf, KEY_SHADOW_GAME_TYPE::UP) != 0)
 				}
 			);
+
+			// ボタン
+			SetOneFlag_Shadow(KEY_SHADOW_GAME_TYPE::A,
+				KEY_PLAYER_NUMBER::PLAYER_NUMBER_2,
+				{
+					GetKey_Controller(CONTROLLER_KEY_TYPE::A, CONTROLLER_KEY_NUMBER::CONTROLLER_2),
+				}
+				);
+			SetOneFlag_Shadow(KEY_SHADOW_GAME_TYPE::B,
+				KEY_PLAYER_NUMBER::PLAYER_NUMBER_2,
+				{
+					GetKey_Controller(CONTROLLER_KEY_TYPE::B, CONTROLLER_KEY_NUMBER::CONTROLLER_2),
+				}
+				);
+			SetOneFlag_Shadow(KEY_SHADOW_GAME_TYPE::X,
+				KEY_PLAYER_NUMBER::PLAYER_NUMBER_2,
+				{
+					GetKey_Controller(CONTROLLER_KEY_TYPE::X, CONTROLLER_KEY_NUMBER::CONTROLLER_2),
+				}
+				);
+			SetOneFlag_Shadow(KEY_SHADOW_GAME_TYPE::Y,
+				KEY_PLAYER_NUMBER::PLAYER_NUMBER_2,
+				{
+					GetKey_Controller(CONTROLLER_KEY_TYPE::Y, CONTROLLER_KEY_NUMBER::CONTROLLER_2),
+				}
+				);
 		}
 
 		// テスト用

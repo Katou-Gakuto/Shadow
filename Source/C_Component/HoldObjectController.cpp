@@ -20,7 +20,7 @@ HoldObjectController::~HoldObjectController()
 int HoldObjectController::HitOnCollision(BaseCollision *myCollision, BaseCollision *hitCollision)
 {
     // 
-    
+    return 0;
 }
 
 // 

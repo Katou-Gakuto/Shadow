@@ -12,7 +12,7 @@ GimmickObjectController::~GimmickObjectController()
     // 
     for (auto &data : this->mlGimmickList)
     {
-        delete data.mpChecker;
+        delete data.mpTrigger;
         delete data.mpSumilater;
     }
 
@@ -51,24 +51,10 @@ int GimmickObjectController::Update()
     for (uint32_t i = 0; i < this->mlGimmickList.size(); i++)
     {
         // 
-        this->mlGimmickList[i].mbSumilating = this->mlGimmickList[i].mpChecker->GetSignalSumilate();
+        this->mlGimmickList[i].mbTriggerSignal = this->mlGimmickList[i].mpTrigger->GetSignal();
 
         // 
-        if (this->mlGimmickList[i].mpSumilater->CheckSumilate(this->mlGimmickList[i].mbSumilating))
-        {
-            // 
-            this->mlGimmickList[i].mpSumilater->Sumilate();
-        }
-
-        // 
-        this->mlGimmickList[i].mbExecuting = this->mlGimmickList[i].mpChecker->GetSignalExecute();
-
-        // ここでシミュレートの内容を実行に移す処理
-        if (this->mlGimmickList[i].mpSumilater->CheckExecute(this->mlGimmickList[i].mbExecuting))
-        {
-            // 
-            this->mlGimmickList[i].mpSumilater->Execute();
-        }
+        this->mlGimmickList[i].mpSumilater->Update((this->mlGimmickList[i].mbTriggerSignal));
     }
 
     // 
@@ -92,12 +78,11 @@ int GimmickObjectController::Draw()
     // 
     for (uint32_t i = 0; i < this->mlGimmickList.size(); i++)
     {
-        // ここでシミュレートの内容を実行に移す処理
-        if (this->mlGimmickList[i].mpSumilater->Draw(this->mlGimmickList[i].mbSumilating, this->mlGimmickList[i].mbExecuting) != 0)
-        {
-            // 
-            return -1;
-        }
+        // 
+        this->mlGimmickList[i].mbTriggerSignal = this->mlGimmickList[i].mpTrigger->GetSignal();
+
+        // 
+        this->mlGimmickList[i].mpSumilater->Draw((this->mlGimmickList[i].mbTriggerSignal));
     }
 
     // 
@@ -108,7 +93,7 @@ int GimmickObjectController::Draw()
 bool GimmickObjectController::AddGimmick(const PuzzleGimmickData &gimmick)
 {
     // 
-    if (gimmick.mpChecker == nullptr ||
+    if (gimmick.mpTrigger == nullptr ||
         gimmick.mpSumilater == nullptr)
     {
         // 
