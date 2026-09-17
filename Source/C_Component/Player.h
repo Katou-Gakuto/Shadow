@@ -9,8 +9,6 @@ class HoldObjectController;
 class Player : public BaseComponent
 {
 public:
-    KeyState keystate;
-
     Player(GameObject* myObject, int playerNumber);
     ~Player();
 
@@ -39,8 +37,10 @@ private:
     VECTOR2D moveVec;
     int PlayerNum; //P1かP2か
 
-    // 自身がつかんでいるオブジェクト
-    HoldObjectController *mpHold;
+	int PlayerGraphHandle; // プレイヤーのグラフィックハンドル
+
+    
+    HoldObjectController *mpHold; // 自身がつかんでいるオブジェクト
 
     // 
     bool CheckHoldNow() const;

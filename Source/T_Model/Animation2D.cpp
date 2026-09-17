@@ -35,6 +35,7 @@ Animation2D::~Animation2D()
     this->DeleteAll();
 }
 
+// ポーズを次に進めるカウントダウンの更新処理を行う
 int Animation2D::UpdatePoseChangeCount()
 {
     // 次のポーズに移るまでのカウントダウンを進める
@@ -71,7 +72,7 @@ int Animation2D::UpdatePoseChangeCount()
     }
 
     // 非ループのアニメーションが最後のフレームに入ったかを確認する
-    if (this->mbEndTimingNow == true &&
+    if (this->mbEndTimingNow == false && // true->falseに変えたけど変になったら戻す
         this->mcChangeCount == 1 &&
         this->mcCurrentPose == this->mcPoseMax - 1)
     {
@@ -82,6 +83,7 @@ int Animation2D::UpdatePoseChangeCount()
     return 0;
 }
 
+// 初期化処理
 int Animation2D::Initialize()
 {
     this->mcCurrentPose = 0;
@@ -91,6 +93,7 @@ int Animation2D::Initialize()
     return 0;
 }
 
+// 終了処理
 int Animation2D::Finalize()
 {
     this->mcCurrentPose = 0;
@@ -100,6 +103,7 @@ int Animation2D::Finalize()
     return 0;
 }
 
+// 更新処理
 int Animation2D::Update()
 {
     // ポーズを進めるカウントダウンの更新処理を行う
@@ -108,11 +112,13 @@ int Animation2D::Update()
     return 0;
 }
 
+// 描画処理
 int Animation2D::Draw()
 {
     return 0;
 }
 
+// ポーズを追加する
 int Animation2D::Add(Pose2D *target)
 {
     if (target == nullptr)
@@ -136,6 +142,7 @@ int Animation2D::Add(Pose2D *target)
     return this->ConnectTarget(current, target, nullptr);
 }
 
+// 特定のポーズを削除する
 int Animation2D::DeleteTarget(Pose2D *target)
 {
     if (target == nullptr)
@@ -152,6 +159,7 @@ int Animation2D::DeleteTarget(Pose2D *target)
     return 0;
 }
 
+// 全てのポーズを削除する
 int Animation2D::DeleteAll()
 {
     if (this->mpFirstPose == nullptr)
@@ -178,6 +186,7 @@ int Animation2D::DeleteAll()
     return 0;
 }
 
+// ポーズを追加する際に、前後のポーズと接続する
 int Animation2D::ConnectTarget(Pose2D *prev, Pose2D *target, Pose2D *next)
 {
     if (prev != nullptr)
@@ -200,6 +209,7 @@ int Animation2D::ConnectTarget(Pose2D *prev, Pose2D *target, Pose2D *next)
     return 0;
 }
 
+// 特定のポーズを孤立させる
 int Animation2D::IsolateTarget(Pose2D *target)
 {
     if (this->mpFirstPose == nullptr)
@@ -230,6 +240,7 @@ int Animation2D::IsolateTarget(Pose2D *target)
     return 0;
 }
 
+// ポーズを探す
 Pose2D *Animation2D::SearchPose2D(unsigned char index)
 {
     if (this->mpFirstPose == nullptr)

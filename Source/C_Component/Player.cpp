@@ -115,7 +115,7 @@ int Player::Update()
 
 int Player::HitOnCollision(BaseCollision *myCollision, BaseCollision *hitCollision)
 {
-    // 自身の攻撃の当たり判定が相手の体の当たり判定にあたっている場合は処理を行う
+    // 自身の当たり判定がオブジェクトの当たり判定にあたっている場合は処理を行う
     if (myCollision->GetMyObject() != hitCollision->GetMyObject() && 
         myCollision->GetCollisionTag() == CollisionTag::CollisionTag_CharaBody)
     {
@@ -142,6 +142,7 @@ int Player::LateUpdate()
 
 int Player::Draw()
 {
+    //PlayerGraphHandle =
     GameObject2D *player = GetMyObject2D();
 	if (PlayerNum == 1)// プレイヤー1の場合は赤色で描画
         DrawBox(player->GetPosition().GetX(), player->GetPosition().GetY(), player->GetPosition().GetX() + 30, player->GetPosition().GetY() + 60, 0xFF0000, true);
