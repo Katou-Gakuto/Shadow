@@ -30,8 +30,6 @@ enum class SHINE_GRID_TYPE
 	NOT_SHINE_GRID = 0,				// 光領域外
 	SHINE_GRID,						// 光領域内
 	SHINE_AND_OBJECT_GRID,			// 光領域で尚且つオブジェクトがある
-	OTHER_SHINE_GRID,				// 他の光領域がある
-	OTHER_SHINE_AND_OBJECT_GRID,	// 他の光領域があってなおかつオブジェクトがある
 };
 
 class ShineManager
@@ -82,4 +80,7 @@ private:
 
     // マップ外判定
     bool IsOutsideLightStage(const Vector2_Int& gridPos);
+
+	// 光領域を左端から右端へ走査するグリッドを取得
+	std::vector<Vector2_Int> GetLightGridPositions(const std::queue<Vector2_Int>& nowCheckShinePos);
 };

@@ -27,5 +27,5 @@ public:
 
 	void Draw() override;
 
-	SHINE_DIRECTION GetLineDirection() { return mstShineDirection; }
+	SHINE_DIRECTION GetShineDirection() { return mstShineDirection; }
 };

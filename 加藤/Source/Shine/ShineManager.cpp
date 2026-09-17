@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <stack>
 #include <queue>
 #include <vector>
@@ -185,22 +186,8 @@ void ShineManager::CreateLightArea()
 // グリッドの探索
 void ShineManager::CheckLightGrid(std::queue<Vector2_Int>& nextCheckShinePos)
 {
-    // 8方向
-    const Vector2_Int checkDirections[8] =
-    {
-        Vector2_Int( 1,  0),
-        Vector2_Int(-1,  0),
-        Vector2_Int( 0,  1),
-        Vector2_Int( 0, -1),
-
-        Vector2_Int( 1,  1),
-        Vector2_Int(-1,  1),
-        Vector2_Int( 1, -1),
-        Vector2_Int(-1, -1)
-    };
-
     std::vector<SHINE_DIRECTION> shineDirections;
-    shineDirections.push_back(mpShineObject->GetLineDirection());
+    shineDirections.push_back(mpShineObject->GetShineDirection());
 
     while (!nextCheckShinePos.empty())
     {
@@ -210,21 +197,15 @@ void ShineManager::CheckLightGrid(std::queue<Vector2_Int>& nextCheckShinePos)
 
         // 今回の探索中に見つかった障害物
         std::stack<BLOCK_POS_DATA> blockPoss;
-
-        int shineDirectionsIndex = 0;
-
-        //  隣接グリッドの探索
-        while (nowCheckShinePos.size())
+        
+        // 光源から見て左側の光領域から順番に処理する
+        for (int shineDirectionsIndex = 0; shineDirectionsIndex < static_cast<int>(shineDirections.size()); ++shineDirectionsIndex)
         {
-            Vector2_Int nowPos = nowCheckShinePos.front();
-            nowCheckShinePos.pop();
-            
-            for (const Vector2_Int& checkDirection : checkDirections)
+            // 現在の光領域を左端から右端へ走査
+            for (const Vector2_Int& checkPos : GetLightGridPositions(nowCheckShinePos))
             {
-                Vector2_Int nextPos = nowPos + checkDirection;
-
                 // マップ外なら除外
-                if (IsOutsideLightStage(nextPos))
+                if (IsOutsideLightStage(checkPos))
                 {
                     // 光領域を削る
                     // 三角頂点入力
@@ -232,60 +213,37 @@ void ShineManager::CheckLightGrid(std::queue<Vector2_Int>& nextCheckShinePos)
                 }
 
                 // すでに光が届いているなら除外
-                if (mstMapObjectGridData[nextPos.y][nextPos.x].LitFlag)
+                if (mstMapObjectGridData[checkPos.y][checkPos.x].LitFlag)
                 {
                     continue;
                 }
 
-                // グリッドの光判定
-                SHINE_GRID_TYPE lightGridResult;
-                while ((lightGridResult = JudgeGrid(nextPos, shineDirections, shineDirectionsIndex)) == SHINE_GRID_TYPE::OTHER_SHINE_GRID)
-                {
-                    shineDirectionsIndex++;
-                    if (shineDirections.size() >= shineDirectionsIndex)
-                    {
-                        break;
-                    }
-                }
+                // グリッドの判定
+                SHINE_GRID_TYPE lightGridResult = JudgeGrid(checkPos, shineDirections, shineDirectionsIndex);
 
-                // 光範囲外なら除外
+                // グリッドの状況によって処理
                 switch (lightGridResult)
                 {
                 case SHINE_GRID_TYPE::NOT_SHINE_GRID:
                 {
-                    continue;
+                    break;
                 }
                 case SHINE_GRID_TYPE::SHINE_GRID:
                 {
                     // 光範囲内として登録
-                    mstMapObjectGridData[nextPos.y][nextPos.x].LitFlag = true;
+                    mstMapObjectGridData[checkPos.y][checkPos.x].LitFlag = true;
 
                     // 次に調べるグリッドへ追加
-                    nextCheckShinePos.push(nextPos);
+                    nextCheckShinePos.push(checkPos);
                     break;
                 }
                 case SHINE_GRID_TYPE::SHINE_AND_OBJECT_GRID:
                 {
                     // ここでグリッド内調査を申請
                     BLOCK_POS_DATA blockPos;
-                    blockPos.BlockPos = nextPos;
-                    //blockPos.ArrayIndex = ; // 分かつ可能性のある光領域の添え字
+                    blockPos.BlockPos = checkPos;
+                    blockPos.ArrayIndex = shineDirectionsIndex;
                     blockPoss.push(blockPos);
-                    break;
-                }
-                case SHINE_GRID_TYPE::OTHER_SHINE_AND_OBJECT_GRID:
-                {
-                    // ここでグリッド内調査を申請
-                    BLOCK_POS_DATA blockPos;
-                    blockPos.BlockPos = nextPos;
-                    //blockPos.ArrayIndex = ; // 分かつ可能性のある光領域の添え字
-                    blockPoss.push(blockPos);
-                    //blockPos.ArrayIndex = ; // 分かつ可能性のある一つ前の光領域の添え字
-                    //blockPoss.push(blockPos);
-                    break;
-                }
-                case SHINE_GRID_TYPE::OTHER_SHINE_GRID:
-                {
                     break;
                 }
                 }
@@ -340,8 +298,7 @@ SHINE_GRID_TYPE ShineManager::JudgeGrid(const Vector2_Int& gridPos, const std::v
     for (const Vector2& corner : gridCorners)
     {
         // 光源からグリッドの角への方向
-        Vector2 toCorner =
-            corner - shinePos;
+        Vector2 toCorner = corner - shinePos;
 
         // 光源と角が同じ位置なら光範囲内
         if (toCorner.x == 0.0f &&
@@ -420,4 +377,109 @@ bool ShineManager::IsOutsideLightStage(const Vector2_Int& gridPos)
     }
 
     return false;
+}
+
+// 光領域を左端から右端へ走査するグリッドを取得
+std::vector<Vector2_Int> ShineManager::GetLightGridPositions(const std::queue<Vector2_Int>& nowCheckShinePos)
+{
+    std::vector<Vector2_Int> lightGridPositions;
+
+    const Vector2 shinePos = mpShineObject->GetPosition();
+
+    // 光源から見た左方向
+    const Vector2 leftDirection =
+    {
+        -mpShineObject->GetShineDirection().shineDirection1.y,
+         mpShineObject->GetShineDirection().shineDirection1.x
+    };
+
+    std::queue<Vector2_Int> checkPos = nowCheckShinePos;
+
+    while (!checkPos.empty())
+    {
+        const Vector2_Int nowPos = checkPos.front();
+        checkPos.pop();
+
+        for (int y = -1; y <= 1; ++y)
+        {
+            for (int x = -1; x <= 1; ++x)
+            {
+                if (x == 0 && y == 0)
+                {
+                    continue;
+                }
+
+                Vector2_Int nextPos =
+                {
+                    nowPos.x + x,
+                    nowPos.y + y
+                };
+
+                if (IsOutsideLightStage(nextPos))
+                {
+                    continue;
+                }
+
+                bool isAlreadyAdded = false;
+
+                for (const Vector2_Int& addedPos : lightGridPositions)
+                {
+                    if (addedPos.x == nextPos.x &&
+                        addedPos.y == nextPos.y)
+                    {
+                        isAlreadyAdded = true;
+                        break;
+                    }
+                }
+
+                if (!isAlreadyAdded)
+                {
+                    lightGridPositions.push_back(nextPos);
+                }
+            }
+        }
+    }
+
+    // 光源から見て左側から右側へ並べる
+    std::sort(
+        lightGridPositions.begin(),
+        lightGridPositions.end(),
+        [&](const Vector2_Int& lhs, const Vector2_Int& rhs)
+        {
+            const Vector2 lhsPos =
+            {
+                lhs.x * ONE_GRID_SIZE_X + ONE_GRID_SIZE_X * 0.5f,
+                lhs.y * ONE_GRID_SIZE_Y + ONE_GRID_SIZE_Y * 0.5f
+            };
+
+            const Vector2 rhsPos =
+            {
+                rhs.x * ONE_GRID_SIZE_X + ONE_GRID_SIZE_X * 0.5f,
+                rhs.y * ONE_GRID_SIZE_Y + ONE_GRID_SIZE_Y * 0.5f
+            };
+
+            const Vector2 lhsToGrid =
+            {
+                lhsPos.x - shinePos.x,
+                lhsPos.y - shinePos.y
+            };
+
+            const Vector2 rhsToGrid =
+            {
+                rhsPos.x - shinePos.x,
+                rhsPos.y - shinePos.y
+            };
+
+            const float lhsValue =
+                lhsToGrid.x * leftDirection.x +
+                lhsToGrid.y * leftDirection.y;
+
+            const float rhsValue =
+                rhsToGrid.x * leftDirection.x +
+                rhsToGrid.y * leftDirection.y;
+
+            return lhsValue > rhsValue;
+        });
+
+    return lightGridPositions;
 }
