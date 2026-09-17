@@ -74,7 +74,7 @@ const char* label, float* v, float v_speed, float v_min, float v_max, const char
 */
 
 /*使用例 1(float)
-    Master::mpImguiManager->SetFloatImgui(IMGUI_FLOAT_DATA::GetImguiData(
+    Master::mpImguiManager->AddDrawImgui(IMGUI_FLOAT_DATA::GetImguiData(
         { &testSize },
         0.1f,
         0.1f,
@@ -89,7 +89,7 @@ const char* label, float* v, float v_speed, float v_min, float v_max, const char
     );
 */
 /*使用例 2(int)
-    Master::mpImguiManager->SetIntImgui(IMGUI_INT_DATA::GetImguiData(
+    Master::mpImguiManager->AddDrawImgui(IMGUI_INT_DATA::GetImguiData(
                                                                      { &mstMiniMapDrawGraphData[0].pos.x, &mstMiniMapDrawGraphData[0].pos.y, &mstMiniMapDrawGraphData[0].size.x, &mstMiniMapDrawGraphData[0].size.y },
                                                                      1.0f,
                                                                      1.0f,

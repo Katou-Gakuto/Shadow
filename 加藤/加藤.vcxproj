@@ -146,6 +146,7 @@
     <ClInclude Include="Source\Enum\ResourceEnum.h" />
     <ClInclude Include="Source\Shine\ShineManager.h" />
     <ClInclude Include="Source\Shine\ShineObject.h" />
+    <ClInclude Include="Source\Shine\MapObjectData.h" />
     <ClInclude Include="Source\Shine\TestObjectBase.h" />
     <ClInclude Include="Source\Shine\WallObject.h" />
     <ClInclude Include="Source\Singleton\CameraManager.h" />

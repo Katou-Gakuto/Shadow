@@ -261,6 +261,9 @@
     <ClInclude Include="Source\Struct\UseDeclaration.h">
       <Filter>ヘッダー ファイル\Struct</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Shine\MapObjectData.h">
+      <Filter>ヘッダー ファイル\Shine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp">

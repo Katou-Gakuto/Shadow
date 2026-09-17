@@ -10,6 +10,8 @@ class BaseCollision2D;
 class Ray2D;
 struct CollisionCheckResult2D;
 
+// TODO:_ƒ‰ƒCƒg
+
 // 
 class LightArea
 {

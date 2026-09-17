@@ -4,6 +4,7 @@
 #include "WallObject.h"
 
 WallObject::WallObject()
+: TestObjectBase()
 {
 }
 
