@@ -11,13 +11,17 @@ class BaseCollision;
 // 処理順は0から始まります
 typedef enum ComponentTagAndOrder : unsigned long
 {
+    // 最初にオブジェクトそのもの
     CTAO_PlayerController = 0,
     CTAO_WallController,
     CTAO_MirrorController,
-    CTAO_GimmickController,
+
+    // ここからギミックトリガー関連
     CTAO_ButtonController,
-    CTAO_DirectionLightController,
-    CTAO_PointLightController,
+    CTAO_HoldController,
+
+    // ここがギミック本体
+    CTAO_GimmickController,
 
 } CTAO;
 

@@ -2,6 +2,7 @@
 #include "BaseScene.h"
 
 class Player;
+class LightAreaManager;
 
 class TestScene : public BaseScene
 {

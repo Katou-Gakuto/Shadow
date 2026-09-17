@@ -4,6 +4,8 @@
 
 #include "VECTOR.h"
 
+class HoldObjectController;
+
 class Player : public BaseComponent
 {
 public:
@@ -21,10 +23,25 @@ public:
     int LateUpdate() override;
     int Draw() override;
 
+    // 
+    int HoldObject(BaseCollision *hitCollision);
+
+    // 
+    int HoldMove();
+
+    // 
+    bool CheckHoldObject(const HoldObjectController *hold) const;
+
 private:
 
     VECTOR2D Pos;
     VECTOR2D OldPos;
     VECTOR2D moveVec;
     int PlayerNum; //P1かP2か
+
+    // 自身がつかんでいるオブジェクト
+    HoldObjectController *mpHold;
+
+    // 
+    bool CheckHoldNow() const;
 };

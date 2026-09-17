@@ -8,14 +8,14 @@
 class GameObject2D;
 
 // オブジェクトを回転させるクラス
-class RotateExecutor : public BaseGimmickExecutor
+class FreeMoveExecutor : public BaseGimmickExecutor
 {
 public:
     // 
-    RotateExecutor(PuzzleGimmickActiveParam param, GameObject2D *myObject);
+    FreeMoveExecutor(PuzzleGimmickActiveParam param, GameObject2D *myObject);
 
     // 
-    ~RotateExecutor();
+    ~FreeMoveExecutor();
 
     // ギミックの内容を実行する関数
     // ※GameObject::EarlyUpdate()のタイミングで呼ばれます
@@ -32,6 +32,9 @@ public:
     // ギミック内容を描画する関数
     // ※既に実行段階である場合は引数がtrueになります。実行段階では描画しない、あるいはその逆の場合はこの引数を使ってください。
     int Draw(bool triggerSignal) override;
+
+    // 
+    void SetMoveVec(const VECTOR2D &vec);
 
 private:
     // 

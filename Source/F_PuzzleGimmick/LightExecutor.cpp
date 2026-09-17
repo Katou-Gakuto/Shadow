@@ -78,13 +78,6 @@ int LightExecutor::Update(bool triggerSignal)
 int LightExecutor::LateUpdate(bool triggerSignal)
 {
     // 
-    if (this->GetActiveParam().GetSignalNot())
-    {
-        // 
-        triggerSignal = !triggerSignal;
-    }
-
-    // 
     if (this->mbLightOn)
     {
         // 

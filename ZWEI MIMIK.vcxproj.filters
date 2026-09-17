@@ -292,6 +292,21 @@
     <ClCompile Include="Source\F_PuzzleGimmick\ButtonTrigger.cpp">
       <Filter>Source\F_PuzzleGimmick</Filter>
     </ClCompile>
+    <ClCompile Include="Source\F_PuzzleGimmick\RouteMoveExecutor.cpp">
+      <Filter>Source\F_PuzzleGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\F_PuzzleGimmick\RotateExecutor.cpp">
+      <Filter>Source\F_PuzzleGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\F_PuzzleGimmick\HoldTrigger.cpp">
+      <Filter>Source\F_PuzzleGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\F_PuzzleGimmick\FreeMoveExecutor.cpp">
+      <Filter>Source\F_PuzzleGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\C_Component\HoldObjectController.cpp">
+      <Filter>Source\C_Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\A_GameObject\GameObject.h">
@@ -572,6 +587,9 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\C_Component\HoldObjectController.h">
+      <Filter>Source\C_Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -19,6 +19,7 @@ enum CollisionTag : unsigned short
 {
     CollisionTag_Checker = 0,                   // 計算用の当たり判定。無条件で全ての当たり判定と計算をする
     CollisionTag_Wall,                          // 壁の当たり判定
+    CollisionTag_LightBody,                     // 光発生装置の当たり判定
     CollisionTag_Ground,                        // 地面の当たり判定
     CollisionTag_Mirror,                        // 鏡面の当たり判定
     CollisionTag_CharaBody,                     // キャラクターの当たり判定

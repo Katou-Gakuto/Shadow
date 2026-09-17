@@ -58,6 +58,7 @@ private:
 
 // パズルギミックの内容を実行するクラス
 // どのようなギミックかは継承先により、ギミック実行の出力結果は継承先のクラスのメンバ変数です
+// ※Update()等の関数の引数がtriggerSignalしかないため、基本的にはPlayerなどからアクシスしてメンバ変数を変える必要があります。
 class BaseGimmickExecutor
 {
 public:

@@ -12,6 +12,9 @@ class KeyState;
 class LightAreaManager;
 
 // 
+class Player;
+
+// 
 class Master
 {
 public:
@@ -25,6 +28,12 @@ public:
 
     // ƒL[‚Ìî•ñŠÇ—
     static KeyState* mpKeyState;
+
+    // 
+    static Player *mpPlayerLight;
+
+    // 
+    static Player *mpPlayerShadow;
 
     // ‚»‚Ì‚Ù‚©Manager
     static LightAreaManager *mpLightManager;

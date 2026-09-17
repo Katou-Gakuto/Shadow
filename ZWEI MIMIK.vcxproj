@@ -144,6 +144,7 @@
     <ClCompile Include="Source\C_Component\BaseComponentList.cpp" />
     <ClCompile Include="Source\C_Component\ButtonObjectController.cpp" />
     <ClCompile Include="Source\C_Component\GimmickObjectController.cpp" />
+    <ClCompile Include="Source\C_Component\HoldObjectController.cpp" />
     <ClCompile Include="Source\C_Component\Player.cpp" />
     <ClCompile Include="Source\C_Component\MirrorObjectController.cpp" />
     <ClCompile Include="Source\C_Component\WallObjectController.cpp" />
@@ -151,7 +152,11 @@
     <ClCompile Include="Source\E_Scene\BaseSceneManager.cpp" />
     <ClCompile Include="Source\E_Scene\TestScene.cpp" />
     <ClCompile Include="Source\F_PuzzleGimmick\ButtonTrigger.cpp" />
+    <ClCompile Include="Source\F_PuzzleGimmick\FreeMoveExecutor.cpp" />
+    <ClCompile Include="Source\F_PuzzleGimmick\HoldTrigger.cpp" />
     <ClCompile Include="Source\F_PuzzleGimmick\LightExecutor.cpp" />
+    <ClCompile Include="Source\F_PuzzleGimmick\RotateExecutor.cpp" />
+    <ClCompile Include="Source\F_PuzzleGimmick\RouteMoveExecutor.cpp" />
     <ClCompile Include="Source\G_LightArea\LightArea.cpp" />
     <ClCompile Include="Source\G_LightArea\LightAreaManager.cpp" />
     <ClCompile Include="Source\G_LightArea\LightLineNode.cpp" />
@@ -225,6 +230,7 @@
     <ClInclude Include="Source\C_Component\BaseComponentList.h" />
     <ClInclude Include="Source\C_Component\ButtonObjectController.h" />
     <ClInclude Include="Source\C_Component\GimmickObjectController.h" />
+    <ClInclude Include="Source\C_Component\HoldObjectController.h" />
     <ClInclude Include="Source\C_Component\Player.h" />
     <ClInclude Include="Source\C_Component\MirrorObjectController.h" />
     <ClInclude Include="Source\C_Component\WallObjectController.h" />

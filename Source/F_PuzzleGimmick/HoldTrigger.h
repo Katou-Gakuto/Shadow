@@ -2,12 +2,15 @@
 
 #include "PuzzleGimmickData.h"
 
+// 
+class HoldObjectController;
+
 // プレイヤーによって掴まれているかを確認するクラス
 class HoldTrigger : public BaseGimmickTrigger
 {
 public:
     // 
-    HoldTrigger();
+    HoldTrigger(HoldObjectController *myHold);
 
     // 
     ~HoldTrigger();
@@ -17,5 +20,6 @@ public:
     bool GetSignal() override;
 
 private:
-
+    // 
+    HoldObjectController *mpMyHold;
 };
