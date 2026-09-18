@@ -30,6 +30,8 @@ public:
     // 
     bool CheckHoldObject(const HoldObjectController *hold) const;
 
+	VECTOR2D GetPos() const { return Pos; }
+
 private:
 
     VECTOR2D Pos;

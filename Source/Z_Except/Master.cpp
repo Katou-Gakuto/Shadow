@@ -53,3 +53,16 @@ int Master::Finalize()
 
     return 0;
 }
+
+int Master::DrawGraphAnim(
+	const VECTOR2D posLeftUp, const VECTOR2D posRightDown,
+	const VECTOR2D uvLeftUp, const VECTOR2D uvRightDown
+	int graphHandle,)
+{
+	// 
+    DrawRectExtendGraphF(
+        posLeftUp.x, posLeftUp.y, posRightDown.x, posRightDown.y, 
+        uvLeftUp.x, uvLeftUp.y, uvRightDown.x, uvRightDown.y, graphHandle, false);
+
+	return 0;
+}

@@ -15,6 +15,9 @@ class LightAreaManager;
 class Player;
 
 // 
+class VECTOR2D;
+
+// 
 class Master
 {
 public:
@@ -43,4 +46,10 @@ public:
 
     // Master‚ÌŠeƒƒ“ƒo‚ğdelete‚·‚éŠÖ”
     static int Finalize();
+
+    // 
+    static int DrawGraphAnim(
+        int graphHandle,
+        const VECTOR2D posLeftUp, const VECTOR2D posRightDown,
+        const VECTOR2D uvLeftUp, const VECTOR2D uvRightDown);
 };

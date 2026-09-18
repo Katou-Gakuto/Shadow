@@ -1,5 +1,6 @@
 #include "Pose2D.h"
 #include "Player.h"
+#include "GameObjectManager.h"
 #include "GameObject2D.h"
 
 Pose2D::Pose2D() :
@@ -42,7 +43,5 @@ int Pose2D::Update()
 
 int Pose2D::Draw()
 {
-    GameObject2D *player = GetMyObject2D();
-    //DrawExtendGraph();
     return 0;
 }
