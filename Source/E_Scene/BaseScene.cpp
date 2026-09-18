@@ -5,7 +5,9 @@
 BaseScene::BaseScene(SceneTag tag) :
     mnST(tag),
     mbCreateFlag(true),
-    mpGameObjectManager(nullptr)
+    mpGameObjectManager(nullptr),
+    mpBaseCollision2DManager(nullptr),
+    mpBaseCollision3DManager(nullptr)
 {
 
 }

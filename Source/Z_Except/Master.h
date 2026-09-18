@@ -35,7 +35,7 @@ public:
     // 
     static Player *mpPlayerShadow;
 
-    // ‚»‚Ì‚Ù‚©Manager
+    // Manager
     static LightAreaManager *mpLightManager;
 
     // Master‚ÌŠeƒƒ“ƒo‚ğnew‚·‚éŠÖ”

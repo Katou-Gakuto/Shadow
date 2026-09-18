@@ -35,26 +35,26 @@
     <Filter Include="Source\F_PuzzleGimmick">
       <UniqueIdentifier>{4ed69dbd-e608-46f0-b63b-9236fb94c2fe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\追加物">
-      <UniqueIdentifier>{74fc750c-4847-4a69-938c-5410856d01ce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\追加物\TemplateTypeRestriction">
-      <UniqueIdentifier>{3e4da878-8d7f-49ff-8f72-d340512d19f6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\追加物\DebugLogs">
-      <UniqueIdentifier>{28c3fabd-6026-4866-b5a8-085921099f0b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\追加物\Enum">
-      <UniqueIdentifier>{4593540f-dfd7-4450-9346-3bab220baf9a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\追加物\Singleton">
-      <UniqueIdentifier>{92559027-b736-4960-828d-516ffaf175f4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\追加物\Struct">
-      <UniqueIdentifier>{b90b5cbd-cb3a-40b2-b923-ab6937bcc09f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\G_LightArea">
       <UniqueIdentifier>{5bd067bb-5584-4082-9201-d52a87474ab1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\H_Katou">
+      <UniqueIdentifier>{9693ddf7-0083-4b84-847d-ab182e7953fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\H_Katou\Enum">
+      <UniqueIdentifier>{e5574a26-d625-4fe2-b157-c9e167c010a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\H_Katou\Struct">
+      <UniqueIdentifier>{7f255718-de51-4e3e-9983-a38afc6d5386}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\H_Katou\Singleton">
+      <UniqueIdentifier>{38fdee8f-1bcd-493d-801c-7c90b71079c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\H_Katou\DebugLogs">
+      <UniqueIdentifier>{8984fe71-66ab-410b-bb77-d7d944d22815}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\H_Katou\TemplateTypeRestriction">
+      <UniqueIdentifier>{61ca18c8-6200-4866-801f-048775086cfe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -238,24 +238,6 @@
     <ClCompile Include="Source\Z_Except\Master.cpp">
       <Filter>Source\Z_Except</Filter>
     </ClCompile>
-    <ClCompile Include="Source\追加物\DebugLogs\DebugLog.cpp">
-      <Filter>Source\追加物\DebugLogs</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\追加物\Singleton\DrawManager.cpp">
-      <Filter>Source\追加物\Singleton</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\追加物\Singleton\EndManager.cpp">
-      <Filter>Source\追加物\Singleton</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\追加物\Singleton\TimeManager.cpp">
-      <Filter>Source\追加物\Singleton</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\追加物\Singleton\KeyState.cpp">
-      <Filter>Source\追加物\Singleton</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\追加物\Struct\ResourceData.cpp">
-      <Filter>Source\追加物\Struct</Filter>
-    </ClCompile>
     <ClCompile Include="Source\E_Scene\TestScene.cpp">
       <Filter>Source\E_Scene</Filter>
     </ClCompile>
@@ -309,6 +291,27 @@
     </ClCompile>
     <ClCompile Include="Source\S_Collision\CollisionHandle.cpp">
       <Filter>Source\S_Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\E_Scene\TitleScene.cpp">
+      <Filter>Source\E_Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\H_Katou\DebugLogs\DebugLog.cpp">
+      <Filter>Source\H_Katou\DebugLogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\H_Katou\Singleton\DrawManager.cpp">
+      <Filter>Source\H_Katou\Singleton</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\H_Katou\Singleton\EndManager.cpp">
+      <Filter>Source\H_Katou\Singleton</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\H_Katou\Singleton\KeyState.cpp">
+      <Filter>Source\H_Katou\Singleton</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\H_Katou\Singleton\TimeManager.cpp">
+      <Filter>Source\H_Katou\Singleton</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\H_Katou\Struct\ResourceData.cpp">
+      <Filter>Source\H_Katou\Struct</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -537,48 +540,6 @@
     <ClInclude Include="Source\F_PuzzleGimmick\ButtonTrigger.h">
       <Filter>Source\F_PuzzleGimmick</Filter>
     </ClInclude>
-    <ClInclude Include="Source\追加物\DebugLogs\DebugLog.h">
-      <Filter>Source\追加物\DebugLogs</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\追加物\Enum\DrawEnum.h">
-      <Filter>Source\追加物\Enum</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\追加物\Enum\KeyStateEnum.h">
-      <Filter>Source\追加物\Enum</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\追加物\Enum\ResourceEnum.h">
-      <Filter>Source\追加物\Enum</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\追加物\Singleton\DrawManager.h">
-      <Filter>Source\追加物\Singleton</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\追加物\Singleton\EndManager.h">
-      <Filter>Source\追加物\Singleton</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\追加物\Singleton\TimeManager.h">
-      <Filter>Source\追加物\Singleton</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\追加物\Struct\BitFlag.h">
-      <Filter>Source\追加物\Struct</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\追加物\Struct\DrawData.h">
-      <Filter>Source\追加物\Struct</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\追加物\Struct\TimeData.h">
-      <Filter>Source\追加物\Struct</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\追加物\TemplateTypeRestriction\TemplateType_Equal.h">
-      <Filter>Source\追加物\TemplateTypeRestriction</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\追加物\Singleton\KeyState.h">
-      <Filter>Source\追加物\Singleton</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\追加物\Struct\ResourceData.h">
-      <Filter>Source\追加物\Struct</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\追加物\Struct\Vector2.h">
-      <Filter>Source\追加物\Struct</Filter>
-    </ClInclude>
     <ClInclude Include="Source\E_Scene\TestScene.h">
       <Filter>Source\E_Scene</Filter>
     </ClInclude>
@@ -596,6 +557,57 @@
     </ClInclude>
     <ClInclude Include="Source\S_Collision\CollisionHandle.h">
       <Filter>Source\S_Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\E_Scene\TitleScene.h">
+      <Filter>Source\E_Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\E_Scene\StageSelectScene.h">
+      <Filter>Source\E_Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\E_Scene\PazzleScene.h">
+      <Filter>Source\E_Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\H_Katou\Enum\DrawEnum.h">
+      <Filter>Source\H_Katou\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\H_Katou\Enum\KeyStateEnum.h">
+      <Filter>Source\H_Katou\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\H_Katou\Enum\ResourceEnum.h">
+      <Filter>Source\H_Katou\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\H_Katou\DebugLogs\DebugLog.h">
+      <Filter>Source\H_Katou\DebugLogs</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\H_Katou\TemplateTypeRestriction\TemplateType_Equal.h">
+      <Filter>Source\H_Katou\TemplateTypeRestriction</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\H_Katou\Singleton\DrawManager.h">
+      <Filter>Source\H_Katou\Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\H_Katou\Singleton\EndManager.h">
+      <Filter>Source\H_Katou\Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\H_Katou\Singleton\KeyState.h">
+      <Filter>Source\H_Katou\Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\H_Katou\Singleton\TimeManager.h">
+      <Filter>Source\H_Katou\Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\H_Katou\Struct\BitFlag.h">
+      <Filter>Source\H_Katou\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\H_Katou\Struct\DrawData.h">
+      <Filter>Source\H_Katou\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\H_Katou\Struct\ResourceData.h">
+      <Filter>Source\H_Katou\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\H_Katou\Struct\TimeData.h">
+      <Filter>Source\H_Katou\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\H_Katou\Struct\Vector2.h">
+      <Filter>Source\H_Katou\Struct</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

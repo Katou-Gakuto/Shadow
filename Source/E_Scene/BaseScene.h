@@ -7,10 +7,8 @@ class BaseCollision3DManager;
 enum SceneTag : unsigned char
 {
     ST_Title = 0,
-    ST_Network,
-    ST_SoloBattle,
-    ST_MultiBattle,
-    ST_Result,
+    ST_StageSelect,
+    ST_Puzzle,
 
     ST_Test,
 
