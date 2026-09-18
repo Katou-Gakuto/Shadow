@@ -30,7 +30,7 @@ LoadingManager* Master::mpLoadingManager = new LoadingManager();
 ResourceManager* Master::mpResourceManager = new ResourceManager();
 StopManager* Master::mpStopManager = new StopManager();
 ThreadManager* Master::mpThreadManager = new ThreadManager();
-TimeManager* Master::mpTimeManager = new TimeManager();
+TimeManager* Master::mpTimeManager = new TimeManager(/*/1/*/17/**/);
 ShineManager* Master::mpShineManager = new ShineManager();
 
 /// <summary>

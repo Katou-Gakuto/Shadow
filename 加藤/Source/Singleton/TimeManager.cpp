@@ -75,7 +75,7 @@ bool TimeManager::GetNextUpdateFlag()
 #ifdef _DEBUG
         mstElapsedTime += timeDiff;
         mfDeltaTime = static_cast<float>(timeDiff) * 0.001f * mfTimeScale;
-        //DEBUG::SaveText("[" + std::to_string(timeDiff) + "時間差][" + std::to_string(mfDeltaTime) + "秒][" + std::to_string(mfTimeScale) + "タイムスケール]\n", DEBUG::DEBUG_MAP_TYPE::DEBUG_TIME);
+        DEBUG::SaveText("[" + std::to_string(timeDiff) + "時間差][" + std::to_string(mfDeltaTime) + "秒][" + std::to_string(mfTimeScale) + "タイムスケール]\n", DEBUG::DEBUG_MAP_TYPE::DEBUG_TIME);
         //// 試験運用家でデバッグ時
         //mstElapsedTime += munLowestOneFrameSeconds;
         //mfDeltaTime = static_cast<float>(munLowestOneFrameSeconds) * 0.001f * mfTimeScale;

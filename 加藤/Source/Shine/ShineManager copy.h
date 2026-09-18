@@ -23,7 +23,6 @@ enum SHINE_DRAW_MODE
 	TRIANGLE_SHINE_DRAW_MODE,
 	TRIANGLE_SHINE_DRAW_MODE_TRUE,
 	GRID_SHINE_DRAW_MODE,
-	ALL_GRID_SHINE_DRAW_MODE,
 	SHINE_DRAW_MODE_MAX
 };
 
@@ -53,12 +52,7 @@ private:
 	// グリッド状にしたマップの当たり判定
 	MAP_OBJECT_DATA mstMapObjectGridData[MAP_ARRAY_SIZE_Y][MAP_ARRAY_SIZE_X];
 
-	// 光源オブジェクト
 	ShineObject* mpShineObject;
-	// 光源ポジション
-	Vector2 mstShinePos;
-	// 光源グリッドポジション
-	Vector2_Int mstShineGridPos;
 
 	int mnDrawMode;
 public:
@@ -77,7 +71,7 @@ private:
 	void CreateLightArea();
 
 	// グリッドの探索
-    void CheckLightGrid();
+    void CheckLightGrid(std::queue<Vector2_Int>& nextCheckShinePos);
 
     // グリッドの状態を判定
     SHINE_GRID_TYPE JudgeGrid(const Vector2_Int& gridPos, const std::vector<SHINE_DIRECTION>& shineDirections, int shineDirectionsIndex);
@@ -89,5 +83,5 @@ private:
     bool IsOutsideLightStage(const Vector2_Int& gridPos);
 
 	// 光領域を左端から右端へ走査するグリッドを取得
-	std::vector<Vector2_Int> GetLightGridPositions(const Vector2_Int& nowCheckShinePos);
+	std::vector<Vector2_Int> GetLightGridPositions(const std::queue<Vector2_Int>& nowCheckShinePos);
 };

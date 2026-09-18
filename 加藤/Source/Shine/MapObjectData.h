@@ -24,11 +24,12 @@ struct BLOCK_POS_DATA
 public:
 	Vector2_Int BlockPos;
 	int ArrayIndex;
+	bool OutsideGridFlag;
 };
 
 // Ž‹ŠE
 struct SHINE_DIRECTION
 {
-	Vector2 shineDirection1;
-	Vector2 shineDirection2;
+	Vector2 shineDirectionLeft;
+	Vector2 shineDirectionRight;
 };

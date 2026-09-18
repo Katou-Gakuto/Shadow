@@ -92,13 +92,13 @@ void ShineObject::Update()
     setImguiData.SetMax(6.28f);
     setImguiData.SetLabel("_SHINE_DIR1");
     setImguiData.ReSetVariable();
-    setImguiData.AddVariable(&mstShineDirection.shineDirection1.y);
-    setImguiData.AddVariable(&mstShineDirection.shineDirection1.x);
+    setImguiData.AddVariable(&mstShineDirection.shineDirectionLeft.y);
+    setImguiData.AddVariable(&mstShineDirection.shineDirectionLeft.x);
     Master::mpImguiManager->AddDrawImgui(setImguiData);
     setImguiData.SetLabel("_SHINE_DIR2");
     setImguiData.ReSetVariable();
-    setImguiData.AddVariable(&mstShineDirection.shineDirection2.y);
-    setImguiData.AddVariable(&mstShineDirection.shineDirection2.x);
+    setImguiData.AddVariable(&mstShineDirection.shineDirectionRight.y);
+    setImguiData.AddVariable(&mstShineDirection.shineDirectionRight.x);
     Master::mpImguiManager->AddDrawImgui(setImguiData);
     setImguiData = IMGUI_FLOAT_DATA::GetImguiData(
         { &mfAngle },
@@ -135,14 +135,14 @@ void ShineObject::Update()
         (mfAngle + halfVisionAngle) * DEG_TO_RAD;
 
     // 視界の左端ベクトル
-    mstShineDirection.shineDirection1 =
+    mstShineDirection.shineDirectionLeft =
     {
         std::cos(leftAngle),
         std::sin(leftAngle)
     };
 
     // 視界の右端ベクトル
-    mstShineDirection.shineDirection2 =
+    mstShineDirection.shineDirectionRight =
     {
         std::cos(rightAngle),
         std::sin(rightAngle)
