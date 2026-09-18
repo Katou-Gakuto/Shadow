@@ -5,6 +5,7 @@
 #include "KeyState.h"
 #include "EndManager.h"
 #include "TimeManager.h"
+#include "VECTOR.h"
 
 #include "../C_Component/Player.h"
 #include "../G_LightArea/LightAreaManager.h"
@@ -54,15 +55,16 @@ int Master::Finalize()
     return 0;
 }
 
+// âÊëúÇägëÂ/èkè¨ÇµÅAUVç¿ïWÇéwíËÇµÇƒï`âÊÇ∑ÇÈä÷êî
 int Master::DrawGraphAnim(
-	const VECTOR2D posLeftUp, const VECTOR2D posRightDown,
-	const VECTOR2D uvLeftUp, const VECTOR2D uvRightDown
-	int graphHandle,)
+	const VECTOR2D &posLeftUp, const VECTOR2D &posRightDown,
+	const VECTOR2D &uvLeftUp, const VECTOR2D &uvRightDown,
+	int graphHandle)
 {
 	// 
     DrawRectExtendGraphF(
-        posLeftUp.x, posLeftUp.y, posRightDown.x, posRightDown.y, 
-        uvLeftUp.x, uvLeftUp.y, uvRightDown.x, uvRightDown.y, graphHandle, false);
+        posLeftUp.GetX(), posLeftUp.GetY(), posRightDown.GetX(), posRightDown.GetY(),
+        uvLeftUp.GetX(), uvLeftUp.GetY(), uvRightDown.GetX(), uvRightDown.GetY(), graphHandle, false);
 
 	return 0;
 }

@@ -29,6 +29,9 @@
 
 */
 
+int Master::PlayerSizeXY = 120;
+
+
 /// <summary>
 /// ƒƒCƒ“
 /// </summary>

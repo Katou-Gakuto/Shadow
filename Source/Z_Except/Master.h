@@ -47,9 +47,12 @@ public:
     // Masterの各メンバをdeleteする関数
     static int Finalize();
 
-    // 
+    // プレイヤーの大きさ
+    static int PlayerSizeXY;
+
+    // 画像を拡大/縮小し、UV座標を指定して描画する関数
     static int DrawGraphAnim(
-        int graphHandle,
-        const VECTOR2D posLeftUp, const VECTOR2D posRightDown,
-        const VECTOR2D uvLeftUp, const VECTOR2D uvRightDown);
+        const VECTOR2D &posLeftUp, const VECTOR2D &posRightDown,
+        const VECTOR2D &uvLeftUp, const VECTOR2D &uvRightDown,
+        int graphHandle);
 };
